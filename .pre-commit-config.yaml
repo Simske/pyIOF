@@ -3,21 +3,21 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
-      - check-case-conflict
-      - check-merge-conflict
-      - check-toml
-      - check-xml
-      - check-yaml
-      - debug-statements
-      - end-of-file-fixer
-      - mixed-line-ending
-      - trailing-whitespace
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
       - id: trailing-whitespace
         args: ["--markdown-linebreak-ext=md"]
   - repo: https://github.com/psf/black
     rev: 21.10b0
     hooks:
-    - id: black
+      - id: black
   - repo: https://github.com/pycqa/isort
     rev: "5.10.1"
     hooks:
