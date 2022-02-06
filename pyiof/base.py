@@ -1,6 +1,6 @@
 import datetime
 from dataclasses import dataclass, field
-from typing import ClassVar, List
+from typing import ClassVar, List, Optional
 from decimal import Decimal
 from enum import Enum
 
@@ -549,3 +549,32 @@ class Class_:
     max_number_of_competitors: int = None
     resultlist_mode: ResultListMode
 
+@dataclass
+class Score:
+    """The score earned in an event for some purpose, e.g. a ranking list.
+    The 'type' attribute is used to specify which purpose.
+    """
+    score: float
+    type: Optional[str] = None
+
+
+
+
+@dataclass
+class Competitor:
+    """Represents information about a person in a competition context, i.e. including organisation and control card.
+
+    Attributes:
+        person: Person
+        organisation (List[Organisation]): The organisations that the person is member of.
+        controlcards (List[ControlCard]): The default control cards of the competitor.
+        class_ (List[Claas_]): The default classes of the competitor.
+        score (List[Score]): Any scores, e.g. ranking scores, for the person.
+        modifytime (datetime.datetime, optional)
+    """
+    person: Person
+    organisation: List[Organisation] = field(default_factory=list)
+    controlcards: List[ControlCard] = field(default_factory=list)
+    class_: List[Class_] = field(default_factory=list)
+    score: List[Score] = field(default_factory=list)
+    modifytime: Optional[datetime.datetime] = None

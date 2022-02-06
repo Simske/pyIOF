@@ -31,7 +31,7 @@ They have the attributes:
 - [ ] `ClassStart`
 - [X] `ClassType`
 - [X] `Class`
-- [ ] `Competitor`
+- [X] `Competitor`
 - [X] `Contact`
 - [ ] `ControlAnswer`
 - [X] `ControlCard`
