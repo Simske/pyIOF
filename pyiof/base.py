@@ -2,7 +2,7 @@ import datetime
 from dataclasses import dataclass, field
 from decimal import Decimal
 from enum import Enum
-from typing import ClassVar, List, Optional
+from typing import ClassVar, List, Optional, Tuple
 
 
 @dataclass
@@ -15,7 +15,7 @@ class Id:
     """
 
     id: str
-    type: str = None
+    type: Optional[str] = None
 
 
 @dataclass
@@ -54,14 +54,23 @@ class Address:
         type (str, optional): The address type, e.g. visitor address or invoice address.
     """
 
-    careof: str = None
-    street: str = None
-    zipcode: str = None
-    city: str = None
-    state: str = None
-    country: Country = None
-    type: str = None
-    modifytime: datetime.datetime = None
+    careof: Optional[str] = None
+    street: Optional[str] = None
+    zipcode: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    country: Optional[Country] = None
+    type: Optional[str] = None
+    modifytime: Optional[datetime.datetime] = None
+
+
+class ContactType(Enum):
+    phone_number = "PhoneNumber"
+    mobile_phone_number = "MobilePhoneNumber"
+    fax_number = "FaxNumber"
+    email_address = "EmailAddress"
+    web_address = "WebAddress"
+    other = "Other"
 
 
 @dataclass
@@ -76,20 +85,14 @@ class Contact:
     """
 
     contact: str
-    type: str
-    modifytime: datetime.datetime = None
-    allowed_types: ClassVar = (
-        "PhoneNumber",
-        "MobilePhoneNumber",
-        "FaxNumber",
-        "EmailAddress",
-        "WebAddress",
-        "Other",
-    )
+    type: ContactType
+    modifytime: Optional[datetime.datetime] = None
 
-    def __post_init__(self):
-        if self.type not in self.allowed_types:
-            raise RuntimeError(f"Invalid Type {self.type} for `Contact`")
+
+class Sex(Enum):
+    m = "M"
+    f = "F"
+    b = "B"
 
 
 @dataclass
@@ -104,12 +107,12 @@ class Person:
 
     id: List[Id]
     name: PersonName
-    birthdate: datetime.date = None
-    nationality: Country = None
+    birthdate: Optional[datetime.date] = None
+    nationality: Optional[Country] = None
     address: List[Address] = field(default_factory=list)
     contact: List[Contact] = field(default_factory=list)
-    sex: str = None
-    modifytime: datetime.datetime = None
+    sex: Optional[Sex] = None
+    modifytime: Optional[datetime.datetime] = None
 
 
 @dataclass
@@ -124,8 +127,8 @@ class ControlCard:
     """
 
     id: str
-    punchingsystem: str = None
-    modifytime: datetime.datetime = None
+    punchingsystem: Optional[str] = None
+    modifytime: Optional[datetime.datetime] = None
 
 
 @dataclass
@@ -139,7 +142,7 @@ class Score:
     """
 
     score: float
-    type: str = None
+    type: Optional[str] = None
 
 
 @dataclass
@@ -154,7 +157,7 @@ class GeoPosition:
 
     lng: float
     lat: float
-    alt: float = None
+    alt: Optional[float] = None
 
 
 @dataclass
@@ -167,7 +170,7 @@ class Account:
     """
 
     account: str
-    type: str = None
+    type: Optional[str] = None
 
 
 @dataclass
@@ -205,10 +208,22 @@ class Image:
 
     data: str
     mediatype: str
-    url: str = None
-    width: int = None
-    height: int = None
-    resolution: float = None
+    url: Optional[str] = None
+    width: Optional[int] = None
+    height: Optional[int] = None
+    resolution: Optional[float] = None
+
+
+class OrganisationType(Enum):
+    iof = "IOF"
+    iof_region = "IOFRegion"
+    national_federation = "NationalFederation"
+    national_region = "NationalREgion"
+    club = "Club"
+    school = "School"
+    company = "Company"
+    military = "Military"
+    other = "Other"
 
 
 @dataclass
@@ -225,34 +240,19 @@ class Organisation:
     """
 
     name: str
-    id: Id = None
-    shortname: str = None
-    medianame: str = None
-    parent_organisation_id: Id = None
-    country: Country = None
+    id: Optional[Id] = None
+    shortname: Optional[str] = None
+    medianame: Optional[str] = None
+    parent_organisation_id: Optional[Id] = None
+    country: Optional[Country] = None
     address: List[Address] = field(default_factory=list)
     contact: List[Contact] = field(default_factory=list)
-    position: GeoPosition = None
+    position: Optional[GeoPosition] = None
     account: List[Account] = field(default_factory=list)
     role: List[Role] = field(default_factory=list)
     logotype: List[Image] = field(default_factory=list)
-    type: str = None
-    modifytime: datetime.datetime = None
-    allowed_types: ClassVar = (
-        "IOF",
-        "IOFRegion",
-        "NationalFederation",
-        "NationalREgion",
-        "Club",
-        "School",
-        "Company",
-        "Military",
-        "Other",
-    )
-
-    def __post_init__(self):
-        if self.type not in self.allowed_types:
-            raise RuntimeError(f"Invalid Type {self.type} for `Organisation`")
+    type: Optional[OrganisationType] = None
+    modifytime: Optional[datetime.datetime] = None
 
 
 @dataclass
@@ -267,7 +267,7 @@ class DateAndOptionalTime:
     """
 
     date: datetime.date
-    time: datetime.time = None
+    time: Optional[datetime.time] = None
 
 
 @dataclass
@@ -280,15 +280,14 @@ class LanguageString:
             as stated in https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes.
     """
 
+    text: str
+    language: Optional[str] = None
 
-@dataclass
-class EventForm:
-    form: str
-    allowed_forms: ClassVar = ("Individual", "Team", "Relay")
 
-    def __post_init__(self):
-        if self.type not in self.allowed_forms:
-            raise RuntimeError(f"Invalid form {self.type} for Event")
+class EventForm(Enum):
+    individual = "Individual"
+    team = "Team"
+    relay = "Relay"
 
 
 @dataclass
@@ -302,8 +301,8 @@ class ClassType:
     """
 
     name: str
-    id: Id = None
-    modifytime: datetime.datetime = None
+    id: Optional[Id] = None
+    modifytime: Optional[datetime.datetime] = None
 
 
 @dataclass
@@ -316,9 +315,9 @@ class Leg:
         max_number_of_competitors (int, default=1): The maximum number of competitors in case of a parallel leg.
     """
 
-    name: str = None
-    min_number_of_competitors: int = 1
-    max_number_of_competitors: int = 1
+    name: Optional[str] = None
+    min_number_of_competitors: Optional[int] = None
+    max_number_of_competitors: Optional[int] = None
 
 
 @dataclass
@@ -331,7 +330,12 @@ class Amount:
     """
 
     amount: Decimal
-    currency: str = None
+    currency: Optional[str] = None
+
+
+class FeeType(Enum):
+    normal = "Normal"
+    late = "Late"
 
 
 @dataclass
@@ -353,21 +357,18 @@ class Fee:
     """
 
     name: List[LanguageString]
-    id: Id = None
-    amount: Amount = None
-    taxable_amount: Amount = None
-    percentage: float = None
-    taxable_percentage: float = None
-    valid_from_time: datetime.datetime = None
-    valid_to_time: datetime.datetime = None
-    from_date_of_birth: datetime.date = None
-    to_date_of_birth: datetime.date = None
-    type: str = None
-    allowed_types: ClassVar[List[str]] = ["normal", "late"]
+    id: Optional[Id] = None
+    amount: Optional[Amount] = None
+    taxable_amount: Optional[Amount] = None
+    percentage: Optional[float] = None
+    taxable_percentage: Optional[float] = None
+    valid_from_time: Optional[datetime.datetime] = None
+    valid_to_time: Optional[datetime.datetime] = None
+    from_date_of_birth: Optional[datetime.date] = None
+    to_date_of_birth: Optional[datetime.date] = None
+    type: Optional[FeeType] = None
 
     def __post_init__(self):
-        if self.type not in self.allowed_types:
-            raise RuntimeError(f"Invalid type {self.type} for Fee")
         if self.amount is not None and self.percentage is not None:
             raise RuntimeError(f"Fee: only one of amount or percentage can be defined")
         if self.taxable_amount is not None and self.amount is None:
@@ -431,12 +432,12 @@ class SimpleCourse:
         number_of_controls (int, optional): The number of controls in the course, excluding start and finish.
     """
 
-    id: Id = None
-    name: str = None
-    course_family: str = None
-    length: float = None
-    climb: float = None
-    number_of_controls: int = None
+    id: Optional[Id] = None
+    name: Optional[str] = None
+    course_family: Optional[str] = None
+    length: Optional[float] = None
+    climb: Optional[float] = None
+    number_of_controls: Optional[int] = None
 
 
 class Unit(Enum):
@@ -501,10 +502,10 @@ class Control:
     id: Id
     punching_unit_id: List[Id] = field(default_factory=list)
     name: List[LanguageString] = field(default_factory=list)
-    position: GeoPosition = None
-    map_position: MapPosition = None
+    position: Optional[GeoPosition] = None
+    map_position: Optional[MapPosition] = None
     type: ControlType = ControlType.control
-    modifytime: datetime.datetime = None
+    modifytime: Optional[datetime.datetime] = None
 
 
 @dataclass
@@ -527,19 +528,13 @@ class RaceClass:
     punching_system: List[str] = field(default_factory=list)
     team_fee: List[Fee] = field(default_factory=list)
     fee: List[Fee] = field(default_factory=list)
-    first_start: datetime.datetime = None
-    status: RaceClassStatus = None
+    first_start: Optional[datetime.datetime] = None
+    status: Optional[RaceClassStatus] = None
     course: List[SimpleCourse] = field(default_factory=list)
     online_controls: List[Control] = field(default_factory=list)
-    race_number: int = None
-    max_number_of_competitors: int = None
-    modifytime: datetime.datetime = None
-
-
-class Sex(Enum):
-    m = "M"
-    f = "F"
-    b = "B"
+    race_number: Optional[int] = None
+    max_number_of_competitors: Optional[int] = None
+    modifytime: Optional[datetime.datetime] = None
 
 
 class ResultListMode(Enum):
@@ -559,26 +554,26 @@ class ResultListMode(Enum):
 @dataclass
 class Class_:
     name: str
-    id: Id = None
-    shortname: str = ""
+    id: Optional[Id] = None
+    shortname: Optional[str] = None
     classtype: List[ClassType] = field(default_factory=list)
     leg: List[Leg] = field(default_factory=list)
     team_fee: List[Fee] = field(default_factory=list)
     fee: List[Fee] = field(default_factory=list)
     status: EventClassStatus = EventClassStatus.normal
     raceclass: List[RaceClass] = field(default_factory=list)
-    too_few_entries_substitute_class: Class_ = None
-    too_many_entries_substitue_class: Class_ = None
-    min_age: int = None
-    max_age: int = None
-    sex: Sex = None
-    min_number_of_team_members: int = None
-    max_number_of_team_members: int = None
-    min_team_age: int = None
-    max_team_age: int = None
-    number_of_competitors: int = None
-    max_number_of_competitors: int = None
-    resultlist_mode: ResultListMode
+    too_few_entries_substitute_class: Optional[Class_] = None
+    too_many_entries_substitue_class: Optional[Class_] = None
+    min_age: Optional[int] = None
+    max_age: Optional[int] = None
+    sex: Optional[Sex] = None
+    min_number_of_team_members: Optional[int] = None
+    max_number_of_team_members: Optional[int] = None
+    min_team_age: Optional[int] = None
+    max_team_age: Optional[int] = None
+    number_of_competitors: Optional[int] = None
+    max_number_of_competitors: Optional[int] = None
+    resultlist_mode: ResultListMode = ResultListMode.default
 
 
 @dataclass
