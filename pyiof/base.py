@@ -1,6 +1,8 @@
 import datetime
 from dataclasses import dataclass, field
 from typing import ClassVar, List
+from decimal import Decimal
+from enum import Enum
 
 
 @dataclass
@@ -287,3 +289,114 @@ class EventForm:
     def __post_init__(self):
         if self.type not in self.allowed_forms:
             raise RuntimeError(f"Invalid form {self.type} for Event")
+
+@dataclass
+class ClassType:
+    """Defines a class type, which is used to group classes in categories.
+
+    Attributes:
+        id (Id, optional)
+        name (str): The name of the class type
+        modifytime (datetime, optional)
+    """
+    name: str
+    id: Id = None
+    modifytime: datetime.datetime = None
+
+@dataclass
+class Leg:
+    """Defines extra information for a relay leg.
+
+    Attributes:
+        name (str, optional): The name of the leg, if not sequentially named.
+        min_number_of_competitors (int, default=1): The minimum number of competitors in case of a parallel leg.
+        max_number_of_competitors (int, default=1): The maximum number of competitors in case of a parallel leg.
+    """
+    name: str = None
+    min_number_of_competitors: int = 1
+    max_number_of_competitors: int = 1
+
+@dataclass
+class Amount:
+    """Defines a monetary amount.
+
+    Attributes:
+        amount (decimal.Decimal)
+        currency (str, optional)
+    """
+    amount: Decimal
+    currency: str = None
+
+@dataclass
+class Fee:
+    """A fee that applies when entering a class at a race or ordering a service.
+
+    Attributes:
+        id (Id)
+        name (list[LanguageString]): A describing name of the fee, e.g. 'Late entry fee', at least one entry
+        amount (Amount, optional): The fee amount, optionally including currency code. This element must not be present if a Percentage element exists.
+        taxable_amount (Amount, optional): The fee amount that is taxable, i.e. considered when calculating taxes for an event. This element must not be present if a Percentage element exists, or if an Amount element does not exist.
+        percentage (double, optional): The percentage to increase or decrease already existing fees in a fee list with. This element must not be present if an Amount element exists.
+        taxable_percentage (double, optional): The percentage to increase or decrease already existing taxable fees in a fee list with. This element must not be present if an Amount element exists, or if a Percentage element does not exist.
+        valid_from_time (datetime.datetime, optional):  The time when the fee takes effect.
+        valid_to_time (datetime.datetime, optional): The time when the fee expires.
+        from_birth_date (datetime.date, optional): The start of the birth date interval that the fee should be applied to. Omit if no lower birth date restriction.
+        to_birth_date (datetime.date, optional): The end of the birth date interval that the fee should be applied to. Omit if no upper birth date restriction.
+        type (str, optional): The type of Fee. Allowed values: Normal, Late. Default=Normal
+    """
+    name: List[LanguageString]
+    id: Id = None
+    amount: Amount = None
+    taxable_amount: Amount = None
+    percentage: float = None
+    taxable_percentage: float = None
+    valid_from_time: datetime.datetime = None
+    valid_to_time: datetime.datetime = None
+    from_date_of_birth: datetime.date = None
+    to_date_of_birth: datetime.date = None
+    type: str = None
+    allowed_types: ClassVar[List[str]] = ["normal", "late"]
+
+    def __post_init__(self):
+        if self.type not in self.allowed_types:
+            raise RuntimeError(f"Invalid type {self.type} for Fee")
+        if self.amount is not None and self.percentage is not None:
+            raise RuntimeError(f"Fee: only one of amount or percentage can be defined")
+        if self.taxable_amount is not None and self.amount is None:
+            raise RuntimeError(f"Fee: taxable_amount only applicable if amount is defined")
+        if self.taxable_percentage is not None and self.amount is None:
+            raise RuntimeError(f"Fee: taxable_percentage only applicable if percentage is defined")
+
+class EventClassStatus(Enum):
+    """The status of the class - enum
+
+    Attributes:
+        normal: The default status.
+        divided: The class has been divided in two or more classes due to a large number of entries.
+        joined: The class has been joined with another class due to a small number of entries.
+        invalidated: The results are considered invalid due to technical issues such as misplaced controls. Entry fees are not refunded.
+        invalidated_not_fee: The results are considered invalid due to technical issues such as misplaced controls. Entry fees are refunded.
+    """
+    normal = "Normal"
+    divided = "Divided"
+    joined = "Joined"
+    invalidated = "Invalidated"
+    invalidated_no_fee = "InvalidatedNoFee"
+
+class RaceClassStatus(Enum):
+    """The status of a certain race in the class.
+
+    Attributes:
+        start_times_not_allocated: The start list draw has not been made for this class in this race
+        start_times_allocated: The start list draw has been made for this class in this race.
+        not_used: The class is not organised in this race, e.g. for classes that are organised in only some of the races in a multi-race event.
+        completed: The result list is complete for this class in this race.
+        invalidated: The results are considered invalid due to technical issues such as misplaced controls. Entry fees are not refunded.
+        invalidated_no_fee: The results are considered invalid due to technical issues such as misplaced controls. Entry fees are refunded.
+    """
+    start_times_not_allocated = "StartTimesNotAllocated"
+    start_times_allocated = "StartTimesAllocated"
+    not_used = "NotUsed"
+    completed = "Completed"
+    invalidated = "Invalidated"
+    invalidated_no_fee = "InvalidatedNoFee"

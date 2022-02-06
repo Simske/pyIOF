@@ -365,7 +365,7 @@ They have the attributes:
     - `type` (enum, optional, default=Normal): The type of fee.
       - `Normal`: The fee is a normal fee (i.e. not a late entry fee).
       - `Late`: The fee is a late entry fee
-      - `modifyTime` (datetime, optional)
+    - `modifyTime` (datetime, optional)
 - `AssignedFee`: Contains information about a fee that has been assigned to a competitor or a team, and the amount that has been paid.
   - `Fee`: The fee that has been assigned to the competitor or the team.
   - `PaidAmount` (Amount, optional): The amount that has been paid, optionally including currency code.
