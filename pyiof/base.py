@@ -1,8 +1,8 @@
 import datetime
 from dataclasses import dataclass, field
-from typing import ClassVar, List, Optional
 from decimal import Decimal
 from enum import Enum
+from typing import ClassVar, List, Optional
 
 
 @dataclass
@@ -290,6 +290,7 @@ class EventForm:
         if self.type not in self.allowed_forms:
             raise RuntimeError(f"Invalid form {self.type} for Event")
 
+
 @dataclass
 class ClassType:
     """Defines a class type, which is used to group classes in categories.
@@ -299,9 +300,11 @@ class ClassType:
         name (str): The name of the class type
         modifytime (datetime, optional)
     """
+
     name: str
     id: Id = None
     modifytime: datetime.datetime = None
+
 
 @dataclass
 class Leg:
@@ -312,9 +315,11 @@ class Leg:
         min_number_of_competitors (int, default=1): The minimum number of competitors in case of a parallel leg.
         max_number_of_competitors (int, default=1): The maximum number of competitors in case of a parallel leg.
     """
+
     name: str = None
     min_number_of_competitors: int = 1
     max_number_of_competitors: int = 1
+
 
 @dataclass
 class Amount:
@@ -324,8 +329,10 @@ class Amount:
         amount (decimal.Decimal)
         currency (str, optional)
     """
+
     amount: Decimal
     currency: str = None
+
 
 @dataclass
 class Fee:
@@ -344,6 +351,7 @@ class Fee:
         to_birth_date (datetime.date, optional): The end of the birth date interval that the fee should be applied to. Omit if no upper birth date restriction.
         type (str, optional): The type of Fee. Allowed values: Normal, Late. Default=Normal
     """
+
     name: List[LanguageString]
     id: Id = None
     amount: Amount = None
@@ -363,9 +371,14 @@ class Fee:
         if self.amount is not None and self.percentage is not None:
             raise RuntimeError(f"Fee: only one of amount or percentage can be defined")
         if self.taxable_amount is not None and self.amount is None:
-            raise RuntimeError(f"Fee: taxable_amount only applicable if amount is defined")
+            raise RuntimeError(
+                f"Fee: taxable_amount only applicable if amount is defined"
+            )
         if self.taxable_percentage is not None and self.amount is None:
-            raise RuntimeError(f"Fee: taxable_percentage only applicable if percentage is defined")
+            raise RuntimeError(
+                f"Fee: taxable_percentage only applicable if percentage is defined"
+            )
+
 
 class EventClassStatus(Enum):
     """The status of the class - enum
@@ -377,11 +390,13 @@ class EventClassStatus(Enum):
         invalidated: The results are considered invalid due to technical issues such as misplaced controls. Entry fees are not refunded.
         invalidated_not_fee: The results are considered invalid due to technical issues such as misplaced controls. Entry fees are refunded.
     """
+
     normal = "Normal"
     divided = "Divided"
     joined = "Joined"
     invalidated = "Invalidated"
     invalidated_no_fee = "InvalidatedNoFee"
+
 
 class RaceClassStatus(Enum):
     """The status of a certain race in the class.
@@ -394,12 +409,14 @@ class RaceClassStatus(Enum):
         invalidated: The results are considered invalid due to technical issues such as misplaced controls. Entry fees are not refunded.
         invalidated_no_fee: The results are considered invalid due to technical issues such as misplaced controls. Entry fees are refunded.
     """
+
     start_times_not_allocated = "StartTimesNotAllocated"
     start_times_allocated = "StartTimesAllocated"
     not_used = "NotUsed"
     completed = "Completed"
     invalidated = "Invalidated"
     invalidated_no_fee = "InvalidatedNoFee"
+
 
 @dataclass
 class SimpleCourse:
@@ -413,12 +430,14 @@ class SimpleCourse:
         climb (float, optional): The climb of the course, in meters, along the expected best route choice.
         number_of_controls (int, optional): The number of controls in the course, excluding start and finish.
     """
+
     id: Id = None
     name: str = None
     course_family: str = None
     length: float = None
     climb: float = None
     number_of_controls: int = None
+
 
 class Unit(Enum):
     """Enum class for units
@@ -427,8 +446,10 @@ class Unit(Enum):
         mm: Millimeters, used when the map is represented by a printed piece of paper.
         px: Pixels, used when the map is represented by a digital image.
     """
+
     mm = "mm"
     px = "px"
+
 
 @dataclass
 class MapPosition:
@@ -439,9 +460,11 @@ class MapPosition:
         y (float): The number of units below the center of the coordinate system.
         unit (Unit, optional): The type of unit used, defaults to Unit.mm
     """
+
     x: float
     y: float
     unit: Unit = Unit.mm
+
 
 class ControlType(Enum):
     """The type of a control: (ordinary) control, start, finish, crossing point or end of marked route.
@@ -453,11 +476,13 @@ class ControlType(Enum):
         crossing_point
         end_of_marked_route
     """
+
     control = "Control"
     start = "Start"
     finish = "Finish"
     crossing_point = "CrossingPoint"
     end_of_marked_route = "EndOfMarkedRoute"
+
 
 @dataclass
 class Control:
@@ -472,6 +497,7 @@ class Control:
         type (ControlType): The type of the control: (ordinary) control, start, finish, crossing point or end of marked route. This attribute can be overridden on the CourseControl level. Defaults to ControlType.control
         modifytime (datetime.datetime, optional)
     """
+
     id: Id
     punching_unit_id: List[Id] = field(default_factory=list)
     name: List[LanguageString] = field(default_factory=list)
@@ -479,6 +505,7 @@ class Control:
     map_position: MapPosition = None
     type: ControlType = ControlType.control
     modifytime: datetime.datetime = None
+
 
 @dataclass
 class RaceClass:
@@ -496,6 +523,7 @@ class RaceClass:
         max_number_of_competitors (int, optional): The maximum number of competitors that are allowed to take part in the race class. A competitor corresponds to a person (if an individual event) or a team (if a team or relay event). This attribute overrides the maxNumberOfCompetitors attribute in the Class element.
         modifytime (datetime.datetime, optional)
     """
+
     punching_system: List[str] = field(default_factory=list)
     team_fee: List[Fee] = field(default_factory=list)
     fee: List[Fee] = field(default_factory=list)
@@ -513,17 +541,20 @@ class Sex(Enum):
     f = "F"
     b = "B"
 
+
 class ResultListMode(Enum):
-    """Defines the kind of information to include in the result list, and how to sort it. For example, the result list of a beginner's class may include just 
+    """Defines the kind of information to include in the result list, and how to sort it. For example, the result list of a beginner's class may include just
 
     Attributes:
         default: The result list should include place and time for each competitor, and be ordered by place.
         unordered: The result list should include place and time for each competitor, but be unordered with respect to times (e.g. sorted by competitor name).
         unordered_no_times: The result list should not include any places and times, and be unordered with respect to times (e.g. sorted by competitor name).
     """
+
     default = "Default"
     unordered = "Unordered"
     unordered_no_times = "UnorderedNoTimes"
+
 
 @dataclass
 class Class_:
@@ -549,15 +580,15 @@ class Class_:
     max_number_of_competitors: int = None
     resultlist_mode: ResultListMode
 
+
 @dataclass
 class Score:
     """The score earned in an event for some purpose, e.g. a ranking list.
     The 'type' attribute is used to specify which purpose.
     """
+
     score: float
     type: Optional[str] = None
-
-
 
 
 @dataclass
@@ -572,6 +603,7 @@ class Competitor:
         score (List[Score]): Any scores, e.g. ranking scores, for the person.
         modifytime (datetime.datetime, optional)
     """
+
     person: Person
     organisation: List[Organisation] = field(default_factory=list)
     controlcards: List[ControlCard] = field(default_factory=list)

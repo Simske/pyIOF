@@ -58,8 +58,8 @@
       </xsd:annotation>
     </xsd:attribute>
   </xsd:complexType>
-  
-  
+
+
   <!-- MESSAGE ELEMENTS -->
 
   <xsd:element name="CompetitorList">
@@ -426,7 +426,7 @@
     </xsd:complexType>
   </xsd:element>
 
-  
+
   <!-- DATA ELEMENTS -->
 
   <xsd:complexType name="Id" mixed="false">
@@ -1592,7 +1592,7 @@
     </xsd:sequence>
     <xsd:attribute name="modifyTime" type="xsd:dateTime" use="optional"/>
   </xsd:complexType>
-  
+
   <xsd:complexType name="Amount">
     <xsd:annotation>
       <xsd:documentation>
@@ -3548,7 +3548,7 @@
             The id of the class.
           </xsd:documentation>
         </xsd:annotation>
-      </xsd:element>        
+      </xsd:element>
       <xsd:element name="ClassName" type="xsd:string">
         <xsd:annotation>
           <xsd:documentation>
