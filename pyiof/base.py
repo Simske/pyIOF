@@ -400,3 +400,152 @@ class RaceClassStatus(Enum):
     completed = "Completed"
     invalidated = "Invalidated"
     invalidated_no_fee = "InvalidatedNoFee"
+
+@dataclass
+class SimpleCourse:
+    """Defines a course, excluding controls.
+
+    Attributes:
+        id (Id)
+        name (str, optional): The name of the course.
+        course_family (str, optional): The family or group of forked courses that the course is part of.
+        length (float, optional): The length of the course, in meters.
+        climb (float, optional): The climb of the course, in meters, along the expected best route choice.
+        number_of_controls (int, optional): The number of controls in the course, excluding start and finish.
+    """
+    id: Id = None
+    name: str = None
+    course_family: str = None
+    length: float = None
+    climb: float = None
+    number_of_controls: int = None
+
+class Unit(Enum):
+    """Enum class for units
+
+    Attributes:
+        mm: Millimeters, used when the map is represented by a printed piece of paper.
+        px: Pixels, used when the map is represented by a digital image.
+    """
+    mm = "mm"
+    px = "px"
+
+@dataclass
+class MapPosition:
+    """Defines a position in a map's coordinate system.
+
+    Attributes:
+        x (float): The number of units right of the center of the coordinate system.
+        y (float): The number of units below the center of the coordinate system.
+        unit (Unit, optional): The type of unit used, defaults to Unit.mm
+    """
+    x: float
+    y: float
+    unit: Unit = Unit.mm
+
+class ControlType(Enum):
+    """The type of a control: (ordinary) control, start, finish, crossing point or end of marked route.
+
+    Attributes:
+        control
+        start
+        finish
+        crossing_point
+        end_of_marked_route
+    """
+    control = "Control"
+    start = "Start"
+    finish = "Finish"
+    crossing_point = "CrossingPoint"
+    end_of_marked_route = "EndOfMarkedRoute"
+
+@dataclass
+class Control:
+    """Defines a control, without any relationship to a particular course.
+
+    Attributes:
+        id (Id, optional): The code of the control.
+        punching_unit_id (list[Id], optional): If the control has multiple punching units with separate codes, specify all these codes using elements of this kind. Omit this element if there is a single punching unit whose code is the same as the control code.
+        name (list[LanguageString], optional): The name of the control, used for e.g. online controls ('spectator control', 'prewarning').
+        position (GeoPosition, optional): The geographical position of the control.
+        map_position (MapPosition, optional): The position of the control according to tha map's coordinate system.
+        type (ControlType): The type of the control: (ordinary) control, start, finish, crossing point or end of marked route. This attribute can be overridden on the CourseControl level. Defaults to ControlType.control
+        modifytime (datetime.datetime, optional)
+    """
+    id: Id
+    punching_unit_id: List[Id] = field(default_factory=list)
+    name: List[LanguageString] = field(default_factory=list)
+    position: GeoPosition = None
+    map_position: MapPosition = None
+    type: ControlType = ControlType.control
+    modifytime: datetime.datetime = None
+
+@dataclass
+class RaceClass:
+    """Information about a class with respect to a race.
+
+    Attributes:
+        punching_system (list[str]): The punching system used for the class at the race. Multiple punching systems can be specified, e.g. one for punch checking and another for timing.
+        team_fee (list[Fee]): The entry fees for a team as a whole taking part in this class. Use the Fee element to specify a fee for an individual competitor in the team. Use the TeamFee subelement of the Class element to specify a fee on event level.
+        fee (list[Fee]): The entry fees for an individual competitor taking part in the race class. Use the TeamFee element to specify a fee for the team as a whole. Use the Fee subelement of the Class element to specify a fee on event level.
+        first_start (datetime.datetime, optional)
+        status (RaceClassStatus, optional): The status of the race, e.g. if results should be considered invalid due to misplaced constrols.
+        course (list[SimpleCourse]): The courses assigned to this class. For a mass-start event or a relay event, there are usually multiple courses per class due to the usage of spreading methods.
+        online_controls (list[Control]): The controls that are online controls for this class.
+        race_number (int, optional): The ordinal number of the race that the information belongs to for a multi-race event, starting at 1.
+        max_number_of_competitors (int, optional): The maximum number of competitors that are allowed to take part in the race class. A competitor corresponds to a person (if an individual event) or a team (if a team or relay event). This attribute overrides the maxNumberOfCompetitors attribute in the Class element.
+        modifytime (datetime.datetime, optional)
+    """
+    punching_system: List[str] = field(default_factory=list)
+    team_fee: List[Fee] = field(default_factory=list)
+    fee: List[Fee] = field(default_factory=list)
+    first_start: datetime.datetime = None
+    status: RaceClassStatus = None
+    course: List[SimpleCourse] = field(default_factory=list)
+    online_controls: List[Control] = field(default_factory=list)
+    race_number: int = None
+    max_number_of_competitors: int = None
+    modifytime: datetime.datetime = None
+
+
+class Sex(Enum):
+    m = "M"
+    f = "F"
+    b = "B"
+
+class ResultListMode(Enum):
+    """Defines the kind of information to include in the result list, and how to sort it. For example, the result list of a beginner's class may include just 
+
+    Attributes:
+        default: The result list should include place and time for each competitor, and be ordered by place.
+        unordered: The result list should include place and time for each competitor, but be unordered with respect to times (e.g. sorted by competitor name).
+        unordered_no_times: The result list should not include any places and times, and be unordered with respect to times (e.g. sorted by competitor name).
+    """
+    default = "Default"
+    unordered = "Unordered"
+    unordered_no_times = "UnorderedNoTimes"
+
+@dataclass
+class Class_:
+    name: str
+    id: Id = None
+    shortname: str = ""
+    classtype: List[ClassType] = field(default_factory=list)
+    leg: List[Leg] = field(default_factory=list)
+    team_fee: List[Fee] = field(default_factory=list)
+    fee: List[Fee] = field(default_factory=list)
+    status: EventClassStatus = EventClassStatus.normal
+    raceclass: List[RaceClass] = field(default_factory=list)
+    too_few_entries_substitute_class: Class_ = None
+    too_many_entries_substitue_class: Class_ = None
+    min_age: int = None
+    max_age: int = None
+    sex: Sex = None
+    min_number_of_team_members: int = None
+    max_number_of_team_members: int = None
+    min_team_age: int = None
+    max_team_age: int = None
+    number_of_competitors: int = None
+    max_number_of_competitors: int = None
+    resultlist_mode: ResultListMode
+
