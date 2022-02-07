@@ -25,11 +25,13 @@ class ControlCard:
 
 @dataclass
 class Competitor:
-    """Represents information about a person in a competition context, i.e. including organisation and control card.
+    """Represents information about a person in a competition context,
+    i.e. including organisation and control card.
 
     Attributes:
         person: Person
-        organisation (List[Organisation]): The organisations that the person is member of.
+        organisation (List[Organisation]): The organisations that the
+            person is member of.
         controlcards (List[ControlCard]): The default control cards of the competitor.
         class_ (List[Claas_]): The default classes of the competitor.
         score (List[Score]): Any scores, e.g. ranking scores, for the person.
