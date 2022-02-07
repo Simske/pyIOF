@@ -381,6 +381,20 @@ class Fee:
             )
 
 
+@dataclass
+class AssignedFee:
+    """Contains information about a fee that has been assigned to a competitor or a team, and the amount that has been paid.
+
+    Attributes:
+        fee (Fee): The fee that has been assigned to the competitor or the team.
+        paid_amount (Amount, optional): The amount that has been paid, optionally including currency code.
+    """
+
+    fee: Fee
+    paid_amount: Optional[Amount] = None
+    modifyTime: datetime.datetime = None
+
+
 class EventClassStatus(Enum):
     """The status of the class - enum
 

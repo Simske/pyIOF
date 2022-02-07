@@ -24,8 +24,8 @@ They have the attributes:
 # [ ]# Data Elements
 - [X] `Account`
 - [X] `Address`
-- [ ] `Amount`
-- [ ] `AssignedFee`
+- [X] `Amount`
+- [X] `AssignedFee`
 - [ ] `ClassCourseAssignment`
 - [ ] `ClassResult`
 - [ ] `ClassStart`
