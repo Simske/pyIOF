@@ -2,7 +2,7 @@ import datetime
 from dataclasses import dataclass, field
 from decimal import Decimal
 from enum import Enum
-from typing import ClassVar, List, Optional, Tuple
+from typing import List, Optional
 
 
 @dataclass
@@ -553,6 +553,32 @@ class ResultListMode(Enum):
 
 @dataclass
 class Class_:
+    """Defines a class in an event
+
+    Attributes:
+        name (str): The name of the class
+        id: Optional[Id]
+        shortname (Optional[str]): The abbreviated name of a class, used when space is limited.
+        classtype (List[ClassType]): The class type(s) for the class.
+        leg (List[Leg]): Information about the legs, if the class is a relay class. One Leg element per leg must be present.
+        team_fee (List[Fee]): The entry fees for a team as a whole taking part in this class. Use the Fee element to specify a fee for an individual competitor in the team. Use the TeamFee subelement of the RaceClass element to specify a fee on race level.
+        fee (List[Fee]): The entry fees for an individual competitor taking part in the class. Use the TeamFee element to specify a fee for the team as a whole. Use the Fee subelement of the RaceClass element to specify a fee on race level.
+        status (EventClassStatus): The overall status of the class, e.g. if overall results should be considered invalid due to misplaced controls. Defaults to normal
+        raceclass (List[RaceClass]): Race-specific information for the class, e.g. course(s) assigned to the class.
+        too_few_entries_substitute_class (Optional[Class_]): The class that competitors in this class should be transferred to if there are too few entries in this class.
+        too_many_entries_substitue_class (Optional[Class_]): The class that competitors that are not qualified (e.g. due to too low ranking) should be transferred to if there are too many entries in this class.
+        min_age (Optional[int]): The lowest allowed age for a competitor taking part in the class.
+        max_age (Optional[int]): The highest allowed age for a competitor taking part in the class.
+        sex (Optional[Sex])
+        min_number_of_team_members (Optional[int]): The minimum number of members in a team taking part in the class, if the class is a team class.
+        max_number_of_team_members (Optional[int]): The maximum number of members in a team taking part in the class, if the class is a team class.
+        min_team_age (Optional[int]): The lowest allowed age sum of the team members for a team taking part in the class.
+        max_team_age (Optional[int]): The highest allowed age sum of the team members for a team taking part in the class.
+        number_of_competitors (Optional[int]): The number of competitors in the class. A competitor corresponds to a person (if an individual event) or a team (if a team or relay event).
+        max_number_of_competitors (Optional[int]): The maximum number of competitors that are allowed to take part in the class. A competitor corresponds to a person (if an individual event) or a team (if a team or relay event). If the maximum number of competitors varies between races in a multi-day event, use the maxNumberOfCompetitors attribute in the RaceClass element.
+        resultlist_mode (ResultListMode): Defines the kind of information to include in the result list, and how to sort it. For example, the result list of a beginner's class may include just "finished" or "did not finish" instead of the actual times.
+    """
+
     name: str
     id: Optional[Id] = None
     shortname: Optional[str] = None
@@ -562,8 +588,8 @@ class Class_:
     fee: List[Fee] = field(default_factory=list)
     status: EventClassStatus = EventClassStatus.normal
     raceclass: List[RaceClass] = field(default_factory=list)
-    too_few_entries_substitute_class: Optional[Class_] = None
-    too_many_entries_substitue_class: Optional[Class_] = None
+    too_few_entries_substitute_class: Optional["Class_"] = None
+    too_many_entries_substitue_class: Optional["Class_"] = None
     min_age: Optional[int] = None
     max_age: Optional[int] = None
     sex: Optional[Sex] = None
@@ -574,16 +600,6 @@ class Class_:
     number_of_competitors: Optional[int] = None
     max_number_of_competitors: Optional[int] = None
     resultlist_mode: ResultListMode = ResultListMode.default
-
-
-@dataclass
-class Score:
-    """The score earned in an event for some purpose, e.g. a ranking list.
-    The 'type' attribute is used to specify which purpose.
-    """
-
-    score: float
-    type: Optional[str] = None
 
 
 @dataclass
