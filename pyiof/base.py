@@ -392,7 +392,7 @@ class AssignedFee:
 
     fee: Fee
     paid_amount: Optional[Amount] = None
-    modifyTime: datetime.datetime = None
+    modifyTime: Optional[datetime.datetime] = None
 
 
 class EventClassStatus(Enum):
