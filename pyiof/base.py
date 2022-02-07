@@ -370,14 +370,14 @@ class Fee:
 
     def __post_init__(self):
         if self.amount is not None and self.percentage is not None:
-            raise RuntimeError(f"Fee: only one of amount or percentage can be defined")
+            raise RuntimeError("Fee: only one of amount or percentage can be defined")
         if self.taxable_amount is not None and self.amount is None:
             raise RuntimeError(
-                f"Fee: taxable_amount only applicable if amount is defined"
+                "Fee: taxable_amount only applicable if amount is defined"
             )
         if self.taxable_percentage is not None and self.amount is None:
             raise RuntimeError(
-                f"Fee: taxable_percentage only applicable if percentage is defined"
+                "Fee: taxable_percentage only applicable if percentage is defined"
             )
 
 
