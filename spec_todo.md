@@ -26,7 +26,7 @@ They have the attributes:
 - [X] `Address`
 - [X] `Amount`
 - [X] `AssignedFee`
-- [ ] `ClassCourseAssignment`
+- [x] `ClassCourseAssignment`
 - [ ] `ClassResult`
 - [ ] `ClassStart`
 - [X] `ClassType`

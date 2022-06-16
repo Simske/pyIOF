@@ -94,3 +94,33 @@ class Control:
     map_position: Optional[MapPosition] = None
     type: ControlType = ControlType.control
     modifytime: Optional[datetime.datetime] = None
+
+
+@dataclass
+class ClassCourseAssignment:
+    """Element that connects a course with a class.
+    Courses should be present in the RaceCourseData element
+    and are matched on course name and/or course family.
+    Classes are matched by 1) Id, 2) Name
+
+    Attributes:
+        class_id (Id, optional): The id of the class.
+        class_name (str, optional): The name of the class.
+        allowed_on_leg (list[int], optional): The legs that the course can be
+            assigned to in a relay class. This element can be omitted
+            for individual classes.
+        course_name (str, optional): The name of the course.
+        course_family (str, optional): The family or group
+            of forked courses that the course is part of.
+        number_of_competitors (int, optional): The number of competitors
+            in the class. A competitor corresponds to a person (if an
+            individual event) or a team (if a team or relay event).
+
+    """
+
+    class_name: str
+    class_id: Optional[Id] = None
+    allowed_on_leg: Optional[List[int]] = None
+    course_name: Optional[str] = None
+    course_family: Optional[str] = None
+    number_of_competitors: Optional[int] = None
