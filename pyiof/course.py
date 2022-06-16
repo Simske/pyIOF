@@ -124,3 +124,26 @@ class ClassCourseAssignment:
     course_name: Optional[str] = None
     course_family: Optional[str] = None
     number_of_competitors: Optional[int] = None
+
+
+@dataclass
+class PersonCourseAssignment:
+    """Element that connects a course with an individual competitor. Courses
+    should be present in the RaceCourseData element and are matched on course
+    name and/or course family. Persons are matched by 1) BibNumber, 2) EntryId.
+
+    entry_id (Id, optional):  The id corresponding to this person's entry in an EntryList.
+    bib_number (str, optional): The bib number of the person.
+    person_name (str, optional): The name of the person
+    class_name (str, optional): The name of the class that the person belongs to.
+    course_name (str, optional): The name of the course.
+    course_family (str, optional): The family or group of forked courses that
+        he course is part of.
+    """
+
+    entry_id: Optional[Id] = None
+    bib_number: Optional[str] = None
+    person_name: Optional[str] = None
+    class_name: Optional[str] = None
+    course_name: Optional[str] = None
+    course_family: Optional[str] = None

@@ -58,7 +58,7 @@ They have the attributes:
 - [ ] `OrganisationServiceRequest`
 - [X] `Organisation`
 - [ ] `OverallResult`
-- [ ] `PersonCourseAssignment`
+- [X] `PersonCourseAssignment`
 - [ ] `PersonEntry`
 - [X] `PersonName`
 - [ ] `PersonRaceResult`
