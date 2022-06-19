@@ -515,14 +515,14 @@ They have the attributes:
   - `OverallResult` (optional): Holds the overall result for the person after the current race for a multi-race event.
   - `Course` (SimpleCourse, optional): Defines the course assigned to the person.
   - `SplitTime` (list): Contains the times at each control of the course. Each control of the competitor's course (if known) has to be defined in a SplitTime element, even if the control has not been punched or if the competitor has not started. Start and finish times must not be present as SplitTime elements.
-    - `ControlAnswer` (list): Defines the answer for a trail-O control.
-    - `Route` (optional): Defines the person's route recorded by a tracking device.
-    - `ControlCard` (list): Defines the control card assigned to the person. Multiple control cards can be specified, e.g. one for punch checking and another for timing.
-    - `AssignedFee` (list): Defines the fees that the person has been assigned.
-    - `ServiceRequest` (list): Defines the services requested by the person.
-    - `Extensions`
-    - `attributes`:
-      - `raceNumber` (int, optional): The ordinal number of the race that the information belongs to for a multi-race event, starting at 1.
+  - `ControlAnswer` (list): Defines the answer for a trail-O control.
+  - `Route` (optional): Defines the person's route recorded by a tracking device.
+  - `ControlCard` (list): Defines the control card assigned to the person. Multiple control cards can be specified, e.g. one for punch checking and another for timing.
+  - `AssignedFee` (list): Defines the fees that the person has been assigned.
+  - `ServiceRequest` (list): Defines the services requested by the person.
+  - `Extensions`
+  - `attributes`:
+    - `raceNumber` (int, optional): The ordinal number of the race that the information belongs to for a multi-race event, starting at 1.
 - `TeamResult`: Result information for a team, including e.g. result status, place, finish time and individual times for the team members.
   - `EntryId` (Id, optional): The id corresponding to this team's entry in an EntryList.
   - `Name` (string): The name of the team, e.g. organisation name and team number for a relay team.
@@ -570,7 +570,8 @@ They have the attributes:
   - `Extensions`
   - `attributes`:
     - `raceNumber` (int, optional): The ordinal number of the race that the information belongs to for a multi-race event, starting at 1.
-- `OverallResult`: The time, in seconds, that is shown in the result list. Fractions of seconds (e.g. 258.7) may be used if the time resolution is higher than one second.
+- `OverallResult`:
+  - `Time` (double, optional): The time, in seconds, that is shown in the result list. Fractions of seconds (e.g. 258.7) may be used if the time resolution is higher than one second.
   - `TimeBehind` (double, optional): The time, in seconds, that the the person or team is behind the leader or winner. Fractions of seconds (e.g. 258.7) may be used if the time resolution is higher than one second.
   - `Position` (int, optional): The position in the result list for the person or team that the result belongs to. This element should only be present when the Status element is set to OK.
   - `Status` (ResultStatus): The status of the result.
