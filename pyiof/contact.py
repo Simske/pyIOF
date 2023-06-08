@@ -1,20 +1,13 @@
 import datetime
-from dataclasses import dataclass, field
-from enum import Enum
-from typing import List, Optional
+from typing import List, Literal, Optional
+
+from pydantic_xml import BaseXmlModel, attr, element
 
 from .base import GeoPosition, Id, Image
 from .fee import Account
 
 
-@dataclass
-class PersonName:
-    family: str
-    given: str
-
-
-@dataclass
-class Country:
+class Country(BaseXmlModel):
     """Defines the name of the country
 
     Attributes:
@@ -26,11 +19,10 @@ class Country:
     """
 
     name: str
-    code: str
+    code: str = attr()
 
 
-@dataclass
-class Address:
+class Address(BaseXmlModel):
     """The postal address of a person or organisation.
 
     Attributes:
@@ -43,27 +35,17 @@ class Address:
         type (str, optional): The address type, e.g. visitor address or invoice address.
     """
 
-    careof: Optional[str] = None
-    street: Optional[str] = None
-    zipcode: Optional[str] = None
-    city: Optional[str] = None
-    state: Optional[str] = None
-    country: Optional[Country] = None
-    type: Optional[str] = None
-    modifytime: Optional[datetime.datetime] = None
+    care_of: Optional[str] = element(tag="CareOf")
+    street: Optional[str] = element(tag="Street")
+    zip_code: Optional[str] = element(tag="ZipCode")
+    city: Optional[str] = element(tag="City")
+    state: Optional[str] = element(tag="State")
+    country: Optional[Country] = element(tag="Country")
+    type: Optional[str] = attr()
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
-class ContactType(Enum):
-    phone_number = "PhoneNumber"
-    mobile_phone_number = "MobilePhoneNumber"
-    fax_number = "FaxNumber"
-    email_address = "EmailAddress"
-    web_address = "WebAddress"
-    other = "Other"
-
-
-@dataclass
-class Contact:
+class Contact(BaseXmlModel):
     """Contact information for a person, organisation or other entity.
 
     Attributes:
@@ -74,18 +56,23 @@ class Contact:
     """
 
     contact: str
-    type: ContactType
-    modifytime: Optional[datetime.datetime] = None
+    type: Literal[
+        "PhoneNumber",
+        "MobilePhoneNumber",
+        "FaxNumber",
+        "EmailAddress",
+        "WebAddress",
+        "Other",
+    ] = attr()
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
-class Sex(Enum):
-    m = "M"
-    f = "F"
-    b = "B"
+class PersonName(BaseXmlModel):
+    family_name: str = element(tag="Family")
+    given_name: str = element(tag="Given")
 
 
-@dataclass
-class Person:
+class Person(BaseXmlModel):
     """Represents a person.
     This could either be a competitor (see the Competitor element)
     or contact persons in an organisation (see the Organisation element).
@@ -94,18 +81,17 @@ class Person:
         Id
     """
 
-    id: List[Id]
-    name: PersonName
-    birthdate: Optional[datetime.date] = None
-    nationality: Optional[Country] = None
-    address: List[Address] = field(default_factory=list)
-    contact: List[Contact] = field(default_factory=list)
-    sex: Optional[Sex] = None
-    modifytime: Optional[datetime.datetime] = None
+    ids: List[Id] = element(tag="Id")
+    name: PersonName = element(tag="Name")
+    birth_date: Optional[datetime.date] = element(tag="BirthDate")
+    nationality: Optional[Country] = element(tag="Nationality")
+    address: List[Address] = element(tag="Address", default_factory=list)
+    contact: List[Contact] = element(tag="Contact", default_factory=list)
+    sex: Optional[Literal["M", "F", "B"]] = attr()
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
-@dataclass
-class Role:
+class Role(BaseXmlModel):
     """Role
 
     A role defines a connection between a person and some kind of task,
@@ -116,24 +102,11 @@ class Role:
         type (str): The type of role
     """
 
-    person: Person
-    type: str
+    person: Person = element(tag="Role")
+    type: str = attr()
 
 
-class OrganisationType(Enum):
-    iof = "IOF"
-    iof_region = "IOFRegion"
-    national_federation = "NationalFederation"
-    national_region = "NationalREgion"
-    club = "Club"
-    school = "School"
-    company = "Company"
-    military = "Military"
-    other = "Other"
-
-
-@dataclass
-class Organisation:
+class Organisation(BaseXmlModel):
     """Organisation
 
     Information about an organisation, i.e. address, contact person(s) etc.
@@ -145,17 +118,29 @@ class Organisation:
         shortname
     """
 
-    name: str
     id: Optional[Id] = None
-    shortname: Optional[str] = None
-    medianame: Optional[str] = None
-    parent_organisation_id: Optional[Id] = None
-    country: Optional[Country] = None
-    address: List[Address] = field(default_factory=list)
-    contact: List[Contact] = field(default_factory=list)
-    position: Optional[GeoPosition] = None
-    account: List[Account] = field(default_factory=list)
-    role: List[Role] = field(default_factory=list)
-    logotype: List[Image] = field(default_factory=list)
-    type: Optional[OrganisationType] = None
-    modifytime: Optional[datetime.datetime] = None
+    name: str = element(tag="Name")
+    short_name: Optional[str] = element(tag="ShortName")
+    media_name: Optional[str] = element(tag="MediaName")
+    parent_organisation_id: Optional[Id] = element(tag="ParentOrganisationId")
+    country: Optional[Country] = element(tag="Country")
+    address: List[Address] = element(tag="Address", default_factory=list)
+    contact: List[Contact] = element(tag="Contact", default_factory=list)
+    position: Optional[GeoPosition] = element(tag="Position")
+    account: List[Account] = element(tag="Account", default_factory=list)
+    roles: List[Role] = element(tag="Role", default_factory=list)
+    logotype: List[Image] = element(tag="Logotype", default_factory=list)
+    type: Optional[
+        Literal[
+            "IOF",
+            "IOFRegion",
+            "NationalFederation",
+            "NationalRegion",
+            "Club",
+            "School",
+            "Company",
+            "Military",
+            "Other",
+        ]
+    ] = attr()
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")

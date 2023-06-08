@@ -82,8 +82,8 @@ class Control(BaseXmlModel):
 
     id: Id = element(tag="Id")
     punching_unit_id: Set[Id] = element(tag="PunchingUnitId", default_factory=list)
-    name: Set[LanguageString] = element(default_factory=list)
+    name: Set[LanguageString] = element(tag="Name", default_factory=list)
     position: Optional[GeoPosition] = element(tag="Position")
     map_position: Optional[MapPosition] = element(tag="MapPosition")
-    type: ControlType = attr(dewfault="control")
+    type: ControlType = attr(default="control")
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
