@@ -1,41 +1,40 @@
 import datetime
-from dataclasses import dataclass, field
-from enum import Enum
-from typing import List, Optional
+from typing import List, Literal, Optional
+
+from pydantic_xml import BaseXmlModel, attr, element
 
 from .base import Id
 from .contact import Sex
 from .course import Control, Leg, SimpleCourse
 from .fee import Fee
 
+"""
+The status of a certain race in the class.
 
-class RaceClassStatus(Enum):
-    """The status of a certain race in the class.
-
-    Attributes:
-        start_times_not_allocated: The start list draw has not been made for
-            this class in this race
-        start_times_allocated: The start list draw has been made for this class
-            in this race.
-        not_used: The class is not organised in this race, e.g. for classes that
-            are organised in only some of the races in a multi-race event.
-        completed: The result list is complete for this class in this race.
-        invalidated: The results are considered invalid due to technical issues
-            such as misplaced controls. Entry fees are not refunded.
-        invalidated_no_fee: The results are considered invalid due to technical
-            issues such as misplaced controls. Entry fees are refunded.
-    """
-
-    start_times_not_allocated = "StartTimesNotAllocated"
-    start_times_allocated = "StartTimesAllocated"
-    not_used = "NotUsed"
-    completed = "Completed"
-    invalidated = "Invalidated"
-    invalidated_no_fee = "InvalidatedNoFee"
+Valid values:
+    start_times_not_allocated: The start list draw has not been made for
+        this class in this race
+    start_times_allocated: The start list draw has been made for this class
+        in this race.
+    not_used: The class is not organised in this race, e.g. for classes that
+        are organised in only some of the races in a multi-race event.
+    completed: The result list is complete for this class in this race.
+    invalidated: The results are considered invalid due to technical issues
+        such as misplaced controls. Entry fees are not refunded.
+    invalidated_no_fee: The results are considered invalid due to technical
+        issues such as misplaced controls. Entry fees are refunded.
+"""
+RaceClassStatus = Literal[
+    "StartTimesNotAllocated",
+    "StartTimesAllocated",
+    "NotUsed",
+    "Completed",
+    "Invalidated",
+    "InvalidatedNoFee",
+]
 
 
-@dataclass
-class RaceClass:
+class RaceClass(BaseXmlModel):
     """Information about a class with respect to a race.
 
     Attributes:
@@ -68,61 +67,60 @@ class RaceClass:
         modifytime (datetime.datetime, optional)
     """
 
-    punching_system: List[str] = field(default_factory=list)
-    team_fee: List[Fee] = field(default_factory=list)
-    fee: List[Fee] = field(default_factory=list)
-    first_start: Optional[datetime.datetime] = None
-    status: Optional[RaceClassStatus] = None
-    course: List[SimpleCourse] = field(default_factory=list)
-    online_controls: List[Control] = field(default_factory=list)
-    race_number: Optional[int] = None
-    max_number_of_competitors: Optional[int] = None
-    modifytime: Optional[datetime.datetime] = None
+    punching_system: List[str] = element(tag="PunchingSystem", default_factory=list)
+    team_fee: List[Fee] = element(tag="TeamFee", default_factory=list)
+    fee: List[Fee] = element(tag="Fee", default_factory=list)
+    first_start: Optional[datetime.datetime] = element(tag="FirstStart")
+    status: Optional[
+        Literal[
+            "StartTimesNotAllocated",
+            "StartTimesAllocated",
+            "NotUsed",
+            "Completed",
+            "Invalidated",
+            "InvalidatedNoFee",
+        ]
+    ] = element(tag="Status")
+    course: List[SimpleCourse] = element(tag="Course", default_factory=list)
+    online_controls: List[Control] = element(tag="OnlineControl", default_factory=list)
+    race_number: Optional[int] = attr(name="raceNumber")
+    max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
-class ResultListMode(Enum):
-    """Defines the kind of information to include in the result list, and how
-    to sort it. For example, the result list of a beginner's class may include
-    just "finished" or "did not finish" instead of the actual times.
+"""Defines the kind of information to include in the result list, and how
+to sort it. For example, the result list of a beginner's class may include
+just "finished" or "did not finish" instead of the actual times.
 
-    Attributes:
-        default: The result list should include place and time for each competitor,
-            and be ordered by place.
-        unordered: The result list should include place and time for each competitor,
-            but be unordered with respect to times (e.g. sorted by competitor name).
-        unordered_no_times: The result list should not include any places and times,
-            and be unordered with respect to times (e.g. sorted by competitor name).
-    """
+Valid values:
+    Default: The result list should include place and time for each competitor,
+        and be ordered by place.
+    Unordered: The result list should include place and time for each competitor,
+        but be unordered with respect to times (e.g. sorted by competitor name).
+    UnorderedNoTimes: The result list should not include any places and times,
+        and be unordered with respect to times (e.g. sorted by competitor name).
+"""
+ResultListMode = Literal["Default", "Unordered", "UnorderedNoTimes"]
 
-    default = "Default"
-    unordered = "Unordered"
-    unordered_no_times = "UnorderedNoTimes"
+"""The status of the class - enum
 
-
-class EventClassStatus(Enum):
-    """The status of the class - enum
-
-    Attributes:
-        normal: The default status.
-        divided: The class has been divided in two or more classes due to a
-            large number of entries.
-        joined: The class has been joined with another class due to a small number
-            of entries.
-        invalidated: The results are considered invalid due to technical issues such as
-            misplaced controls. Entry fees are not refunded.
-        invalidated_not_fee: The results are considered invalid due to technical issues
-            such as misplaced controls. Entry fees are refunded.
-    """
-
-    normal = "Normal"
-    divided = "Divided"
-    joined = "Joined"
-    invalidated = "Invalidated"
-    invalidated_no_fee = "InvalidatedNoFee"
+Attributes:
+    Normal: The default status.
+    Divided: The class has been divided in two or more classes due to a
+        large number of entries.
+    Joined: The class has been joined with another class due to a small number
+        of entries.
+    Invalidated: The results are considered invalid due to technical issues such as
+        misplaced controls. Entry fees are not refunded.
+    Invalidated_not_fee: The results are considered invalid due to technical issues
+        such as misplaced controls. Entry fees are refunded.
+"""
+EventClassStatus = Literal[
+    "Normal", "Divided", "Joined", "Invalidated", "InvalidatedNoFee"
+]
 
 
-@dataclass
-class ClassType:
+class ClassType(BaseXmlModel):
     """Defines a class type, which is used to group classes in categories.
 
     Attributes:
@@ -131,19 +129,15 @@ class ClassType:
         modifytime (datetime, optional)
     """
 
-    name: str
-    id: Optional[Id] = None
-    modifytime: Optional[datetime.datetime] = None
+    id: Optional[Id] = element(tag="Id")
+    name: str = element(tag="Name")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
-class EventForm(Enum):
-    individual = "Individual"
-    team = "Team"
-    relay = "Relay"
+EventForm = Literal["Individual", "Team", "Relay"]
 
 
-@dataclass
-class Class_:
+class Class_(BaseXmlModel):
     """Defines a class in an event
 
     Attributes:
@@ -200,24 +194,28 @@ class Class_:
             instead of the actual times.
     """
 
-    name: str
-    id: Optional[Id] = None
-    shortname: Optional[str] = None
-    classtype: List[ClassType] = field(default_factory=list)
-    leg: List[Leg] = field(default_factory=list)
-    team_fee: List[Fee] = field(default_factory=list)
-    fee: List[Fee] = field(default_factory=list)
-    status: EventClassStatus = EventClassStatus.normal
-    raceclass: List[RaceClass] = field(default_factory=list)
-    too_few_entries_substitute_class: Optional["Class_"] = None
-    too_many_entries_substitue_class: Optional["Class_"] = None
-    min_age: Optional[int] = None
-    max_age: Optional[int] = None
-    sex: Optional[Sex] = None
-    min_number_of_team_members: Optional[int] = None
-    max_number_of_team_members: Optional[int] = None
-    min_team_age: Optional[int] = None
-    max_team_age: Optional[int] = None
-    number_of_competitors: Optional[int] = None
-    max_number_of_competitors: Optional[int] = None
-    resultlist_mode: ResultListMode = ResultListMode.default
+    id: Optional[Id] = element(tag="Id")
+    name: str = element(tag="Name")
+    shortname: Optional[str] = element(tag="ShortName")
+    classtype: List[ClassType] = element(tag="ClassType", default_factory=list)
+    leg: List[Leg] = element(tag="Leg", default_factory=list)
+    team_fee: List[Fee] = element(tag="TeamFee", default_factory=list)
+    fee: List[Fee] = element(tag="Fee", default_factory=list)
+    status: EventClassStatus = element(tag="Status", default="Normal")
+    race_class: List[RaceClass] = element(tag="RaceClass", default_factory=list)
+    too_few_entries_substitute_class: Optional["Class_"] = element(
+        tag="TooFewEntriesSubstituteClass"
+    )
+    too_many_entries_substitue_class: Optional["Class_"] = element(
+        tag="TooManyEntriesSubstituteClass"
+    )
+    min_age: Optional[int] = attr(name="minAge")
+    max_age: Optional[int] = attr(name="maxAge")
+    sex: Optional[Sex] = attr()
+    min_number_of_team_members: Optional[int] = attr(name="minNumberOfTeamMembers")
+    max_number_of_team_members: Optional[int] = attr(name="maxNumberOfTeamMembers")
+    min_team_age: Optional[int] = attr(name="minTeamAge")
+    max_team_age: Optional[int] = attr(name="maxTeamAge")
+    number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")
+    max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors")
+    resultlist_mode: ResultListMode = attr(name="resultListMode", default="Default")

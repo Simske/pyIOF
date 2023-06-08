@@ -72,6 +72,9 @@ class PersonName(BaseXmlModel):
     given_name: str = element(tag="Given")
 
 
+Sex = Literal["M", "F", "B"]
+
+
 class Person(BaseXmlModel):
     """Represents a person.
     This could either be a competitor (see the Competitor element)
@@ -87,7 +90,7 @@ class Person(BaseXmlModel):
     nationality: Optional[Country] = element(tag="Nationality")
     address: List[Address] = element(tag="Address", default_factory=list)
     contact: List[Contact] = element(tag="Contact", default_factory=list)
-    sex: Optional[Literal["M", "F", "B"]] = attr()
+    sex: Optional[Sex] = attr()
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
