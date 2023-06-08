@@ -1,14 +1,14 @@
 import datetime
-from dataclasses import dataclass
 from decimal import Decimal
-from enum import Enum
-from typing import List, Optional
+from typing import List, Literal, Optional
+
+from pydantic import validator
+from pydantic_xml import BaseXmlModel, attr, element
 
 from .base import Id, LanguageString
 
 
-@dataclass
-class Account:
+class Account(BaseXmlModel):
     """The bank account of an organisation or an event.
 
     Attributes:
@@ -17,11 +17,10 @@ class Account:
     """
 
     account: str
-    type: Optional[str] = None
+    type: Optional[str] = attr()
 
 
-@dataclass
-class Amount:
+class Amount(BaseXmlModel):
     """Defines a monetary amount.
 
     Attributes:
@@ -30,16 +29,13 @@ class Amount:
     """
 
     amount: Decimal
-    currency: Optional[str] = None
+    currency: Optional[str] = attr()
 
 
-class FeeType(Enum):
-    normal = "Normal"
-    late = "Late"
+FeeType = Literal["Normal", "Late"]
 
 
-@dataclass
-class Fee:
+class Fee(BaseXmlModel):
     """A fee that applies when entering a class at a race or ordering a service.
 
     Attributes:
@@ -70,33 +66,46 @@ class Fee:
             Default=Normal
     """
 
-    name: List[LanguageString]
-    id: Optional[Id] = None
-    amount: Optional[Amount] = None
-    taxable_amount: Optional[Amount] = None
-    percentage: Optional[float] = None
-    taxable_percentage: Optional[float] = None
-    valid_from_time: Optional[datetime.datetime] = None
-    valid_to_time: Optional[datetime.datetime] = None
-    from_date_of_birth: Optional[datetime.date] = None
-    to_date_of_birth: Optional[datetime.date] = None
-    type: Optional[FeeType] = None
+    name: List[LanguageString] = element(tag="Name")
+    id: Optional[Id] = element(tag="Id")
+    amount: Optional[Amount] = element(tag="Amount")
+    taxable_amount: Optional[Amount] = element(tag="TaxableAmount")
+    percentage: Optional[float] = element(tag="Percentage")
+    taxable_percentage: Optional[float] = element(tag="TaxablePercentag")
+    valid_from_time: Optional[datetime.datetime] = element(tag="ValidFromTime")
+    valid_to_time: Optional[datetime.datetime] = element(tag="ValidToTime")
+    from_date_of_birth: Optional[datetime.date] = element(tag="FromDateOfBirth")
+    to_date_of_birth: Optional[datetime.date] = element(tag="ToDateOfBirth")
+    type: Optional[FeeType] = attr()
+    modify_time: Optional[datetime.datetime] = attr()
 
-    def __post_init__(self):
-        if self.amount is not None and self.percentage is not None:
-            raise RuntimeError("Fee: only one of amount or percentage can be defined")
-        if self.taxable_amount is not None and self.amount is None:
+    @validator("percentage")
+    def validate_exclusive_amount_percentage(cls, percentage, values):
+        """Validate that only one of amount or percentage is present.
+        Might validator only applied to percentage, as amount is set first.
+        """
+        if percentage is not None and values["amount"] is not None:
+            raise ValueError("Fee: only one of amount or percentage can be defined")
+        return percentage
+
+    @validator("taxable_amount")
+    def validate_taxable_amount(cls, taxable_amount, values):
+        if taxable_amount is not None and values["amount"] is None:
             raise RuntimeError(
                 "Fee: taxable_amount only applicable if amount is defined"
             )
-        if self.taxable_percentage is not None and self.amount is None:
+        return taxable_amount
+
+    @validator("taxable_percentage")
+    def validate_taxable_amount(cls, taxable_percentage, values):
+        if taxable_percentage is not None and values["amount"] is None:
             raise RuntimeError(
                 "Fee: taxable_percentage only applicable if percentage is defined"
             )
+        return taxable_percentage
 
 
-@dataclass
-class AssignedFee:
+class AssignedFee(BaseXmlModel):
     """Contains information about a fee that has been assigned to a
     competitor or a team, and the amount that has been paid.
 
@@ -106,6 +115,6 @@ class AssignedFee:
             optionally including currency code.
     """
 
-    fee: Fee
-    paid_amount: Optional[Amount] = None
-    modifyTime: Optional[datetime.datetime] = None
+    fee: Fee = element(tag="Fee")
+    paid_amount: Optional[Amount] = element(tag="PaidAmount")
+    modifyTime: Optional[datetime.datetime] = attr()
