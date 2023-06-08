@@ -1,14 +1,14 @@
 import datetime
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from pydantic_xml import BaseXmlModel, attr, element
 
 from .base import Score
 from .class_ import Class_
 from .contact import Organisation, Person
 
 
-@dataclass
-class ControlCard:
+class ControlCard(BaseXmlModel):
     """ControlCard
 
     Attributes:
@@ -19,12 +19,11 @@ class ControlCard:
     """
 
     id: str
-    punchingsystem: Optional[str] = None
-    modifytime: Optional[datetime.datetime] = None
+    punchingsystem: Optional[str] = attr(name="punchingSystem")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
-@dataclass
-class Competitor:
+class Competitor(BaseXmlModel):
     """Represents information about a person in a competition context,
     i.e. including organisation and control card.
 
@@ -38,9 +37,9 @@ class Competitor:
         modifytime (datetime.datetime, optional)
     """
 
-    person: Person
-    organisation: List[Organisation] = field(default_factory=list)
-    controlcards: List[ControlCard] = field(default_factory=list)
-    class_: List[Class_] = field(default_factory=list)
-    score: List[Score] = field(default_factory=list)
-    modifytime: Optional[datetime.datetime] = None
+    person: Person = element(tag="Person")
+    organisation: List[Organisation] = element(tag="Organisation", default_factory=list)
+    controlcards: List[ControlCard] = element(tag="ControlCard", default_factory=list)
+    class_: List[Class_] = element(tag="Class", default_factory=list)
+    score: List[Score] = element(tag="Class", default_factory=list)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
