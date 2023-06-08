@@ -1,11 +1,10 @@
 import datetime
-from dataclasses import dataclass
-from enum import Enum
-from typing import Optional
+from typing import Literal, Optional
+
+from pydantic_xml import BaseXmlModel, attr, element
 
 
-@dataclass
-class Id:
+class Id(BaseXmlModel):
     """Identifier element, used extensively. The id should be known
     and common for both systems taking part in the data exchange.
 
@@ -14,11 +13,10 @@ class Id:
     """
 
     id: str
-    type: Optional[str] = None
+    type: Optional[str] = attr()
 
 
-@dataclass
-class Image:
+class Image(BaseXmlModel):
     """Image file
 
     Defines an image file, either as a link (use the url attribute)
@@ -35,15 +33,14 @@ class Image:
     """
 
     data: str
-    mediatype: str
-    url: Optional[str] = None
-    width: Optional[int] = None
-    height: Optional[int] = None
-    resolution: Optional[float] = None
+    mediatype: str = attr(name="mediaType")
+    url: Optional[str] = attr()
+    width: Optional[int] = attr()
+    height: Optional[int] = attr()
+    resolution: Optional[float] = attr()
 
 
-@dataclass
-class DateAndOptionalTime:
+class DateAndOptionalTime(BaseXmlModel):
     """Defines a point in time which either is known by date and time,
     or just by date. May be used for event dates, when the event date is
     decided before the time of the first start.
@@ -53,12 +50,11 @@ class DateAndOptionalTime:
         time (datetime.time, optional): The time part, expressed in ISO 8601 format.
     """
 
-    date: datetime.date
-    time: Optional[datetime.time] = None
+    date: datetime.date = element()
+    time: Optional[datetime.time] = element()
 
 
-@dataclass
-class LanguageString:
+class LanguageString(BaseXmlModel):
     """Defines a text that is given in a particular language.
 
     Attributes:
@@ -68,11 +64,10 @@ class LanguageString:
     """
 
     text: str
-    language: Optional[str] = None
+    language: Optional[str] = attr()
 
 
-@dataclass
-class GeoPosition:
+class GeoPosition(BaseXmlModel):
     """Defines a geographical position, e.g. of a control.
 
     Attributes:
@@ -81,25 +76,22 @@ class GeoPosition:
         alt (double): The altitude (elevation above sea level), in meters
     """
 
-    lng: float
-    lat: float
-    alt: Optional[float] = None
+    lng: float = attr()
+    lat: float = attr()
+    alt: Optional[float] = attr()
 
 
-class Unit(Enum):
-    """Enum class for units
+"""
+Unit type for map representation
 
-    Attributes:
-        mm: Millimeters, used when the map is represented by a printed piece of paper.
-        px: Pixels, used when the map is represented by a digital image.
-    """
-
-    mm = "mm"
-    px = "px"
+Valid values:
+    mm: Millimeters, used when the map is represented by a printed piece of paper.
+    px: Pixels, used when the map is represented by a digital image.
+"""
+MapUnitType = Literal["mm", "px"]
 
 
-@dataclass
-class MapPosition:
+class MapPosition(BaseXmlModel):
     """Defines a position in a map's coordinate system.
 
     Attributes:
@@ -108,13 +100,12 @@ class MapPosition:
         unit (Unit, optional): The type of unit used, defaults to Unit.mm
     """
 
-    x: float
-    y: float
-    unit: Unit = Unit.mm
+    x: float = attr()
+    y: float = attr()
+    unit: MapUnitType = attr(default="mm")
 
 
-@dataclass
-class Score:
+class Score(BaseXmlModel):
     """Score
 
     The score earned in an event for some purpose, e.g. a ranking list.
@@ -124,4 +115,4 @@ class Score:
     """
 
     score: float
-    type: Optional[str] = None
+    type: Optional[str] = attr()
