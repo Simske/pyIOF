@@ -77,7 +77,7 @@ class Fee(BaseXmlModel):
     from_date_of_birth: Optional[datetime.date] = element(tag="FromDateOfBirth")
     to_date_of_birth: Optional[datetime.date] = element(tag="ToDateOfBirth")
     type: Optional[FeeType] = attr()
-    modify_time: Optional[datetime.datetime] = attr()
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
     @validator("percentage")
     def validate_exclusive_amount_percentage(cls, percentage, values):

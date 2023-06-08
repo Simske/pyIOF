@@ -1,13 +1,12 @@
 import datetime
-from dataclasses import dataclass, field
-from enum import Enum
-from typing import List, Optional
+from typing import Literal, Optional, Set
+
+from pydantic_xml import BaseXmlModel, attr, element
 
 from .base import GeoPosition, Id, LanguageString, MapPosition
 
 
-@dataclass
-class Leg:
+class Leg(BaseXmlModel):
     """Defines extra information for a relay leg.
 
     Attributes:
@@ -18,13 +17,12 @@ class Leg:
             in case of a parallel leg.
     """
 
-    name: Optional[str] = None
-    min_number_of_competitors: Optional[int] = None
-    max_number_of_competitors: Optional[int] = None
+    name: Optional[str] = element(tag="Name")
+    min_number_of_competitors: Optional[int] = attr(name="minNumberOfCompetitors")
+    max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors")
 
 
-@dataclass
-class SimpleCourse:
+class SimpleCourse(BaseXmlModel):
     """Defines a course, excluding controls.
 
     Attributes:
@@ -39,35 +37,30 @@ class SimpleCourse:
             excluding start and finish.
     """
 
-    id: Optional[Id] = None
-    name: Optional[str] = None
-    course_family: Optional[str] = None
-    length: Optional[float] = None
-    climb: Optional[float] = None
-    number_of_controls: Optional[int] = None
+    id: Optional[Id] = element(tag="Id")
+    name: Optional[str] = element(tag="Name")
+    course_family: Optional[str] = element(tag="CourseFamily")
+    length: Optional[float] = element(tag="Length")
+    climb: Optional[float] = element(tag="Climb")
+    number_of_controls: Optional[int] = element(tag="NumberOfControls")
 
 
-class ControlType(Enum):
-    """The type of a control: (ordinary) control, start, finish,
-        crossing point or end of marked route.
+"""The type of a control: (ordinary) control, start, finish,
+    crossing point or end of marked route.
 
-    Attributes:
-        control
-        start
-        finish
-        crossing_point
-        end_of_marked_route
-    """
-
-    control = "Control"
-    start = "Start"
-    finish = "Finish"
-    crossing_point = "CrossingPoint"
-    end_of_marked_route = "EndOfMarkedRoute"
+Valid values:
+    control
+    start
+    finish
+    crossing_point
+    end_of_marked_route
+"""
+ControlType = Literal[
+    "control", "start", "finish", "crossing_point", "end_of_marked_route"
+]
 
 
-@dataclass
-class Control:
+class Control(BaseXmlModel):
     """Defines a control, without any relationship to a particular course.
 
     Attributes:
@@ -87,10 +80,10 @@ class Control:
         modifytime (datetime.datetime, optional)
     """
 
-    id: Id
-    punching_unit_id: List[Id] = field(default_factory=list)
-    name: List[LanguageString] = field(default_factory=list)
-    position: Optional[GeoPosition] = None
-    map_position: Optional[MapPosition] = None
-    type: ControlType = ControlType.control
-    modifytime: Optional[datetime.datetime] = None
+    id: Id = element(tag="Id")
+    punching_unit_id: Set[Id] = element(tag="PunchingUnitId", default_factory=list)
+    name: Set[LanguageString] = element(default_factory=list)
+    position: Optional[GeoPosition] = element(tag="Position")
+    map_position: Optional[MapPosition] = element(tag="MapPosition")
+    type: ControlType = attr(dewfault="control")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
