@@ -219,3 +219,12 @@ class Class_(BaseXmlModel):
     number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")
     max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors")
     resultlist_mode: ResultListMode = attr(name="resultListMode", default="Default")
+
+
+class ClassCourseAssignment(BaseXmlModel):
+    class_id: Optional[Id] = element(tag="ClassId")
+    class_name: str = element(tag="ClassName")
+    allowed_on_leg: List[int] = element(tag="AllowedOnLeg", default_factory=list)
+    course_name: Optional[str] = element(tag="CourseName")
+    course_family: Optional[str] = element(tag="CourseFamily")
+    number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")

@@ -147,3 +147,8 @@ class Organisation(BaseXmlModel):
         ]
     ] = attr()
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+
+
+class EntryReceiver(BaseXmlModel):
+    addresses: List[Address] = element(tag="Address")
+    contacts: List[Contact] = element(tag="Contact")

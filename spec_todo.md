@@ -26,35 +26,35 @@ They have the attributes:
 - [X] `Address`
 - [X] `Amount`
 - [X] `AssignedFee`
-- [ ] `ClassCourseAssignment`
+- [X] `ClassCourseAssignment`
 - [ ] `ClassResult`
 - [ ] `ClassStart`
 - [X] `ClassType`
 - [X] `Class`
 - [X] `Competitor`
 - [X] `Contact`
-- [ ] `ControlAnswer`
+- [X] `ControlAnswer`
 - [X] `ControlCard`
 - [X] `ControlType`
 - [X] `Control`
 - [X] `Country`
-- [ ] `CourseControl`
-- [ ] `Course`
+- [X] `CourseControl`
+- [x] `Course`
 - [X] `DateAndOptionalTime`
-- [ ] `EntryReceiver`
+- [X] `EntryReceiver`
 - [X] `EventForm`
-- [ ] `EventURL`
+- [X] `EventURL`
 - [ ] `Event`
 - [ ] `Extensions`
 - [X] `Fee`
 - [X] `GeoPosition`
 - [X] `Id`
 - [X] `Image`
-- [ ] `InformationItem`
+- [X] `InformationItem`
 - [X] `LanguageString`
 - [X] `Leg`
 - [X] `MapPosition`
-- [ ] `Map`
+- [X] `Map`
 - [ ] `OrganisationServiceRequest`
 - [X] `Organisation`
 - [ ] `OverallResult`
@@ -71,13 +71,13 @@ They have the attributes:
 - [ ] `RaceCourseData`
 - [ ] `Race`
 - [X] `Role`
-- [ ] `Route`
-- [ ] `Schedule`
+- [X] `Route`
+- [X] `Schedule`
 - [X] `Score`
-- [ ] `ServiceRequest`
-- [ ] `Service`
+- [X] `ServiceRequest`
+- [X] `Service`
 - [X] `SimpleCourse`
-- [ ] `SimpleRaceCourse`
+- [X] `SimpleRaceCourse`
 - [ ] `SplitTime`
 - [ ] `StartName`
 - [ ] `StartTimeAllocationRequest`
