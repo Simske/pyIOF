@@ -44,7 +44,7 @@ They have the attributes:
 - [X] `EntryReceiver`
 - [X] `EventForm`
 - [X] `EventURL`
-- [ ] `Event`
+- [X] `Event`
 - [ ] `Extensions`
 - [X] `Fee`
 - [X] `GeoPosition`
@@ -55,16 +55,16 @@ They have the attributes:
 - [X] `Leg`
 - [X] `MapPosition`
 - [X] `Map`
-- [ ] `OrganisationServiceRequest`
+- [X] `OrganisationServiceRequest`
 - [X] `Organisation`
 - [ ] `OverallResult`
-- [ ] `PersonCourseAssignment`
-- [ ] `PersonEntry`
+- [X] `PersonCourseAssignment`
+- [X] `PersonEntry`
 - [X] `PersonName`
 - [ ] `PersonRaceResult`
 - [ ] `PersonRaceStart`
 - [ ] `PersonResult`
-- [ ] `PersonServiceRequest`
+- [X] `PersonServiceRequest`
 - [ ] `PersonStart`
 - [X] `Person`
 - [X] `RaceClass`
@@ -80,7 +80,7 @@ They have the attributes:
 - [X] `SimpleRaceCourse`
 - [ ] `SplitTime`
 - [ ] `StartName`
-- [ ] `StartTimeAllocationRequest`
+- [X] `StartTimeAllocationRequest`
 - [ ] `TeamCourseAssignment`
 - [ ] `TeamEntryPerson`
 - [ ] `TeamEntry`

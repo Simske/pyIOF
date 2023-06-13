@@ -185,8 +185,15 @@ class Route(BaseXmlModel):
     base64: str
 
 
-# class PersonCourseAssignment(BaseXmlModel):
-#     """Element that connects a course with an individual competitor. Courses should be present in the RaceCourseData element and are matched on course name and/or course family. Persons are matched by 1) BibNumber, 2) EntryId.
-#     """
-#     entry_id: Optional[Id] = element(tag="EntryId")
-#     bib_number
+class PersonCourseAssignment(BaseXmlModel):
+    """Element that connects a course with an individual competitor. Courses should be
+    present in the RaceCourseData element and are matched on course name and/or course
+    family. Persons are matched by 1) BibNumber, 2) EntryId.
+    """
+
+    entry_id: Optional[Id] = element(tag="EntryId")
+    bib_number: Optional[str] = element(tag="BibNumber")
+    person_name: Optional[str] = element(tag="PersonName")
+    class_name: Optional[str] = element(tag="ClassName")
+    course_name: Optional[str] = element(tag="CourseName")
+    course_family: Optional[str] = element(tag="CourseFamily")
