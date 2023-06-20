@@ -28,7 +28,7 @@ They have the attributes:
 - [X] `AssignedFee`
 - [X] `ClassCourseAssignment`
 - [X] `ClassResult`
-- [ ] `ClassStart`
+- [X] `ClassStart`
 - [X] `ClassType`
 - [X] `Class`
 - [X] `Competitor`
@@ -86,8 +86,8 @@ They have the attributes:
 - [X] `TeamEntry`
 - [X] `TeamMemberCourseAssignment`
 - [X] `TeamMemberRaceResult`
-- [ ] `TeamMemberRaceStart`
+- [X] `TeamMemberRaceStart`
 - [X] `TeamMemberResult`
-- [ ] `TeamMemberStart`
+- [X] `TeamMemberStart`
 - [X] `TeamResult`
-- [ ] `TeamStart`
+- [X] `TeamStart`
