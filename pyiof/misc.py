@@ -66,6 +66,8 @@ EventClassification = Literal["International", "National", "Regional", "Local", 
 
 EventForm = Literal["Individual", "Team", "Relay"]
 
+RaceDiscipline = Literal["Sprint", "Middle", "Long", "Ultralong", "Other"]
+
 
 class Event(BaseXmlModel):
     id: Optional[Id] = element(tag="Id")
