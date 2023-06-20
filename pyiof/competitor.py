@@ -123,29 +123,3 @@ class TeamEntry(BaseXmlModel):
     contact_information: Optional[str] = element(tag="ContactInformation")
     entry_time: Optional[datetime.datetime] = element(tag="EntryTime")
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
-
-
-class PersonRaceStart(BaseXmlModel):
-    """Start information for a person in a race."""
-
-    bib_number: Optional[str] = element(tag="BibNumber")
-    start_time: Optional[datetime.datetime] = element(tag="StartTime")
-    course: Optional[SimpleCourse] = element(tag="Course")
-    control_card: List[ControlCard] = element(tag="ControlCard", default_factory=list)
-    assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
-    race_number: Optional[int] = attr(name="raceNumber")
-
-
-class PersonStart(BaseXmlModel):
-    """
-    Start information for an individual competitor, including e.g. start time and bib number.
-    """
-
-    entry_id: Optional[Id] = element(tag="EntryId")
-    person: Optional[Person] = element(tag="Person")
-    organisation: Optional[Organisation] = element(tag="Organisation")
-    starts: List[PersonRaceStart] = element(tag="Start")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")

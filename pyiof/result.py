@@ -148,7 +148,7 @@ class TeamResult(BaseXmlModel):
     team_member_results: List[TeamMemberResult] = element(
         tag="TeamMemberResult", default_factory=list
     )
-    assigned_fees: List[AssignedFee] = element(tag="AssignedFee")
+    assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
     service_requests: List[ServiceRequest] = element(
         tag="ServiceRequest", default_factory=list
     )
