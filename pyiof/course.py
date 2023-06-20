@@ -4,6 +4,9 @@ from typing import List, Literal, Optional, Set
 from pydantic_xml import BaseXmlModel, attr, element
 
 from .base import GeoPosition, Id, Image, LanguageString, MapPosition
+from .class_ import ClassCourseAssignment
+from .contact import Organisation, Role
+from .misc import EventClassification, EventStatus, EventURL, RaceDiscipline, Service
 
 
 class Leg(BaseXmlModel):
@@ -180,9 +183,20 @@ class Map(BaseXmlModel):
 
 
 class Route(BaseXmlModel):
-    """Defines a route, i.e. a number of geographical positions (waypoints) describing a competitor's navigation throughout a course."""
+    """Defines a route, i.e. a number of geographical positions (waypoints) describing a
+    competitor's navigation throughout a course.
+    """
 
     base64: str
+
+
+class StartName(BaseXmlModel):
+    """
+    Defines the name of the start place (e.g. Start 1), if the race has multiple start places.
+    """
+
+    start_name: str
+    race_Number: Optional[int] = attr(name="raceNumber")
 
 
 class PersonCourseAssignment(BaseXmlModel):
@@ -197,3 +211,71 @@ class PersonCourseAssignment(BaseXmlModel):
     class_name: Optional[str] = element(tag="ClassName")
     course_name: Optional[str] = element(tag="CourseName")
     course_family: Optional[str] = element(tag="CourseFamily")
+
+
+class TeamMemberCourseAssignment(BaseXmlModel):
+    """
+    Element that connects a course with a relay team member. Courses should be present
+    in the RaceCourseData element and are matched on course name and/or course family.
+    Team members are matched by 1) BibNumber, 2) Leg and LegOrder, 3) EntryId.
+    """
+
+    entry_id: Optional[Id] = element(tag="EntryId")
+    bib_number: Optional[str] = element(tag="BibNumber")
+    leg: Optional[int] = element(tag="Leg")
+    leg_order: Optional[int] = element(tag="LegOrder")
+    team_member_name: Optional[int] = element(tag="TeamMemberName")
+    course_name: Optional[str] = element(tag="CourseName")
+    course_family: Optional[str] = element(tag="CourseFamily")
+
+
+class TeamCourseAssignment(BaseXmlModel):
+    """
+    Element that connects a number of team members in a relay team to a number of courses.
+    Teams are matched by 1) BibNumber, 2) TeamName+ClassName.
+    """
+
+    bib_number: Optional[str] = element(tag="BibNumber")
+    team_name: Optional[str] = element(tag="TeamName")
+    class_name: Optional[str] = element(tag="ClassName")
+    team_member_course_assignment: List[TeamMemberCourseAssignment] = element(
+        tag="TeamMemberCourseAssignment", default_factory=list
+    )
+
+
+class RaceCourseData(BaseXmlModel):
+    """This element defines all the control and course information for a race."""
+
+    map: List[Map] = element(tag="Map", default_factory=list)
+    controls: List[Control] = element(tag="Control", default_factory=list)
+    courses: List[Course] = element(tag="Course", default_factory=list)
+    class_course_assignments: List[ClassCourseAssignment] = element(
+        tag="ClassCourseAssignment", default_factory=list
+    )
+    person_course_assignments: List[PersonCourseAssignment] = element(
+        tag="PersonCourseAssignment"
+    )
+    team_course_assignments: List[TeamCourseAssignment] = element(
+        tag="TeamCourseAssignment"
+    )
+    race_number: Optional[int] = attr(name="raceNumber")
+
+
+class Race(BaseXmlModel):
+    """An event consists of a number of races. The number is equal to the number of
+    times a competitor should start.
+    """
+
+    race_number: int = element(tag="RaceNumber")
+    name: str = element(tag="Name")
+    start_time: Optional[datetime.datetime] = element(tag="StartTime")
+    end_time: Optional[datetime.datetime] = element(tag="EndTime")
+    status: Optional[EventStatus] = element(tag="Status")
+    classification: Optional[EventClassification] = element(tag="Classification")
+    position: Optional[GeoPosition] = element(tag="Position")
+    discipline: List[RaceDiscipline] = element(tag="Discipline", default_factory=list)
+    organisers: List[Organisation] = element(tag="Organisation", default_factory=list)
+    officials: List[Role] = element(tag="Official", default_factory=list)
+    services: List[Service] = element(tag="Service", default_factory=list)
+    url: List[EventURL] = element(tag="URL", default_factory=list)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")

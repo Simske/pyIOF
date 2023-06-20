@@ -61,15 +61,15 @@ They have the attributes:
 - [X] `PersonCourseAssignment`
 - [X] `PersonEntry`
 - [X] `PersonName`
-- [ ] `PersonRaceResult`
-- [ ] `PersonRaceStart`
+- [X] `PersonRaceResult`
+- [X] `PersonRaceStart`
 - [ ] `PersonResult`
 - [X] `PersonServiceRequest`
-- [ ] `PersonStart`
+- [X] `PersonStart`
 - [X] `Person`
 - [X] `RaceClass`
-- [ ] `RaceCourseData`
-- [ ] `Race`
+- [X] `RaceCourseData`
+- [X] `Race`
 - [X] `Role`
 - [X] `Route`
 - [X] `Schedule`
@@ -78,13 +78,13 @@ They have the attributes:
 - [X] `Service`
 - [X] `SimpleCourse`
 - [X] `SimpleRaceCourse`
-- [ ] `SplitTime`
-- [ ] `StartName`
+- [X] `SplitTime`
+- [X] `StartName`
 - [X] `StartTimeAllocationRequest`
-- [ ] `TeamCourseAssignment`
-- [ ] `TeamEntryPerson`
-- [ ] `TeamEntry`
-- [ ] `TeamMemberCourseAssignment`
+- [X] `TeamCourseAssignment`
+- [X] `TeamEntryPerson`
+- [X] `TeamEntry`
+- [X] `TeamMemberCourseAssignment`
 - [ ] `TeamMemberRaceResult`
 - [ ] `TeamMemberRaceStart`
 - [ ] `TeamMemberResult`
