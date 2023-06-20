@@ -27,7 +27,7 @@ They have the attributes:
 - [X] `Amount`
 - [X] `AssignedFee`
 - [X] `ClassCourseAssignment`
-- [ ] `ClassResult`
+- [X] `ClassResult`
 - [ ] `ClassStart`
 - [X] `ClassType`
 - [X] `Class`
@@ -57,13 +57,13 @@ They have the attributes:
 - [X] `Map`
 - [X] `OrganisationServiceRequest`
 - [X] `Organisation`
-- [ ] `OverallResult`
+- [X] `OverallResult`
 - [X] `PersonCourseAssignment`
 - [X] `PersonEntry`
 - [X] `PersonName`
 - [X] `PersonRaceResult`
 - [X] `PersonRaceStart`
-- [ ] `PersonResult`
+- [X] `PersonResult`
 - [X] `PersonServiceRequest`
 - [X] `PersonStart`
 - [X] `Person`
@@ -85,9 +85,9 @@ They have the attributes:
 - [X] `TeamEntryPerson`
 - [X] `TeamEntry`
 - [X] `TeamMemberCourseAssignment`
-- [ ] `TeamMemberRaceResult`
+- [X] `TeamMemberRaceResult`
 - [ ] `TeamMemberRaceStart`
-- [ ] `TeamMemberResult`
+- [X] `TeamMemberResult`
 - [ ] `TeamMemberStart`
-- [ ] `TeamResult`
+- [X] `TeamResult`
 - [ ] `TeamStart`
