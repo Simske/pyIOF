@@ -6,7 +6,8 @@ from pydantic_xml import BaseXmlModel, attr, element
 from .class_ import Class_
 from .competitor import Competitor, ControlCard, Organisation, PersonEntry, TeamEntry
 from .course import RaceCourseData
-from .misc import Event, OrganisationServiceRequest, PersonServiceRequest
+from .event import Event
+from .misc import OrganisationServiceRequest, PersonServiceRequest
 from .result import ClassResult
 from .start import ClassStart
 

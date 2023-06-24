@@ -97,7 +97,7 @@ class Fee(BaseXmlModel):
         return taxable_amount
 
     @validator("taxable_percentage")
-    def validate_taxable_amount(cls, taxable_percentage, values):
+    def validate_taxable_percentage(cls, taxable_percentage, values):
         if taxable_percentage is not None and values["amount"] is None:
             raise RuntimeError(
                 "Fee: taxable_percentage only applicable if percentage is defined"

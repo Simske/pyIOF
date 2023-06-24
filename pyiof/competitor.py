@@ -6,7 +6,6 @@ from pydantic_xml import BaseXmlModel, attr, element
 from .base import Id, Score
 from .class_ import Class_
 from .contact import Organisation, Person
-from .course import ControlAnswer, Route, SimpleCourse
 from .fee import AssignedFee
 from .misc import ServiceRequest
 

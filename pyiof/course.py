@@ -4,9 +4,6 @@ from typing import List, Literal, Optional, Set
 from pydantic_xml import BaseXmlModel, attr, element
 
 from .base import GeoPosition, Id, Image, LanguageString, MapPosition
-from .class_ import ClassCourseAssignment
-from .contact import Organisation, Role
-from .misc import EventClassification, EventStatus, EventURL, RaceDiscipline, Service
 
 
 class Leg(BaseXmlModel):
@@ -164,8 +161,8 @@ class Course(BaseXmlModel):
     id: Optional[Id] = element(tag="Id")
     name: str = element(tag="Name")
     course_family: Optional[str] = element(tag="CourseFamily")
-    length: Optional(float) = element(tag="Length")
-    climb: Optional(float) = element(tag="Climb")
+    length: Optional[float] = element(tag="Length")
+    climb: Optional[float] = element(tag="Climb")
     course_controls: list[CourseControl] = element(tag="CourseControl")
     map_id: Optional[int] = element(tag="MapId")
     number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")
@@ -243,6 +240,15 @@ class TeamCourseAssignment(BaseXmlModel):
     )
 
 
+class ClassCourseAssignment(BaseXmlModel):
+    class_id: Optional[Id] = element(tag="ClassId")
+    class_name: str = element(tag="ClassName")
+    allowed_on_leg: List[int] = element(tag="AllowedOnLeg", default_factory=list)
+    course_name: Optional[str] = element(tag="CourseName")
+    course_family: Optional[str] = element(tag="CourseFamily")
+    number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")
+
+
 class RaceCourseData(BaseXmlModel):
     """This element defines all the control and course information for a race."""
 
@@ -259,23 +265,3 @@ class RaceCourseData(BaseXmlModel):
         tag="TeamCourseAssignment"
     )
     race_number: Optional[int] = attr(name="raceNumber")
-
-
-class Race(BaseXmlModel):
-    """An event consists of a number of races. The number is equal to the number of
-    times a competitor should start.
-    """
-
-    race_number: int = element(tag="RaceNumber")
-    name: str = element(tag="Name")
-    start_time: Optional[datetime.datetime] = element(tag="StartTime")
-    end_time: Optional[datetime.datetime] = element(tag="EndTime")
-    status: Optional[EventStatus] = element(tag="Status")
-    classification: Optional[EventClassification] = element(tag="Classification")
-    position: Optional[GeoPosition] = element(tag="Position")
-    discipline: List[RaceDiscipline] = element(tag="Discipline", default_factory=list)
-    organisers: List[Organisation] = element(tag="Organisation", default_factory=list)
-    officials: List[Role] = element(tag="Official", default_factory=list)
-    services: List[Service] = element(tag="Service", default_factory=list)
-    url: List[EventURL] = element(tag="URL", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
