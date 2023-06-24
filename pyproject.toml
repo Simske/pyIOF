@@ -24,6 +24,9 @@ optional = true
 jupyterlab = "^4.0.1"
 
 
+[tool.poetry.group.test.dependencies]
+polyfactory = "^2.3.3"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
