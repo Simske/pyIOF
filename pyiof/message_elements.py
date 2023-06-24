@@ -12,10 +12,24 @@ from .result import ClassResult
 from .start import ClassStart
 
 
-class BaseMessageElement(BaseXmlModel):
+class BaseMessageElement(
+    BaseXmlModel,
+    nsmap={
+        "": "http://www.orienteering.org/datastandard/3.0",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    },
+):
     iof_version: str = attr(name="iofVersion", default="3.0")
     create_time: Optional[datetime.datetime] = attr(name="createTime")
     creator: Optional[str] = attr()
+
+    def to_xml_tree(self, skip_empty: bool = True, **kwargs):
+        return super().to_xml_tree(skip_empty=True, **kwargs)
+
+    def to_xml(self, pretty_print: bool = True, **kwargs):
+        return super().to_xml(
+            pretty_print=True, xml_declaration=True, encoding="utf8", **kwargs
+        )
 
 
 class CompetitorList(BaseMessageElement):

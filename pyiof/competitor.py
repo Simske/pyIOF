@@ -21,7 +21,7 @@ class ControlCard(BaseXmlModel):
     """
 
     id: str
-    punchingsystem: Optional[str] = attr(name="punchingSystem")
+    punching_system: Optional[str] = attr(name="punchingSystem")
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
