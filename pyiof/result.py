@@ -1,5 +1,5 @@
 import datetime
-from typing import List, Literal, Optional, Set
+from typing import List, Literal, Optional
 
 from pydantic_xml import BaseXmlModel, attr, element
 
