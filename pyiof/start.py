@@ -1,9 +1,9 @@
 import datetime
-from typing import List, Literal, Optional, Set
+from typing import List, Optional
 
 from pydantic_xml import BaseXmlModel, attr, element
 
-from .base import Id, Score
+from .base import Id
 from .class_ import Class_
 from .competitor import ControlCard, Organisation, Person
 from .course import SimpleCourse, SimpleRaceCourse, StartName
