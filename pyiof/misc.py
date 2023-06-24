@@ -4,10 +4,8 @@ from typing import List, Literal, Optional
 from pydantic_xml import BaseXmlModel, attr, element
 
 from .base import GeoPosition, Id, LanguageString
-from .class_ import Class_, Race
-from .competitor import Organisation, Person, Role
-from .contact import EntryReceiver
-from .fee import Account, Fee
+from .contact import Organisation, Person
+from .fee import Fee
 
 
 class EventURL(BaseXmlModel):
@@ -55,41 +53,6 @@ class Schedule(BaseXmlModel):
     venue: Optional[str] = element(tag="Venue")
     position: Optional[GeoPosition] = element(tag="Position")
     details: Optional[str] = element(tag="Details")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
-
-
-EventStatus = Literal[
-    "Planned", "Applied", "Proposed", "Sanctioned", "Canceled", "Rescheduled"
-]
-
-EventClassification = Literal["International", "National", "Regional", "Local", "Club"]
-
-EventForm = Literal["Individual", "Team", "Relay"]
-
-RaceDiscipline = Literal["Sprint", "Middle", "Long", "Ultralong", "Other"]
-
-
-class Event(BaseXmlModel):
-    id: Optional[Id] = element(tag="Id")
-    name: str = element(tag="Name")
-    start_time: Optional[datetime.datetime] = element(tag="StartTime")
-    end_time: Optional[datetime.datetime] = element(tag="EndTime")
-    event_status: Optional[EventStatus] = element(tag="EventStatus")
-    classification: Optional[EventClassification] = element(tag="Classification")
-    forms: List[EventForm] = element(tag="Form", default_factory=list)
-    organisers: List[Organisation] = element(tag="Organiser", default_factory=list)
-    officials: List[Role] = element(tag="Official", default_factory=list)
-    classes: List[Class_] = element(tag="Class", default_factory=list)
-    races: List[Race] = element(tag="Race", default_factory=list)
-    entry_receiver: Optional[EntryReceiver] = element(tag="EntryReceiver")
-    services: List[Service] = element(tag="Service", default_factory=list)
-    accounts: List[Account] = element(tag="Account", default_factory=list)
-    urls: List[EventURL] = element(tag="EventURL", default_factory=list)
-    information: List[InformationItem] = element(
-        tag="InformationItem", default_factory=list
-    )
-    schedules: List[Schedule] = element(tag="Schedule", default_factory=list)
-    news: List[InformationItem] = element(tag="News", default_factory=list)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
