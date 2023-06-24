@@ -19,7 +19,7 @@ class BaseMessageElement(
         "xsi": "http://www.w3.org/2001/XMLSchema-instance",
     },
 ):
-    iof_version: str = attr(name="iofVersion", default="3.0")
+    iof_version: Literal["3.0"] = attr(name="iofVersion", default="3.0")
     create_time: Optional[datetime.datetime] = attr(name="createTime")
     creator: Optional[str] = attr()
 
