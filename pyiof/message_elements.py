@@ -12,7 +12,7 @@ from .result import ClassResult
 from .start import ClassStart
 
 
-class BaseMessageElement(
+class BaseMessageElement(  # type: ignore
     BaseXmlModel,
     nsmap={
         "": "http://www.orienteering.org/datastandard/3.0",
