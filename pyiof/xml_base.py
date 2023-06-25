@@ -1,8 +1,8 @@
 import pydantic_xml
-from pydantic_xml import attr, element
+from pydantic_xml import attr, element  # noqa: F401
 
 
-class BaseXmlModel(
+class BaseXmlModel(  # type: ignore
     pydantic_xml.BaseXmlModel,
     nsmap={
         "": "http://www.orienteering.org/datastandard/3.0",
