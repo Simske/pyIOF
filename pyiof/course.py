@@ -1,5 +1,7 @@
 import datetime
-from typing import List, Literal, Optional, Set
+from typing import List, Literal, Optional
+
+from pydantic import conlist
 
 from .base import GeoPosition, Id, Image, LanguageString, MapPosition
 from .xml_base import BaseXmlModel, attr, element
@@ -54,9 +56,7 @@ Valid values:
     crossing_point
     end_of_marked_route
 """
-ControlType = Literal[
-    "control", "start", "finish", "crossing_point", "end_of_marked_route"
-]
+ControlType = Literal["Control", "Start", "Finish", "CrossingPoint", "EndOfMarkedRoute"]
 
 
 class Control(BaseXmlModel):
@@ -80,8 +80,8 @@ class Control(BaseXmlModel):
     """
 
     id: Id = element(tag="Id")
-    punching_unit_id: Set[Id] = element(tag="PunchingUnitId", default_factory=list)
-    name: Set[LanguageString] = element(tag="Name", default_factory=list)
+    punching_unit_id: List[Id] = element(tag="PunchingUnitId", default_factory=list)
+    name: List[LanguageString] = element(tag="Name", default_factory=list)
     position: Optional[GeoPosition] = element(tag="Position")
     map_position: Optional[MapPosition] = element(tag="MapPosition")
     type: ControlType = attr(default="control")
@@ -134,7 +134,7 @@ class CourseControl(BaseXmlModel):
 
     """
 
-    control: List[str] = element(tag="Control")
+    control: conlist(item_type=str, min_items=1) = element(tag="Control")
     map_text: Optional[str] = element(tag="MapText")
     map_text_position: Optional[MapPosition] = element(tag="MapTextPosition")
     leg_length: Optional[float] = element(tag="LegLength")
@@ -162,7 +162,9 @@ class Course(BaseXmlModel):
     course_family: Optional[str] = element(tag="CourseFamily")
     length: Optional[float] = element(tag="Length")
     climb: Optional[float] = element(tag="Climb")
-    course_controls: list[CourseControl] = element(tag="CourseControl")
+    course_controls: conlist(item_type=CourseControl, min_items=2) = element(
+        tag="CourseControl"
+    )
     map_id: Optional[int] = element(tag="MapId")
     number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")

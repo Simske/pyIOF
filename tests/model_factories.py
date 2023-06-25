@@ -1,43 +1,62 @@
+from typing import Generic, TypeVar
+
+from faker import Faker
 from polyfactory.factories.pydantic_factory import ModelFactory
 
 import pyiof
 
 
-class ClassListFactory(ModelFactory[pyiof.ClassList]):
+class CustomFaker(Faker):
+    custom_faker_base = Faker()
+
+    def pylist(self, **kwargs):
+        return Faker().pylist(3, **kwargs)
+
+
+T = TypeVar("T")
+
+
+class CustomModelFactory(Generic[T], ModelFactory[T]):
+    __is_base_factory__ = True
+    __faker__ = CustomFaker()
+    __batch_size__ = lambda: __random__.randint(1, 3)
+
+
+class ClassListFactory(CustomModelFactory[pyiof.ClassList]):
     __model__ = pyiof.ClassList
 
 
-class CompetitorListFactory(ModelFactory[pyiof.CompetitorList]):
+class CompetitorListFactory(CustomModelFactory[pyiof.CompetitorList]):
     __model__ = pyiof.CompetitorList
 
 
-class ControlCardListFactory(ModelFactory[pyiof.ControlCardList]):
+class ControlCardListFactory(CustomModelFactory[pyiof.ControlCardList]):
     __model__ = pyiof.ControlCardList
 
 
-class CourseDataFactory(ModelFactory[pyiof.CourseData]):
+class CourseDataFactory(CustomModelFactory[pyiof.CourseData]):
     __model__ = pyiof.CourseData
 
 
-class EntryListFactory(ModelFactory[pyiof.EntryList]):
+class EntryListFactory(CustomModelFactory[pyiof.EntryList]):
     __model__ = pyiof.EntryList
 
 
-class EventListFactory(ModelFactory[pyiof.EventList]):
+class EventListFactory(CustomModelFactory[pyiof.EventList]):
     __model__ = pyiof.EventList
 
 
-class OrganisationListFactory(ModelFactory[pyiof.OrganisationList]):
+class OrganisationListFactory(CustomModelFactory[pyiof.OrganisationList]):
     __model__ = pyiof.OrganisationList
 
 
-class ResultListFactory(ModelFactory[pyiof.ResultList]):
+class ResultListFactory(CustomModelFactory[pyiof.ResultList]):
     __model__ = pyiof.ResultList
 
 
-class ServiceRequestListFactory(ModelFactory[pyiof.ServiceRequestList]):
+class ServiceRequestListFactory(CustomModelFactory[pyiof.ServiceRequestList]):
     __model__ = pyiof.ServiceRequestList
 
 
-class StartListFactory(ModelFactory[pyiof.StartList]):
+class StartListFactory(CustomModelFactory[pyiof.StartList]):
     __model__ = pyiof.StartList

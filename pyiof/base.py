@@ -50,8 +50,8 @@ class DateAndOptionalTime(BaseXmlModel):
         time (datetime.time, optional): The time part, expressed in ISO 8601 format.
     """
 
-    date: datetime.date = element()
-    time: Optional[datetime.time] = element()
+    date: datetime.date = element(tag="Date")
+    time: Optional[datetime.time] = element(tag="Time")
 
 
 class LanguageString(BaseXmlModel):

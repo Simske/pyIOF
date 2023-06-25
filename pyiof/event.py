@@ -1,7 +1,7 @@
 import datetime
 from typing import List, Literal, Optional
 
-from .base import GeoPosition, Id
+from .base import DateAndOptionalTime, GeoPosition, Id
 from .class_ import Class_
 from .contact import EntryReceiver, Organisation, Role
 from .fee import Account
@@ -26,13 +26,13 @@ class Race(BaseXmlModel):
 
     race_number: int = element(tag="RaceNumber")
     name: str = element(tag="Name")
-    start_time: Optional[datetime.datetime] = element(tag="StartTime")
-    end_time: Optional[datetime.datetime] = element(tag="EndTime")
+    start_time: Optional[DateAndOptionalTime] = element(tag="StartTime")
+    end_time: Optional[DateAndOptionalTime] = element(tag="EndTime")
     status: Optional[EventStatus] = element(tag="Status")
     classification: Optional[EventClassification] = element(tag="Classification")
     position: Optional[GeoPosition] = element(tag="Position")
     discipline: List[RaceDiscipline] = element(tag="Discipline", default_factory=list)
-    organisers: List[Organisation] = element(tag="Organisation", default_factory=list)
+    organisers: List[Organisation] = element(tag="Organiser", default_factory=list)
     officials: List[Role] = element(tag="Official", default_factory=list)
     services: List[Service] = element(tag="Service", default_factory=list)
     url: List[EventURL] = element(tag="URL", default_factory=list)
@@ -42,9 +42,9 @@ class Race(BaseXmlModel):
 class Event(BaseXmlModel):
     id: Optional[Id] = element(tag="Id")
     name: str = element(tag="Name")
-    start_time: Optional[datetime.datetime] = element(tag="StartTime")
-    end_time: Optional[datetime.datetime] = element(tag="EndTime")
-    event_status: Optional[EventStatus] = element(tag="EventStatus")
+    start_time: Optional[DateAndOptionalTime] = element(tag="StartTime")
+    end_time: Optional[DateAndOptionalTime] = element(tag="EndTime")
+    event_status: Optional[EventStatus] = element(tag="Status")
     classification: Optional[EventClassification] = element(tag="Classification")
     forms: List[EventForm] = element(tag="Form", default_factory=list)
     organisers: List[Organisation] = element(tag="Organiser", default_factory=list)
@@ -54,9 +54,9 @@ class Event(BaseXmlModel):
     entry_receiver: Optional[EntryReceiver] = element(tag="EntryReceiver")
     services: List[Service] = element(tag="Service", default_factory=list)
     accounts: List[Account] = element(tag="Account", default_factory=list)
-    urls: List[EventURL] = element(tag="EventURL", default_factory=list)
+    urls: List[EventURL] = element(tag="URL", default_factory=list)
     information: List[InformationItem] = element(
-        tag="InformationItem", default_factory=list
+        tag="Information", default_factory=list
     )
     schedules: List[Schedule] = element(tag="Schedule", default_factory=list)
     news: List[InformationItem] = element(tag="News", default_factory=list)

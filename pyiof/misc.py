@@ -1,9 +1,11 @@
 import datetime
 from typing import List, Literal, Optional
 
+from pydantic import conlist
+
 from .base import GeoPosition, Id, LanguageString
 from .contact import Organisation, Person
-from .fee import Fee
+from .fee import AssignedFee, Fee
 from .xml_base import BaseXmlModel, attr, element
 
 
@@ -24,11 +26,11 @@ class Service(BaseXmlModel):
     """Defines a general purpose service request, e.g. for rental card or accomodation."""
 
     id: Optional[Id] = element(tag="Id")
-    name: List[LanguageString] = element(tag="Name")
+    name: conlist(item_type=LanguageString, min_items=1) = element(tag="Name")
     fee: List[Fee] = element(tag="Fee", default_factory=list)
     description: List[LanguageString] = element(tag="Description", default_factory=list)
     max_number: Optional[float] = element(tag="MaxNumber")
-    requested_numebr: Optional[float] = element(tag="RequestedNumber")
+    requested_number: Optional[float] = element(tag="RequestedNumber")
     type: Optional[str] = attr()
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
@@ -37,9 +39,9 @@ class ServiceRequest(BaseXmlModel):
     id: Optional[Id] = element(tag="Id")
     service: Service = element(tag="Service")
     requested_quantity: float = element(tag="RequestedQuantity")
-    deliverd_quantity: float = element(tag="DeliveredQuantity")
+    deliverd_quantity: Optional[float] = element(tag="DeliveredQuantity")
     comment: Optional[str] = element(tag="Comment")
-    assigned_fee: List[Fee] = element(tag="AssignedFee")
+    assigned_fee: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
@@ -59,7 +61,7 @@ class PersonServiceRequest(BaseXmlModel):
     """Service requests made by a person."""
 
     person: Person = element(tag="Person")
-    service_requests: List[ServiceRequest] = element(tag="ServiceRequests")
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest")
 
 
 class OrganisationServiceRequest(BaseXmlModel):

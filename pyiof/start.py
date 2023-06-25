@@ -1,6 +1,8 @@
 import datetime
 from typing import List, Optional
 
+from pydantic import conlist
+
 from .base import Id
 from .class_ import Class_
 from .competitor import ControlCard, Organisation, Person
@@ -32,7 +34,7 @@ class PersonStart(BaseXmlModel):
     entry_id: Optional[Id] = element(tag="EntryId")
     person: Optional[Person] = element(tag="Person")
     organisation: Optional[Organisation] = element(tag="Organisation")
-    starts: List[PersonRaceStart] = element(tag="Start")
+    starts: conlist(item_type=PersonRaceStart, min_items=1) = element(tag="Start")
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
@@ -60,7 +62,7 @@ class TeamMemberStart(BaseXmlModel):
     entry_id: Optional[Id] = element(tag="EntryId")
     person: Optional[Person] = element(tag="Person")
     organisation: Optional[Organisation] = element(tag="Organisation")
-    starts: List[TeamMemberRaceStart] = element(tag="Start")
+    starts: conlist(item_type=TeamMemberRaceStart, min_items=1) = element(tag="Start")
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
@@ -95,5 +97,5 @@ class ClassStart(BaseXmlModel):
     start_name: List[StartName] = element(tag="StartName", default_factory=list)
     person_starts: List[PersonStart] = element(tag="PersonStart", default_factory=list)
     team_starts: List[TeamStart] = element(tag="TeamStart", default_factory=list)
-    time_resolution: float = element(tag="timeResolution", default=1)
+    time_resolution: float = attr(name="timeResolution", default=1)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
