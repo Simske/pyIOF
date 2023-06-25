@@ -1,7 +1,7 @@
 import datetime
 from typing import Literal, Optional
 
-from pydantic_xml import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, attr, element
 
 
 class Id(BaseXmlModel):

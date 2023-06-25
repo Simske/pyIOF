@@ -1,13 +1,12 @@
 import datetime
 from typing import List, Literal, Optional
 
-from pydantic_xml import BaseXmlModel, attr, element
-
 from .base import Id, Score
 from .class_ import Class_
 from .contact import Organisation, Person
 from .fee import AssignedFee
 from .misc import ServiceRequest
+from .xml_base import BaseXmlModel, attr, element
 
 
 class ControlCard(BaseXmlModel):

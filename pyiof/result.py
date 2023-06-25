@@ -1,14 +1,13 @@
 import datetime
 from typing import List, Literal, Optional
 
-from pydantic_xml import BaseXmlModel, attr, element
-
 from .base import Id, Score
 from .class_ import Class_
 from .competitor import ControlCard, Organisation, Person
 from .course import ControlAnswer, Route, SimpleCourse, SimpleRaceCourse
 from .fee import AssignedFee
 from .misc import ServiceRequest
+from .xml_base import BaseXmlModel, attr, element
 
 """The result status of the person or team at the time of the result generation."""
 ResultStatus = Literal[

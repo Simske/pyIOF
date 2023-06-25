@@ -1,12 +1,11 @@
 import datetime
 from typing import List, Literal, Optional
 
-from pydantic_xml import BaseXmlModel, attr, element
-
 from .base import Id
 from .contact import Sex
 from .course import Control, Leg, SimpleCourse
 from .fee import Fee
+from .xml_base import BaseXmlModel, attr, element
 
 """
 The status of a certain race in the class.
