@@ -1,20 +1,6 @@
-import pathlib
-
-from lxml import etree
-from polyfactory.factories.pydantic_factory import ModelFactory
-
-from pyiof import ControlCardList
-
-
-class ControlCardListFactory(ModelFactory[ControlCardList]):
-    __model__ = ControlCardList
-
-
-iof_xml_schema = etree.XMLSchema(
-    etree.parse(pathlib.Path(__file__).parent.parent / "IOF.xsd")
-)
+from .model_factories import ControlCardListFactory
+from .xml_validator import iof_xml_schema
 
 
 def test_control_card_list_schema():
-    ccl = ControlCardListFactory.build()
-    iof_xml_schema.assertValid(ccl.to_xml_tree())
+    iof_xml_schema.assertValid(ControlCardListFactory.build().to_xml_tree())

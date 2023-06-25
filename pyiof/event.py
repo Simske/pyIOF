@@ -1,13 +1,12 @@
 import datetime
 from typing import List, Literal, Optional
 
-from pydantic_xml import BaseXmlModel, attr, element
-
 from .base import GeoPosition, Id
 from .class_ import Class_
 from .contact import EntryReceiver, Organisation, Role
 from .fee import Account
 from .misc import EventURL, InformationItem, Schedule, Service
+from .xml_base import BaseXmlModel, attr, element
 
 EventStatus = Literal[
     "Planned", "Applied", "Proposed", "Sanctioned", "Canceled", "Rescheduled"

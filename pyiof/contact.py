@@ -1,10 +1,9 @@
 import datetime
 from typing import List, Literal, Optional
 
-from pydantic_xml import BaseXmlModel, attr, element
-
 from .base import GeoPosition, Id, Image
 from .fee import Account
+from .xml_base import BaseXmlModel, attr, element
 
 
 class Country(BaseXmlModel):
@@ -90,7 +89,7 @@ class Person(BaseXmlModel):
     nationality: Optional[Country] = element(tag="Nationality")
     address: List[Address] = element(tag="Address", default_factory=list)
     contact: List[Contact] = element(tag="Contact", default_factory=list)
-    sex: Optional[Sex] = attr()
+    sex: Optional[Literal["M", "F"]] = attr()
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
@@ -105,7 +104,7 @@ class Role(BaseXmlModel):
         type (str): The type of role
     """
 
-    person: Person = element(tag="Role")
+    person: Person = element(tag="Person")
     type: str = attr()
 
 
@@ -121,11 +120,11 @@ class Organisation(BaseXmlModel):
         shortname
     """
 
-    id: Optional[Id] = None
+    id: Optional[Id] = element(tag="Id")
     name: str = element(tag="Name")
     short_name: Optional[str] = element(tag="ShortName")
     media_name: Optional[str] = element(tag="MediaName")
-    parent_organisation_id: Optional[Id] = element(tag="ParentOrganisationId")
+    parent_organisation_id: Optional[int] = element(tag="ParentOrganisationId")
     country: Optional[Country] = element(tag="Country")
     address: List[Address] = element(tag="Address", default_factory=list)
     contact: List[Contact] = element(tag="Contact", default_factory=list)

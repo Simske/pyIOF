@@ -3,9 +3,9 @@ from decimal import Decimal
 from typing import List, Literal, Optional
 
 from pydantic import validator
-from pydantic_xml import BaseXmlModel, attr, element
 
 from .base import Id, LanguageString
+from .xml_base import BaseXmlModel, attr, element
 
 
 class Account(BaseXmlModel):

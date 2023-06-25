@@ -1,14 +1,13 @@
 import datetime
 from typing import List, Optional
 
-from pydantic_xml import BaseXmlModel, attr, element
-
 from .base import Id
 from .class_ import Class_
 from .competitor import ControlCard, Organisation, Person
 from .course import SimpleCourse, SimpleRaceCourse, StartName
 from .fee import AssignedFee
 from .misc import ServiceRequest
+from .xml_base import BaseXmlModel, attr, element
 
 
 class PersonRaceStart(BaseXmlModel):

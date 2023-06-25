@@ -1,11 +1,10 @@
 import datetime
 from typing import List, Literal, Optional
 
-from pydantic_xml import BaseXmlModel, attr, element
-
 from .base import GeoPosition, Id, LanguageString
 from .contact import Organisation, Person
 from .fee import Fee
+from .xml_base import BaseXmlModel, attr, element
 
 
 class EventURL(BaseXmlModel):

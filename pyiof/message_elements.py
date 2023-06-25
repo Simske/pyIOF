@@ -1,8 +1,6 @@
 import datetime
 from typing import List, Literal, Optional
 
-from pydantic_xml import BaseXmlModel, attr, element
-
 from .class_ import Class_
 from .competitor import Competitor, ControlCard, Organisation, PersonEntry, TeamEntry
 from .course import RaceCourseData
@@ -10,26 +8,13 @@ from .event import Event
 from .misc import OrganisationServiceRequest, PersonServiceRequest
 from .result import ClassResult
 from .start import ClassStart
+from .xml_base import BaseXmlModel, attr, element
 
 
-class BaseMessageElement(  # type: ignore
-    BaseXmlModel,
-    nsmap={
-        "": "http://www.orienteering.org/datastandard/3.0",
-        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
-    },
-):
+class BaseMessageElement(BaseXmlModel):  # type: ignore
     iof_version: Literal["3.0"] = attr(name="iofVersion", default="3.0")
     create_time: Optional[datetime.datetime] = attr(name="createTime")
     creator: Optional[str] = attr()
-
-    def to_xml_tree(self, skip_empty: bool = True, **kwargs):
-        return super().to_xml_tree(skip_empty=True, **kwargs)
-
-    def to_xml(self, pretty_print: bool = True, **kwargs):
-        return super().to_xml(
-            pretty_print=True, xml_declaration=True, encoding="utf8", **kwargs
-        )
 
 
 class CompetitorList(BaseMessageElement):
