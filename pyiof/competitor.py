@@ -42,7 +42,7 @@ class Competitor(BaseXmlModel):
     organisation: List[Organisation] = element(tag="Organisation", default_factory=list)
     controlcards: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     class_: List[Class_] = element(tag="Class", default_factory=list)
-    score: List[Score] = element(tag="Class", default_factory=list)
+    score: List[Score] = element(tag="Score", default_factory=list)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
@@ -68,8 +68,8 @@ class PersonEntry(BaseXmlModel):
     Defines an event entry for a person.
     """
 
-    id: Optional[Id] = element(name="Id")
-    person: Person = element(name="Person")
+    id: Optional[Id] = element(tag="Id")
+    person: Person = element(tag="Person")
     organisation: Optional[Organisation] = element(tag="Organisation")
     controlcards: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     scores: List[Score] = element(tag="Score", default_factory=list)

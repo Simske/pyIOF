@@ -1,6 +1,8 @@
 import datetime
 from typing import List, Literal, Optional
 
+from pydantic import conlist
+
 from .class_ import Class_
 from .competitor import Competitor, ControlCard, Organisation, PersonEntry, TeamEntry
 from .course import RaceCourseData
@@ -60,7 +62,9 @@ class CourseData(BaseMessageElement):
     """
 
     event: Event = element(tag="Event")
-    race_course_data: List[RaceCourseData] = element(tag="RaceCourseData")
+    race_course_data: conlist(item_type=RaceCourseData, min_items=1) = element(
+        tag="RaceCourseData"
+    )
 
 
 class StartList(BaseMessageElement):

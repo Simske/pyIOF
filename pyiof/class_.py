@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 import datetime
-from typing import List, Literal, Optional
+from typing import Any, List, Literal, Optional
 
 from .base import Id
 from .contact import Sex
@@ -202,10 +204,14 @@ class Class_(BaseXmlModel):
     fee: List[Fee] = element(tag="Fee", default_factory=list)
     status: EventClassStatus = element(tag="Status", default="Normal")
     race_class: List[RaceClass] = element(tag="RaceClass", default_factory=list)
-    too_few_entries_substitute_class: Optional["Class_"] = element(
+    too_few_entries_substitute_class: Optional[
+        Any
+    ] = element(  # TODO: should be Class_, but not supported by Polyfactory
         tag="TooFewEntriesSubstituteClass"
     )
-    too_many_entries_substitue_class: Optional["Class_"] = element(
+    too_many_entries_substitue_class: Optional[
+        Any
+    ] = element(  # TODO: should be Class_, but not supported by Polyfactory
         tag="TooManyEntriesSubstituteClass"
     )
     min_age: Optional[int] = attr(name="minAge")

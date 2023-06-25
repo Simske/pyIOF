@@ -42,7 +42,7 @@ class SplitTime(BaseXmlModel):
 
     control_card: str = element(tag="ControlCode")
     time: Optional[float] = element(tag="Time")
-    status: Literal["OK", "Missing", "Additional"] = element(tag="Status", default="OK")
+    status: Literal["OK", "Missing", "Additional"] = attr(default="OK")
 
 
 class PersonRaceResult(BaseXmlModel):
@@ -159,12 +159,10 @@ class ClassResult(BaseXmlModel):
     """
 
     class_: Class_ = element(tag="Class")
-    courses: List[SimpleRaceCourse] = element(
-        tag="SimpleRaceCourse", default_factory=list
-    )
+    courses: List[SimpleRaceCourse] = element(tag="Course", default_factory=list)
     person_results: List[PersonResult] = element(
         tag="PersonResult", default_factory=list
     )
     team_results: List[TeamResult] = element(tag="TeamResult", default_factory=list)
-    time_resolution: float = element(tag="timeResolution", default=1)
+    time_resolution: float = attr(name="timeResolution", default=1)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")

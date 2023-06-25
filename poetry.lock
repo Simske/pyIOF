@@ -491,20 +491,6 @@ files = [
 tests = ["asttokens", "littleutils", "pytest", "rich"]
 
 [[package]]
-name = "faker"
-version = "18.11.1"
-description = "Faker is a Python package that generates fake data for you."
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "Faker-18.11.1-py3-none-any.whl", hash = "sha256:02980fe15acd58861305568bae0a277680792a505a5a45a309d352f79c452dd1"},
-    {file = "Faker-18.11.1.tar.gz", hash = "sha256:df4ee36d058a6a96de9d5e645571ef8536946a0b62db841494f8a3bc3bcdc5af"},
-]
-
-[package.dependencies]
-python-dateutil = ">=2.4"
-
-[[package]]
 name = "fastjsonschema"
 version = "2.17.1"
 description = "Fastest Python implementation of JSON schema"
@@ -1454,27 +1440,6 @@ dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
-name = "polyfactory"
-version = "2.3.3"
-description = "Mock data generation factories"
-optional = false
-python-versions = ">=3.8,<4.0"
-files = [
-    {file = "polyfactory-2.3.3-py3-none-any.whl", hash = "sha256:773d7c38e55ff8592bfca28d68e96b9b0dbaae7d863342c779da87b4bde71487"},
-    {file = "polyfactory-2.3.3.tar.gz", hash = "sha256:74075bce0aefcd1a34d117bd67a797cf65c2a2b02656eacdb6096861673daa32"},
-]
-
-[package.dependencies]
-faker = "*"
-typing-extensions = "*"
-
-[package.extras]
-beanie = ["beanie[beanie]", "pydantic[beanie,odmantic,pydantic]"]
-msgspec = ["msgspec[msgspec]"]
-odmantic = ["odmantic[odmantic]", "pydantic[beanie,odmantic,pydantic]"]
-pydantic = ["pydantic[beanie,odmantic,pydantic]"]
-
-[[package]]
 name = "prometheus-client"
 version = "0.17.0"
 description = "Python client for the Prometheus monitoring system."
@@ -2252,4 +2217,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.2,<3.12"
-content-hash = "7da3bc1e84ac689acdc0fc2c687ebe4093736c0accd6dbb89244d9c439d9e48f"
+content-hash = "66da31437d94fdf05f7bb9e380e894c1b4f594f00e62423eae218f18b953bc31"
