@@ -19,7 +19,10 @@ T = TypeVar("T")
 class CustomModelFactory(Generic[T], ModelFactory[T]):
     __is_base_factory__ = True
     __faker__ = CustomFaker()
-    __batch_size__ = lambda: __random__.randint(1, 3)
+
+    @classmethod
+    def __batch_size__(cls):
+        return cls.__random__.randint(1, 3)
 
 
 class ClassListFactory(CustomModelFactory[pyiof.ClassList]):
