@@ -62,7 +62,7 @@ class CourseData(BaseMessageElement):
     """
 
     event: Event = element(tag="Event")
-    race_course_data: conlist(item_type=RaceCourseData, min_items=1) = element(
+    race_course_data: conlist(item_type=RaceCourseData, min_items=1) = element(  # type: ignore
         tag="RaceCourseData"
     )
 

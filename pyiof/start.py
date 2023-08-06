@@ -34,7 +34,7 @@ class PersonStart(BaseXmlModel):
     entry_id: Optional[Id] = element(tag="EntryId")
     person: Optional[Person] = element(tag="Person")
     organisation: Optional[Organisation] = element(tag="Organisation")
-    starts: conlist(item_type=PersonRaceStart, min_items=1) = element(tag="Start")
+    starts: conlist(item_type=PersonRaceStart, min_items=1) = element(tag="Start")  # type: ignore
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 
@@ -62,7 +62,7 @@ class TeamMemberStart(BaseXmlModel):
     entry_id: Optional[Id] = element(tag="EntryId")
     person: Optional[Person] = element(tag="Person")
     organisation: Optional[Organisation] = element(tag="Organisation")
-    starts: conlist(item_type=TeamMemberRaceStart, min_items=1) = element(tag="Start")
+    starts: conlist(item_type=TeamMemberRaceStart, min_items=1) = element(tag="Start")  # type: ignore
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 

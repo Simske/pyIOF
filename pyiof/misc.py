@@ -26,7 +26,7 @@ class Service(BaseXmlModel):
     """Defines a general purpose service request, e.g. for rental card or accomodation."""
 
     id: Optional[Id] = element(tag="Id")
-    name: conlist(item_type=LanguageString, min_items=1) = element(tag="Name")
+    name: conlist(item_type=LanguageString, min_items=1) = element(tag="Name")  # type: ignore
     fee: List[Fee] = element(tag="Fee", default_factory=list)
     description: List[LanguageString] = element(tag="Description", default_factory=list)
     max_number: Optional[float] = element(tag="MaxNumber")
