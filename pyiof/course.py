@@ -134,7 +134,7 @@ class CourseControl(BaseXmlModel):
 
     """
 
-    control: conlist(item_type=str, min_items=1) = element(tag="Control")
+    control: conlist(item_type=str, min_items=1) = element(tag="Control")  # type: ignore
     map_text: Optional[str] = element(tag="MapText")
     map_text_position: Optional[MapPosition] = element(tag="MapTextPosition")
     leg_length: Optional[float] = element(tag="LegLength")
@@ -162,7 +162,7 @@ class Course(BaseXmlModel):
     course_family: Optional[str] = element(tag="CourseFamily")
     length: Optional[float] = element(tag="Length")
     climb: Optional[float] = element(tag="Climb")
-    course_controls: conlist(item_type=CourseControl, min_items=2) = element(
+    course_controls: conlist(item_type=CourseControl, min_items=2) = element(  # type: ignore
         tag="CourseControl"
     )
     map_id: Optional[int] = element(tag="MapId")

@@ -29,7 +29,7 @@ class Amount(BaseXmlModel):
         currency (str, optional)
     """
 
-    amount: condecimal(max_digits=30)
+    amount: condecimal(max_digits=30)  # type: ignore
     currency: Optional[str] = attr()
 
 
@@ -68,11 +68,11 @@ class Fee(BaseXmlModel):
     """
 
     id: Optional[Id] = element(tag="Id")
-    name: conlist(item_type=LanguageString, min_items=1) = element(tag="Name")
+    name: conlist(item_type=LanguageString, min_items=1) = element(tag="Name")  # type: ignore
     amount: Optional[Amount] = element(tag="Amount")
     taxable_amount: Optional[Amount] = element(tag="TaxableAmount")
-    percentage: Optional[confloat(ge=0, le=100)] = element(tag="Percentage")
-    taxable_percentage: Optional[confloat(ge=0, le=100)] = element(
+    percentage: Optional[confloat(ge=0, le=100)] = element(tag="Percentage")  # type: ignore
+    taxable_percentage: Optional[confloat(ge=0, le=100)] = element(  # type: ignore
         tag="TaxablePercentage"
     )
     valid_from_time: Optional[datetime.datetime] = element(tag="ValidFromTime")
