@@ -1,11 +1,12 @@
 import datetime
-from decimal import Decimal
-from typing import List, Literal, Optional
+from typing import Literal, Optional
 
-from pydantic import condecimal, confloat, conlist, validator
+from pydantic import condecimal, confloat, conlist
 
 from .base import Id, LanguageString
 from .xml_base import BaseXmlModel, attr, element
+
+# from pydantic import validator
 
 
 class Account(BaseXmlModel):
@@ -81,7 +82,7 @@ class Fee(BaseXmlModel):
     type: Optional[FeeType] = attr()
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
-    ## TODO: not compatible with tests
+    # TODO: not compatible with tests
     # @validator("percentage")
     # def validate_exclusive_amount_percentage(cls, percentage, values):
     #     """Validate that only one of amount or percentage is present.
