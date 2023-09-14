@@ -1,28 +1,23 @@
 from typing import Generic, TypeVar
 
-from faker import Faker
+from polyfactory import Ignore
 from polyfactory.factories.pydantic_factory import ModelFactory
 
 import pyiof
-
-
-class CustomFaker(Faker):
-    custom_faker_base = Faker()
-
-    def pylist(self, **kwargs):
-        return Faker().pylist(3, **kwargs)
-
 
 T = TypeVar("T")
 
 
 class CustomModelFactory(Generic[T], ModelFactory[T]):
     __is_base_factory__ = True
-    __faker__ = CustomFaker()
 
-    @classmethod
-    def __batch_size__(cls):
-        return cls.__random__.randint(1, 3)
+    __randomize_collection_length__ = True
+    __min_collection_length__ = 2
+    __max_collection_length__ = 5
+
+    # ignore values for pyiof.class_.Class_ because of recursion
+    too_few_entries_substitute_class = Ignore()
+    too_many_entries_substitute_class = Ignore()
 
 
 class ClassListFactory(CustomModelFactory[pyiof.ClassList]):
