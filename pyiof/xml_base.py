@@ -16,3 +16,8 @@ class BaseXmlModel(  # type: ignore
         return super().to_xml(
             pretty_print=True, xml_declaration=True, encoding="utf8", **kwargs
         )
+
+    @classmethod
+    def read_xml(cls, path: str):
+        with open(path, "rb") as f:
+            return cls.read_xml(f)
