@@ -83,7 +83,7 @@ class Person(BaseXmlModel):
         Id
     """
 
-    ids: List[Id] = element(tag="Id")
+    ids: List[Id] = element(tag="Id", default_factory=list)
     name: PersonName = element(tag="Name")
     birth_date: Optional[datetime.date] = element(tag="BirthDate")
     nationality: Optional[Country] = element(tag="Nationality")

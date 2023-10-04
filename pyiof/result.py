@@ -58,7 +58,7 @@ class PersonRaceResult(BaseXmlModel):
     scores: List[Score] = element(tag="Score", default_factory=list)
     overall_result: Optional[OverallResult] = element(tag="OverallResult")
     course: Optional[SimpleCourse] = element(tag="Course")
-    split_time: List[SplitTime] = element(tag="SplitTime")
+    split_time: List[SplitTime] = element(tag="SplitTime", default_factory=list)
     control_answers: List[ControlAnswer] = element(
         tag="ControlAnswer", default_factory=list
     )
