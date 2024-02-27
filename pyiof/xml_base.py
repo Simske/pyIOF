@@ -20,4 +20,8 @@ class BaseXmlModel(  # type: ignore
     @classmethod
     def read_xml(cls, path: str):
         with open(path, "rb") as f:
-            return cls.read_xml(f)
+            return cls.from_xml(f.read())
+
+    def write_xml(self, path: str):
+        with open(path, "wb") as f:
+            f.write(self.to_xml())
