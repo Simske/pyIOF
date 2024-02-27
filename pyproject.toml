@@ -5,7 +5,7 @@ description = "Python bindings for IOF datastandard 3.0"
 authors = ["Simske <mail@simske.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.8.2,<3.12"
+python = ">=3.8.2,<3.13"
 pydantic-xml = {extras = ["lxml"], version = "^0.6.1"}
 
 [tool.poetry.group.dev]
