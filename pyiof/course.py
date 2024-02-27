@@ -160,14 +160,23 @@ class Course(BaseXmlModel):
     id: Optional[Id] = element(tag="Id")
     name: str = element(tag="Name")
     course_family: Optional[str] = element(tag="CourseFamily")
-    length: Optional[float] = element(tag="Length")
-    climb: Optional[float] = element(tag="Climb")
+    length: Optional[int] = element(tag="Length")
+    climb: Optional[int] = element(tag="Climb")
     course_controls: conlist(item_type=CourseControl, min_items=2) = element(  # type: ignore
         tag="CourseControl"
     )
     map_id: Optional[int] = element(tag="MapId")
     number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+
+    def __add__(self, other):
+        return Course(
+            # id = Id(id=self.id.id + other.id.id),
+            name=self.name + other.name,
+            length=self.length + other.length,
+            climb=self.climb + other.climb,
+            course_controls=self.course_controls + other.course_controls,
+        )
 
 
 class Map(BaseXmlModel):
@@ -260,9 +269,9 @@ class RaceCourseData(BaseXmlModel):
         tag="ClassCourseAssignment", default_factory=list
     )
     person_course_assignments: List[PersonCourseAssignment] = element(
-        tag="PersonCourseAssignment"
+        tag="PersonCourseAssignment", default_factory=list
     )
     team_course_assignments: List[TeamCourseAssignment] = element(
-        tag="TeamCourseAssignment"
+        tag="TeamCourseAssignment", default_factory=list
     )
     race_number: Optional[int] = attr(name="raceNumber")
