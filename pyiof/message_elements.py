@@ -52,8 +52,8 @@ class EntryList(BaseMessageElement):
     """A list of persons and/or teams which are registered for a particular event."""
 
     event: Event = element(tag="Event")
-    team_entries: List[TeamEntry] = element(tag="TeamEntry")
-    person_entries: List[PersonEntry] = element(tag="PersonEntry")
+    team_entries: List[TeamEntry] = element(tag="TeamEntry", default_factory=list)
+    person_entries: List[PersonEntry] = element(tag="PersonEntry", default_factory=list)
 
 
 class CourseData(BaseMessageElement):

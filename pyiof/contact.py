@@ -67,7 +67,7 @@ class Contact(BaseXmlModel):
 
 
 class PersonName(BaseXmlModel):
-    family_name: str = element(tag="Family")
+    family_name: str = element(tag="Family", default="")
     given_name: str = element(tag="Given")
 
 

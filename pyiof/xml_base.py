@@ -10,15 +10,19 @@ class BaseXmlModel(  # type: ignore
     },
 ):
     def to_xml_tree(self, skip_empty: bool = True, **kwargs):
-        return super().to_xml_tree(skip_empty=True, **kwargs)
+        return super().to_xml_tree(skip_empty=skip_empty, **kwargs)
 
     def to_xml(self, pretty_print: bool = True, **kwargs):
         return super().to_xml(
-            pretty_print=True, xml_declaration=True, encoding="utf8", **kwargs
+            pretty_print=pretty_print,
+            xml_declaration=True,
+            encoding="UTF-8",
+            skip_empty=True,
+            **kwargs
         )
 
     @classmethod
-    def read_xml(cls, path: str):
+    def read_xml(cls, path: str, encoding: str = "utf-8"):
         with open(path, "rb") as f:
             return cls.from_xml(f.read())
 

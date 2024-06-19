@@ -1,5 +1,8 @@
 import importlib.metadata
 
+from .class_ import Class_
+from .competitor import *
+from .contact import *
 from .message_elements import (  # noqa: F401
     ClassList,
     CompetitorList,
