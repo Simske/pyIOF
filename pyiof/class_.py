@@ -195,9 +195,9 @@ class Class_(BaseXmlModel):
             instead of the actual times.
     """
 
-    id: Optional[Id] = element(tag="Id")
+    id: Optional[Id] = element(tag="Id", default=None)
     name: str = element(tag="Name")
-    shortname: Optional[str] = element(tag="ShortName")
+    shortname: Optional[str] = element(tag="ShortName", default=None)
     classtype: List[ClassType] = element(tag="ClassType", default_factory=list)
     leg: List[Leg] = element(tag="Leg", default_factory=list)
     team_fee: List[Fee] = element(tag="TeamFee", default_factory=list)
@@ -205,18 +205,26 @@ class Class_(BaseXmlModel):
     status: EventClassStatus = element(tag="Status", default="Normal")
     race_class: List[RaceClass] = element(tag="RaceClass", default_factory=list)
     too_few_entries_substitute_class: Optional[Class_] = element(
-        tag="TooFewEntriesSubstituteClass"
+        tag="TooFewEntriesSubstituteClass", default=None
     )
     too_many_entries_substitute_class: Optional[Class_] = element(
-        tag="TooManyEntriesSubstituteClass"
+        tag="TooManyEntriesSubstituteClass", default=None
     )
-    min_age: Optional[int] = attr(name="minAge")
-    max_age: Optional[int] = attr(name="maxAge")
-    sex: Optional[Sex] = attr()
-    min_number_of_team_members: Optional[int] = attr(name="minNumberOfTeamMembers")
-    max_number_of_team_members: Optional[int] = attr(name="maxNumberOfTeamMembers")
-    min_team_age: Optional[int] = attr(name="minTeamAge")
-    max_team_age: Optional[int] = attr(name="maxTeamAge")
-    number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")
-    max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors")
+    min_age: Optional[int] = attr(name="minAge", default=None)
+    max_age: Optional[int] = attr(name="maxAge", default=None)
+    sex: Optional[Sex] = attr(default=None)
+    min_number_of_team_members: Optional[int] = attr(
+        name="minNumberOfTeamMembers", default=None
+    )
+    max_number_of_team_members: Optional[int] = attr(
+        name="maxNumberOfTeamMembers", default=None
+    )
+    min_team_age: Optional[int] = attr(name="minTeamAge", default=None)
+    max_team_age: Optional[int] = attr(name="maxTeamAge", default=None)
+    number_of_competitors: Optional[int] = attr(
+        name="numberOfCompetitors", default=None
+    )
+    max_number_of_competitors: Optional[int] = attr(
+        name="maxNumberOfCompetitors", default=None
+    )
     resultlist_mode: ResultListMode = attr(name="resultListMode", default="Default")

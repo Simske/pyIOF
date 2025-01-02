@@ -38,12 +38,12 @@ class SimpleCourse(BaseXmlModel):
             excluding start and finish.
     """
 
-    id: Optional[Id] = element(tag="Id")
-    name: Optional[str] = element(tag="Name")
-    course_family: Optional[str] = element(tag="CourseFamily")
-    length: Optional[float] = element(tag="Length")
-    climb: Optional[float] = element(tag="Climb")
-    number_of_controls: Optional[int] = element(tag="NumberOfControls")
+    id: Optional[Id] = element(tag="Id", default=None)
+    name: Optional[str] = element(tag="Name", default=None)
+    course_family: Optional[str] = element(tag="CourseFamily", default=None)
+    length: Optional[float] = element(tag="Length", default=None)
+    climb: Optional[float] = element(tag="Climb", default=None)
+    number_of_controls: Optional[int] = element(tag="NumberOfControls", default=None)
 
 
 """The type of a control: (ordinary) control, start, finish,
@@ -105,7 +105,7 @@ class SimpleRaceCourse(SimpleCourse):
             information belongs to for a multi-race event, starting at 1.
     """
 
-    race_number: Optional[int] = attr(name="raceNumber")
+    race_number: Optional[int] = attr(name="raceNumber", default=None)
 
 
 class ControlAnswer(BaseXmlModel):
@@ -134,12 +134,14 @@ class CourseControl(BaseXmlModel):
 
     """
 
-    control: conlist(item_type=str, min_items=1) = element(tag="Control")  # type: ignore
-    map_text: Optional[str] = element(tag="MapText")
-    map_text_position: Optional[MapPosition] = element(tag="MapTextPosition")
-    leg_length: Optional[float] = element(tag="LegLength")
-    score: Optional[float] = element(tag="Score")
-    type: Optional[ControlType] = attr()
+    control: conlist(item_type=str, min_length=1) = element(tag="Control")  # type: ignore
+    map_text: Optional[str] = element(tag="MapText", default=None)
+    map_text_position: Optional[MapPosition] = element(
+        tag="MapTextPosition", default=None
+    )
+    leg_length: Optional[float] = element(tag="LegLength", default=None)
+    score: Optional[float] = element(tag="Score", default=None)
+    type: Optional[ControlType] = attr(default=None)
     random_order: bool = attr(name="randomOrder", default=False)
     special_instruction: Optional[
         Literal[
@@ -150,24 +152,26 @@ class CourseControl(BaseXmlModel):
             "MandatoryOutOfBoundsAreaPassage",
         ]
     ] = attr(name="specialInstruction", default="None")
-    taped_route_length: Optional[float] = attr(name="tapedRouteLength")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    taped_route_length: Optional[float] = attr(name="tapedRouteLength", default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class Course(BaseXmlModel):
     """Defines a course, i.e. a number of controls including start and finish."""
 
-    id: Optional[Id] = element(tag="Id")
+    id: Optional[Id] = element(tag="Id", default=None)
     name: str = element(tag="Name")
-    course_family: Optional[str] = element(tag="CourseFamily")
-    length: Optional[int] = element(tag="Length")
-    climb: Optional[int] = element(tag="Climb")
-    course_controls: conlist(item_type=CourseControl, min_items=2) = element(  # type: ignore
+    course_family: Optional[str] = element(tag="CourseFamily", default=None)
+    length: Optional[int] = element(tag="Length", default=None)
+    climb: Optional[int] = element(tag="Climb", default=None)
+    course_controls: conlist(item_type=CourseControl, min_length=2) = element(  # type: ignore
         tag="CourseControl"
     )
-    map_id: Optional[int] = element(tag="MapId")
-    number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    map_id: Optional[int] = element(tag="MapId", default=None)
+    number_of_competitors: Optional[int] = attr(
+        name="numberOfCompetitors", default=None
+    )
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
     def __add__(self, other):
         return Course(
@@ -274,4 +278,4 @@ class RaceCourseData(BaseXmlModel):
     team_course_assignments: List[TeamCourseAssignment] = element(
         tag="TeamCourseAssignment", default_factory=list
     )
-    race_number: Optional[int] = attr(name="raceNumber")
+    race_number: Optional[int] = attr(name="raceNumber", default=None)

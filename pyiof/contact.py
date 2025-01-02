@@ -68,7 +68,7 @@ class Contact(BaseXmlModel):
 
 class PersonName(BaseXmlModel):
     family_name: str = element(tag="Family", default="")
-    given_name: str = element(tag="Given")
+    given_name: str = element(tag="Given", default="")
 
 
 Sex = Literal["M", "F", "B"]
@@ -84,13 +84,13 @@ class Person(BaseXmlModel):
     """
 
     ids: List[Id] = element(tag="Id", default_factory=list)
-    name: PersonName = element(tag="Name")
-    birth_date: Optional[datetime.date] = element(tag="BirthDate")
-    nationality: Optional[Country] = element(tag="Nationality")
+    name: Optional[PersonName] = element(tag="Name", default=None)
+    birth_date: Optional[datetime.date] = element(tag="BirthDate", default=None)
+    nationality: Optional[Country] = element(tag="Nationality", default=None)
     address: List[Address] = element(tag="Address", default_factory=list)
     contact: List[Contact] = element(tag="Contact", default_factory=list)
-    sex: Optional[Literal["M", "F"]] = attr()
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    sex: Optional[Literal["M", "F"]] = attr(default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class Role(BaseXmlModel):
@@ -120,15 +120,17 @@ class Organisation(BaseXmlModel):
         shortname
     """
 
-    id: Optional[Id] = element(tag="Id")
-    name: str = element(tag="Name")
-    short_name: Optional[str] = element(tag="ShortName")
-    media_name: Optional[str] = element(tag="MediaName")
-    parent_organisation_id: Optional[int] = element(tag="ParentOrganisationId")
-    country: Optional[Country] = element(tag="Country")
+    id: Optional[Id] = element(tag="Id", default=None)
+    name: Optional[str] = element(tag="Name", default=None)
+    short_name: Optional[str] = element(tag="ShortName", default=None)
+    media_name: Optional[str] = element(tag="MediaName", default=None)
+    parent_organisation_id: Optional[int] = element(
+        tag="ParentOrganisationId", default=None
+    )
+    country: Optional[Country] = element(tag="Country", default=None)
     address: List[Address] = element(tag="Address", default_factory=list)
     contact: List[Contact] = element(tag="Contact", default_factory=list)
-    position: Optional[GeoPosition] = element(tag="Position")
+    position: Optional[GeoPosition] = element(tag="Position", default=None)
     account: List[Account] = element(tag="Account", default_factory=list)
     roles: List[Role] = element(tag="Role", default_factory=list)
     logotype: List[Image] = element(tag="Logotype", default_factory=list)
@@ -144,8 +146,8 @@ class Organisation(BaseXmlModel):
             "Military",
             "Other",
         ]
-    ] = attr()
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    ] = attr(default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class EntryReceiver(BaseXmlModel):

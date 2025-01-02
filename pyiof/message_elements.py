@@ -15,8 +15,8 @@ from .xml_base import BaseXmlModel, attr, element
 
 class BaseMessageElement(BaseXmlModel):
     iof_version: Literal["3.0"] = attr(name="iofVersion", default="3.0")
-    create_time: Optional[datetime.datetime] = attr(name="createTime")
-    creator: Optional[str] = attr()
+    create_time: Optional[datetime.datetime] = attr(name="createTime", default=None)
+    creator: Optional[str] = attr(default=None)
 
 
 class CompetitorList(BaseMessageElement):
@@ -62,7 +62,7 @@ class CourseData(BaseMessageElement):
     """
 
     event: Event = element(tag="Event")
-    race_course_data: conlist(item_type=RaceCourseData, min_items=1) = element(  # type: ignore
+    race_course_data: conlist(item_type=RaceCourseData, min_length=1) = element(  # type: ignore
         tag="RaceCourseData"
     )
 

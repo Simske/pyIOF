@@ -5,8 +5,8 @@ description = "Python bindings for IOF datastandard 3.0"
 authors = ["Simske <mail@simske.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.8.2,<3.13"
-pydantic-xml = {extras = ["lxml"], version = "^0.6.1"}
+python = ">=3.10,<3.13"
+pydantic-xml = {extras = ["lxml"], version = "2.11.0"}
 
 [tool.poetry.group.dev]
 optional = true
@@ -14,7 +14,7 @@ optional = true
 [tool.poetry.group.dev.dependencies]
 mypy  = "*" # version range defined in type-check group
 flake8 = "*" # version range defined in linting group
-ipykernel = "^6.23.3"
+ipykernel = "^6.29.4"
 
 [tool.poetry.group.prototyping]
 optional = true

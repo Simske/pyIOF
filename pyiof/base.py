@@ -12,8 +12,8 @@ class Id(BaseXmlModel):
         type (str, optional): The issuer of the identity, e.g. World Ranking List.
     """
 
-    id: str
-    type: Optional[str] = attr()
+    id: str = ""
+    type: Optional[str] = attr(default=None)
 
 
 class Image(BaseXmlModel):
@@ -34,10 +34,10 @@ class Image(BaseXmlModel):
 
     data: str
     mediatype: str = attr(name="mediaType")
-    url: Optional[str] = attr()
-    width: Optional[int] = attr()
-    height: Optional[int] = attr()
-    resolution: Optional[float] = attr()
+    url: Optional[str] = attr(default=None)
+    width: Optional[int] = attr(default=None)
+    height: Optional[int] = attr(default=None)
+    resolution: Optional[float] = attr(default=None)
 
 
 class DateAndOptionalTime(BaseXmlModel):
@@ -51,7 +51,7 @@ class DateAndOptionalTime(BaseXmlModel):
     """
 
     date: datetime.date = element(tag="Date")
-    time: Optional[datetime.time] = element(tag="Time")
+    time: Optional[datetime.time] = element(tag="Time", default=None)
 
 
 class LanguageString(BaseXmlModel):
@@ -64,7 +64,7 @@ class LanguageString(BaseXmlModel):
     """
 
     text: str
-    language: Optional[str] = attr()
+    language: Optional[str] = attr(default=None)
 
 
 class GeoPosition(BaseXmlModel):

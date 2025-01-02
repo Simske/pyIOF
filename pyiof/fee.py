@@ -18,7 +18,7 @@ class Account(BaseXmlModel):
     """
 
     account: str
-    type: Optional[str] = attr()
+    type: Optional[str] = attr(default=None)
 
 
 class Amount(BaseXmlModel):
@@ -30,7 +30,7 @@ class Amount(BaseXmlModel):
     """
 
     amount: condecimal(max_digits=30)  # type: ignore
-    currency: Optional[str] = attr()
+    currency: Optional[str] = attr(default=None)
 
 
 FeeType = Literal["Normal", "Late"]
@@ -67,20 +67,28 @@ class Fee(BaseXmlModel):
             Default=Normal
     """
 
-    id: Optional[Id] = element(tag="Id")
-    name: conlist(item_type=LanguageString, min_items=1) = element(tag="Name")  # type: ignore
-    amount: Optional[Amount] = element(tag="Amount")
-    taxable_amount: Optional[Amount] = element(tag="TaxableAmount")
-    percentage: Optional[confloat(ge=0, le=100)] = element(tag="Percentage")  # type: ignore
+    id: Optional[Id] = element(tag="Id", default=None)
+    name: conlist(item_type=LanguageString, min_length=1) = element(tag="Name")  # type: ignore
+    amount: Optional[Amount] = element(tag="Amount", default=None)
+    taxable_amount: Optional[Amount] = element(tag="TaxableAmount", default=None)
+    percentage: Optional[confloat(ge=0, le=100)] = element(tag="Percentage", default=None)  # type: ignore
     taxable_percentage: Optional[confloat(ge=0, le=100)] = element(  # type: ignore
-        tag="TaxablePercentage"
+        tag="TaxablePercentage", default=None
     )
-    valid_from_time: Optional[datetime.datetime] = element(tag="ValidFromTime")
-    valid_to_time: Optional[datetime.datetime] = element(tag="ValidToTime")
-    from_date_of_birth: Optional[datetime.date] = element(tag="FromDateOfBirth")
-    to_date_of_birth: Optional[datetime.date] = element(tag="ToDateOfBirth")
-    type: Optional[FeeType] = attr()
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    valid_from_time: Optional[datetime.datetime] = element(
+        tag="ValidFromTime", default=None
+    )
+    valid_to_time: Optional[datetime.datetime] = element(
+        tag="ValidToTime", default=None
+    )
+    from_date_of_birth: Optional[datetime.date] = element(
+        tag="FromDateOfBirth", default=None
+    )
+    to_date_of_birth: Optional[datetime.date] = element(
+        tag="ToDateOfBirth", default=None
+    )
+    type: Optional[FeeType] = attr(default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
     # TODO: not compatible with tests
     # @validator("percentage")
@@ -120,5 +128,5 @@ class AssignedFee(BaseXmlModel):
     """
 
     fee: Fee = element(tag="Fee")
-    paid_amount: Optional[Amount] = element(tag="PaidAmount")
-    modifyTime: Optional[datetime.datetime] = attr()
+    paid_amount: Optional[Amount] = element(tag="PaidAmount", default=None)
+    modifyTime: Optional[datetime.datetime] = attr(default=None)

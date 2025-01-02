@@ -20,8 +20,8 @@ class ControlCard(BaseXmlModel):
     """
 
     id: str
-    punching_system: Optional[str] = attr(name="punchingSystem")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    punching_system: Optional[str] = attr(name="punchingSystem", default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class Competitor(BaseXmlModel):
@@ -68,9 +68,9 @@ class PersonEntry(BaseXmlModel):
     Defines an event entry for a person.
     """
 
-    id: Optional[Id] = element(tag="Id")
+    id: Optional[Id] = element(tag="Id", default=None)
     person: Person = element(tag="Person")
-    organisation: Optional[Organisation] = element(tag="Organisation")
+    organisation: Optional[Organisation] = element(tag="Organisation", default=None)
     controlcards: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     scores: List[Score] = element(tag="Score", default_factory=list)
     classes: List[Class_] = element(tag="Class", default_factory=list)
@@ -80,10 +80,10 @@ class PersonEntry(BaseXmlModel):
         tag="ServiceRequest", default_factory=list
     )
     starttime_allocation_request: Optional[StartTimeAllocationRequest] = element(
-        tag="StartTimeAllocationRequest"
+        tag="StartTimeAllocationRequest", default=None
     )
-    entry_time: Optional[datetime.datetime] = element(tag="EntryTime")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    entry_time: Optional[datetime.datetime] = element(tag="EntryTime", default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class TeamEntryPerson(BaseXmlModel):
