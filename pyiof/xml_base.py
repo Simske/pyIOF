@@ -11,8 +11,8 @@ class BaseXmlModel(  # type: ignore
         "xsi": "http://www.w3.org/2001/XMLSchema-instance",
     },
 ):
-    def to_xml_tree(self, skip_empty: bool = True, **kwargs):
-        return super().to_xml_tree(skip_empty=skip_empty, **kwargs)
+    def to_xml_tree(self, exclude_none: bool = True, **kwargs):
+        return super().to_xml_tree(exclude_none=exclude_none, **kwargs)
 
     def to_xml(self, pretty_print: bool = True, **kwargs) -> bytes:
         return cast(

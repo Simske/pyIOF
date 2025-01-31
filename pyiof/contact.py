@@ -84,7 +84,7 @@ class Person(BaseXmlModel):
     """
 
     ids: List[Id] = element(tag="Id", default_factory=list)
-    name: Optional[PersonName] = element(tag="Name", default=None)
+    name: PersonName = element(tag="Name")
     birth_date: Optional[datetime.date] = element(tag="BirthDate", default=None)
     nationality: Optional[Country] = element(tag="Nationality", default=None)
     address: List[Address] = element(tag="Address", default_factory=list)
@@ -121,7 +121,7 @@ class Organisation(BaseXmlModel):
     """
 
     id: Optional[Id] = element(tag="Id", default=None)
-    name: Optional[str] = element(tag="Name", default=None)
+    name: str = element(tag="Name")
     short_name: Optional[str] = element(tag="ShortName", default=None)
     media_name: Optional[str] = element(tag="MediaName", default=None)
     parent_organisation_id: Optional[int] = element(tag="ParentOrganisationId", default=None)

@@ -43,7 +43,7 @@ class Competitor(BaseXmlModel):
     controlcards: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     class_: List[Class_] = element(tag="Class", default_factory=list)
     score: List[Score] = element(tag="Score", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class StartTimeAllocationRequest(BaseXmlModel):
