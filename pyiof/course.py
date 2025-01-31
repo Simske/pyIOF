@@ -136,9 +136,7 @@ class CourseControl(BaseXmlModel):
 
     control: conlist(item_type=str, min_length=1) = element(tag="Control")  # type: ignore
     map_text: Optional[str] = element(tag="MapText", default=None)
-    map_text_position: Optional[MapPosition] = element(
-        tag="MapTextPosition", default=None
-    )
+    map_text_position: Optional[MapPosition] = element(tag="MapTextPosition", default=None)
     leg_length: Optional[float] = element(tag="LegLength", default=None)
     score: Optional[float] = element(tag="Score", default=None)
     type: Optional[ControlType] = attr(default=None)
@@ -168,9 +166,7 @@ class Course(BaseXmlModel):
         tag="CourseControl"
     )
     map_id: Optional[int] = element(tag="MapId", default=None)
-    number_of_competitors: Optional[int] = attr(
-        name="numberOfCompetitors", default=None
-    )
+    number_of_competitors: Optional[int] = attr(name="numberOfCompetitors", default=None)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
     def __add__(self, other):

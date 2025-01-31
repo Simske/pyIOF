@@ -31,9 +31,7 @@ class CompetitorList(BaseMessageElement):
 class OrganisationList(BaseMessageElement):
     """A list of organisations, including address and contact information."""
 
-    organisations: List[Organisation] = element(
-        tag="Organisation", default_factory=list
-    )
+    organisations: List[Organisation] = element(tag="Organisation", default_factory=list)
 
 
 class EventList(BaseMessageElement):

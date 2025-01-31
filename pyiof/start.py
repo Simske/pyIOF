@@ -20,9 +20,7 @@ class PersonRaceStart(BaseXmlModel):
     course: Optional[SimpleCourse] = element(tag="Course")
     control_card: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
     race_number: Optional[int] = attr(name="raceNumber")
 
 
@@ -48,9 +46,7 @@ class TeamMemberRaceStart(BaseXmlModel):
     course: Optional[SimpleCourse] = element(tag="Course")
     control_card: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
     race_number: Optional[int] = attr(name="raceNumber")
 
 
@@ -73,17 +69,11 @@ class TeamStart(BaseXmlModel):
 
     entry_id: Optional[Id] = element(tag="EntryId")
     name: Optional[str] = element(tag="Name")
-    organisations: List[Organisation] = element(
-        tag="Organisation", default_factory=list
-    )
+    organisations: List[Organisation] = element(tag="Organisation", default_factory=list)
     bib_number: Optional[str] = element(tag="BibNumber")
-    team_member_starts: List[TeamMemberStart] = element(
-        tag="TeamMemberStart", default_factory=list
-    )
+    team_member_starts: List[TeamMemberStart] = element(tag="TeamMemberStart", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 

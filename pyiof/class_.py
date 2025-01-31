@@ -116,9 +116,7 @@ Attributes:
     Invalidated_not_fee: The results are considered invalid due to technical issues
         such as misplaced controls. Entry fees are refunded.
 """
-EventClassStatus = Literal[
-    "Normal", "Divided", "Joined", "Invalidated", "InvalidatedNoFee"
-]
+EventClassStatus = Literal["Normal", "Divided", "Joined", "Invalidated", "InvalidatedNoFee"]
 
 
 class ClassType(BaseXmlModel):
@@ -213,18 +211,10 @@ class Class_(BaseXmlModel):
     min_age: Optional[int] = attr(name="minAge", default=None)
     max_age: Optional[int] = attr(name="maxAge", default=None)
     sex: Optional[Sex] = attr(default=None)
-    min_number_of_team_members: Optional[int] = attr(
-        name="minNumberOfTeamMembers", default=None
-    )
-    max_number_of_team_members: Optional[int] = attr(
-        name="maxNumberOfTeamMembers", default=None
-    )
+    min_number_of_team_members: Optional[int] = attr(name="minNumberOfTeamMembers", default=None)
+    max_number_of_team_members: Optional[int] = attr(name="maxNumberOfTeamMembers", default=None)
     min_team_age: Optional[int] = attr(name="minTeamAge", default=None)
     max_team_age: Optional[int] = attr(name="maxTeamAge", default=None)
-    number_of_competitors: Optional[int] = attr(
-        name="numberOfCompetitors", default=None
-    )
-    max_number_of_competitors: Optional[int] = attr(
-        name="maxNumberOfCompetitors", default=None
-    )
+    number_of_competitors: Optional[int] = attr(name="numberOfCompetitors", default=None)
+    max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors", default=None)
     resultlist_mode: ResultListMode = attr(name="resultListMode", default="Default")

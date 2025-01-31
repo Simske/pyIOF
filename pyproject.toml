@@ -38,3 +38,14 @@ polyfactory = "^2.19.0"
 [build-system]
 requires = ["poetry-core>=2.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["C","W","E","F","B","A","PT","RET","SIM","PD","ERA","PLC","PLE","PLW","NPY","PERF","RUF"]
+ignore = ["F401","F403","ERA001","RUF100"]
+
+[tool.ruff.format]
+docstring-code-format = true

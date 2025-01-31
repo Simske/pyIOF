@@ -18,7 +18,7 @@ class BaseXmlModel(  # type: ignore
             xml_declaration=True,
             encoding="UTF-8",
             skip_empty=True,
-            **kwargs
+            **kwargs,
         )
 
     @classmethod

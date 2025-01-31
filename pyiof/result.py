@@ -59,15 +59,11 @@ class PersonRaceResult(BaseXmlModel):
     overall_result: Optional[OverallResult] = element(tag="OverallResult", default=None)
     course: Optional[SimpleCourse] = element(tag="Course", default=None)
     split_time: List[SplitTime] = element(tag="SplitTime", default_factory=list)
-    control_answers: List[ControlAnswer] = element(
-        tag="ControlAnswer", default_factory=list
-    )
+    control_answers: List[ControlAnswer] = element(tag="ControlAnswer", default_factory=list)
     route: Optional[Route] = element(tag="Route", default=None)
     control_card: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
     race_number: Optional[int] = attr(name="raceNumber", default=None)
 
 
@@ -109,15 +105,11 @@ class TeamMemberRaceResults(BaseXmlModel):
     overall_result: Optional[OverallResult] = element(tag="OverallResult")
     course: Optional[SimpleCourse] = element(tag="Course")
     split_time: List[SplitTime] = element(tag="SplitTime", default_factory=list)
-    control_answers: List[ControlAnswer] = element(
-        tag="ControlAnswer", default_factory=list
-    )
+    control_answers: List[ControlAnswer] = element(tag="ControlAnswer", default_factory=list)
     route: Optional[Route] = element(tag="Route")
     control_card: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
     race_number: Optional[int] = attr(name="raceNumber")
 
 
@@ -140,17 +132,13 @@ class TeamResult(BaseXmlModel):
 
     entry_id: Optional[Id] = element(tag="EntryId")
     name: str = element(tag="Name")
-    organisations: List[Organisation] = element(
-        tag="Organisation", default_factory=list
-    )
+    organisations: List[Organisation] = element(tag="Organisation", default_factory=list)
     bib_number: Optional[str] = element(tag="BibNumber")
     team_member_results: List[TeamMemberResult] = element(
         tag="TeamMemberResult", default_factory=list
     )
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
 
 
 class ClassResult(BaseXmlModel):
@@ -160,9 +148,7 @@ class ClassResult(BaseXmlModel):
 
     class_: Class_ = element(tag="Class")
     courses: List[SimpleRaceCourse] = element(tag="Course", default_factory=list)
-    person_results: List[PersonResult] = element(
-        tag="PersonResult", default_factory=list
-    )
+    person_results: List[PersonResult] = element(tag="PersonResult", default_factory=list)
     team_results: List[TeamResult] = element(tag="TeamResult", default_factory=list)
     time_resolution: float = attr(name="timeResolution", default=1)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)

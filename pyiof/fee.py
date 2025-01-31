@@ -75,18 +75,10 @@ class Fee(BaseXmlModel):
     taxable_percentage: Optional[confloat(ge=0, le=100)] = element(  # type: ignore
         tag="TaxablePercentage", default=None
     )
-    valid_from_time: Optional[datetime.datetime] = element(
-        tag="ValidFromTime", default=None
-    )
-    valid_to_time: Optional[datetime.datetime] = element(
-        tag="ValidToTime", default=None
-    )
-    from_date_of_birth: Optional[datetime.date] = element(
-        tag="FromDateOfBirth", default=None
-    )
-    to_date_of_birth: Optional[datetime.date] = element(
-        tag="ToDateOfBirth", default=None
-    )
+    valid_from_time: Optional[datetime.datetime] = element(tag="ValidFromTime", default=None)
+    valid_to_time: Optional[datetime.datetime] = element(tag="ValidToTime", default=None)
+    from_date_of_birth: Optional[datetime.date] = element(tag="FromDateOfBirth", default=None)
+    to_date_of_birth: Optional[datetime.date] = element(tag="ToDateOfBirth", default=None)
     type: Optional[FeeType] = attr(default=None)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 

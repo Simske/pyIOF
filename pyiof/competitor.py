@@ -58,9 +58,9 @@ class StartTimeAllocationRequest(BaseXmlModel):
 
     organisation: Optional[Organisation] = element(tag="Organisation")
     person: Optional[Person] = element(tag="Person")
-    type: Optional[
-        Literal["Normal", "EarlyStart", "LateStart", "SeparatedFrom", "GroupedWith"]
-    ] = attr(default="Normal")
+    type: Optional[Literal["Normal", "EarlyStart", "LateStart", "SeparatedFrom", "GroupedWith"]] = (
+        attr(default="Normal")
+    )
 
 
 class PersonEntry(BaseXmlModel):
@@ -76,9 +76,7 @@ class PersonEntry(BaseXmlModel):
     classes: List[Class_] = element(tag="Class", default_factory=list)
     race_number: List[int] = element(tag="RaceNumber", default_factory=list)
     assigned_fee: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
     starttime_allocation_request: Optional[StartTimeAllocationRequest] = element(
         tag="StartTimeAllocationRequest", default=None
     )
@@ -103,18 +101,12 @@ class TeamEntry(BaseXmlModel):
 
     id: Optional[Id] = element(tag="Id")
     name: str = element(tag="Name")
-    organisations: List[Organisation] = element(
-        tag="Organisation", default_factory=list
-    )
-    team_entry_persons: List[TeamEntryPerson] = element(
-        tag="TeamEntryPerson", default_factory=list
-    )
+    organisations: List[Organisation] = element(tag="Organisation", default_factory=list)
+    team_entry_persons: List[TeamEntryPerson] = element(tag="TeamEntryPerson", default_factory=list)
     class_: List[Class_] = element(tag="Class", default_factory=list)
     race: List[int] = element(tag="Race", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
     start_time_allocation_request: Optional[StartTimeAllocationRequest] = element(
         tag="StartTimeAllocationRequest"
     )

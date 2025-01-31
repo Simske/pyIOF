@@ -8,9 +8,7 @@ from .fee import Account
 from .misc import EventURL, InformationItem, Schedule, Service
 from .xml_base import BaseXmlModel, attr, element
 
-EventStatus = Literal[
-    "Planned", "Applied", "Proposed", "Sanctioned", "Canceled", "Rescheduled"
-]
+EventStatus = Literal["Planned", "Applied", "Proposed", "Sanctioned", "Canceled", "Rescheduled"]
 
 EventClassification = Literal["International", "National", "Regional", "Local", "Club"]
 
@@ -45,9 +43,7 @@ class Event(BaseXmlModel):
     start_time: Optional[DateAndOptionalTime] = element(tag="StartTime", default=None)
     end_time: Optional[DateAndOptionalTime] = element(tag="EndTime", default=None)
     event_status: Optional[EventStatus] = element(tag="Status", default=None)
-    classification: Optional[EventClassification] = element(
-        tag="Classification", default=None
-    )
+    classification: Optional[EventClassification] = element(tag="Classification", default=None)
     forms: List[EventForm] = element(tag="Form", default_factory=list)
     organisers: List[Organisation] = element(tag="Organiser", default_factory=list)
     officials: List[Role] = element(tag="Official", default_factory=list)
@@ -57,9 +53,7 @@ class Event(BaseXmlModel):
     services: List[Service] = element(tag="Service", default_factory=list)
     accounts: List[Account] = element(tag="Account", default_factory=list)
     urls: List[EventURL] = element(tag="URL", default_factory=list)
-    information: List[InformationItem] = element(
-        tag="Information", default_factory=list
-    )
+    information: List[InformationItem] = element(tag="Information", default_factory=list)
     schedules: List[Schedule] = element(tag="Schedule", default_factory=list)
     news: List[InformationItem] = element(tag="News", default_factory=list)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)

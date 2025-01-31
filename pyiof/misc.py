@@ -46,7 +46,9 @@ class ServiceRequest(BaseXmlModel):
 
 
 class Schedule(BaseXmlModel):
-    """Defines the schedule of sub-events that comprise the entire orienteering event, e.g. banquets, social events and awards ceremonies."""
+    """Defines the schedule of sub-events that comprise the entire orienteering event,
+    e.g. banquets, social events and awards ceremonies.
+    """
 
     start_time: datetime.datetime = element(tag="StartTime")
     end_time: Optional[datetime.datetime] = element(tag="EndTime")
@@ -70,9 +72,7 @@ class OrganisationServiceRequest(BaseXmlModel):
     """
 
     organisation: Organisation = element(tag="Organisation")
-    service_requests: List[ServiceRequest] = element(
-        tag="ServiceRequest", default_factory=list
-    )
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
     person_service_requests: List[PersonServiceRequest] = element(
         tag="PersonServiceRequest", default_factory=list
     )

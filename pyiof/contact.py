@@ -124,9 +124,7 @@ class Organisation(BaseXmlModel):
     name: Optional[str] = element(tag="Name", default=None)
     short_name: Optional[str] = element(tag="ShortName", default=None)
     media_name: Optional[str] = element(tag="MediaName", default=None)
-    parent_organisation_id: Optional[int] = element(
-        tag="ParentOrganisationId", default=None
-    )
+    parent_organisation_id: Optional[int] = element(tag="ParentOrganisationId", default=None)
     country: Optional[Country] = element(tag="Country", default=None)
     address: List[Address] = element(tag="Address", default_factory=list)
     contact: List[Contact] = element(tag="Contact", default_factory=list)
