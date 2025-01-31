@@ -78,7 +78,7 @@ class GeoPosition(BaseXmlModel):
 
     lng: float = attr()
     lat: float = attr()
-    alt: Optional[float] = attr()
+    alt: Optional[float] = attr(default=None)
 
 
 """
@@ -115,4 +115,4 @@ class Score(BaseXmlModel):
     """
 
     score: float
-    type: Optional[str] = attr()
+    type: Optional[str] = attr(default=None)

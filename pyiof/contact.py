@@ -40,7 +40,7 @@ class Address(BaseXmlModel):
     city: Optional[str] = element(tag="City")
     state: Optional[str] = element(tag="State")
     country: Optional[Country] = element(tag="Country")
-    type: Optional[str] = attr()
+    type: Optional[str] = attr(default=None)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 

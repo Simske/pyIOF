@@ -31,7 +31,7 @@ class Service(BaseXmlModel):
     description: List[LanguageString] = element(tag="Description", default_factory=list)
     max_number: Optional[float] = element(tag="MaxNumber")
     requested_number: Optional[float] = element(tag="RequestedNumber")
-    type: Optional[str] = attr()
+    type: Optional[str] = attr(None)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
 
 

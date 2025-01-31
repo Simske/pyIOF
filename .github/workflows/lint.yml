@@ -24,7 +24,7 @@ jobs:
       - name: Install linting tools
         run: poetry install --with=lint
       - name: Run flake8
-        run: poetry run ruff
+        run: poetry run ruff check
 
   type-check:
     runs-on: ubuntu-latest
