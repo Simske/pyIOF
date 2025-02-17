@@ -203,7 +203,7 @@ class StartName(BaseXmlModel):
     """
 
     start_name: str
-    race_Number: Optional[int] = attr(name="raceNumber")
+    race_number: Optional[int] = attr(name="raceNumber", default=None)
 
 
 class PersonCourseAssignment(BaseXmlModel):
@@ -212,12 +212,12 @@ class PersonCourseAssignment(BaseXmlModel):
     family. Persons are matched by 1) BibNumber, 2) EntryId.
     """
 
-    entry_id: Optional[Id] = element(tag="EntryId")
-    bib_number: Optional[str] = element(tag="BibNumber")
-    person_name: Optional[str] = element(tag="PersonName")
-    class_name: Optional[str] = element(tag="ClassName")
-    course_name: Optional[str] = element(tag="CourseName")
-    course_family: Optional[str] = element(tag="CourseFamily")
+    entry_id: Optional[Id] = element(tag="EntryId", default=None)
+    bib_number: Optional[str] = element(tag="BibNumber", default=None)
+    person_name: Optional[str] = element(tag="PersonName", default=None)
+    class_name: Optional[str] = element(tag="ClassName", default=None)
+    course_name: Optional[str] = element(tag="CourseName", default=None)
+    course_family: Optional[str] = element(tag="CourseFamily", default=None)
 
 
 class TeamMemberCourseAssignment(BaseXmlModel):
@@ -227,13 +227,13 @@ class TeamMemberCourseAssignment(BaseXmlModel):
     Team members are matched by 1) BibNumber, 2) Leg and LegOrder, 3) EntryId.
     """
 
-    entry_id: Optional[Id] = element(tag="EntryId")
-    bib_number: Optional[str] = element(tag="BibNumber")
-    leg: Optional[int] = element(tag="Leg")
-    leg_order: Optional[int] = element(tag="LegOrder")
-    team_member_name: Optional[int] = element(tag="TeamMemberName")
-    course_name: Optional[str] = element(tag="CourseName")
-    course_family: Optional[str] = element(tag="CourseFamily")
+    entry_id: Optional[Id] = element(tag="EntryId", default=None)
+    bib_number: Optional[str] = element(tag="BibNumber", default=None)
+    leg: Optional[int] = element(tag="Leg", default=None)
+    leg_order: Optional[int] = element(tag="LegOrder", default=None)
+    team_member_name: Optional[int] = element(tag="TeamMemberName", default=None)
+    course_name: Optional[str] = element(tag="CourseName", default=None)
+    course_family: Optional[str] = element(tag="CourseFamily", default=None)
 
 
 class TeamCourseAssignment(BaseXmlModel):
@@ -242,21 +242,21 @@ class TeamCourseAssignment(BaseXmlModel):
     Teams are matched by 1) BibNumber, 2) TeamName+ClassName.
     """
 
-    bib_number: Optional[str] = element(tag="BibNumber")
-    team_name: Optional[str] = element(tag="TeamName")
-    class_name: Optional[str] = element(tag="ClassName")
+    bib_number: Optional[str] = element(tag="BibNumber", default=None)
+    team_name: Optional[str] = element(tag="TeamName", default=None)
+    class_name: Optional[str] = element(tag="ClassName", default=None)
     team_member_course_assignment: List[TeamMemberCourseAssignment] = element(
         tag="TeamMemberCourseAssignment", default_factory=list
     )
 
 
 class ClassCourseAssignment(BaseXmlModel):
-    class_id: Optional[Id] = element(tag="ClassId")
+    class_id: Optional[Id] = element(tag="ClassId", default=None)
     class_name: str = element(tag="ClassName")
     allowed_on_leg: List[int] = element(tag="AllowedOnLeg", default_factory=list)
-    course_name: Optional[str] = element(tag="CourseName")
-    course_family: Optional[str] = element(tag="CourseFamily")
-    number_of_competitors: Optional[int] = attr(name="numberOfCompetitors")
+    course_name: Optional[str] = element(tag="CourseName", default=None)
+    course_family: Optional[str] = element(tag="CourseFamily", default=None)
+    number_of_competitors: Optional[int] = attr(name="numberOfCompetitors", default=None)
 
 
 class RaceCourseData(BaseXmlModel):
