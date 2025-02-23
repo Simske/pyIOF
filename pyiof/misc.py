@@ -19,30 +19,30 @@ class InformationItem(BaseXmlModel):
 
     title: str = element(tag="Title")
     content: str = element(tag="Content")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class Service(BaseXmlModel):
     """Defines a general purpose service request, e.g. for rental card or accomodation."""
 
-    id: Optional[Id] = element(tag="Id")
+    id: Optional[Id] = element(tag="Id", default=None)
     name: conlist(item_type=LanguageString, min_length=1) = element(tag="Name")  # type: ignore
     fee: List[Fee] = element(tag="Fee", default_factory=list)
     description: List[LanguageString] = element(tag="Description", default_factory=list)
-    max_number: Optional[float] = element(tag="MaxNumber")
-    requested_number: Optional[float] = element(tag="RequestedNumber")
+    max_number: Optional[float] = element(tag="MaxNumber", default=None)
+    requested_number: Optional[float] = element(tag="RequestedNumber", default=None)
     type: Optional[str] = attr(None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class ServiceRequest(BaseXmlModel):
-    id: Optional[Id] = element(tag="Id")
+    id: Optional[Id] = element(tag="Id", default=None)
     service: Service = element(tag="Service")
     requested_quantity: float = element(tag="RequestedQuantity")
-    deliverd_quantity: Optional[float] = element(tag="DeliveredQuantity")
-    comment: Optional[str] = element(tag="Comment")
+    deliverd_quantity: Optional[float] = element(tag="DeliveredQuantity", default=None)
+    comment: Optional[str] = element(tag="Comment", default=None)
     assigned_fee: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class Schedule(BaseXmlModel):
