@@ -34,14 +34,14 @@ class Address(BaseXmlModel):
         type (str, optional): The address type, e.g. visitor address or invoice address.
     """
 
-    care_of: Optional[str] = element(tag="CareOf")
-    street: Optional[str] = element(tag="Street")
-    zip_code: Optional[str] = element(tag="ZipCode")
-    city: Optional[str] = element(tag="City")
-    state: Optional[str] = element(tag="State")
-    country: Optional[Country] = element(tag="Country")
+    care_of: Optional[str] = element(tag="CareOf", default=None)
+    street: Optional[str] = element(tag="Street", default=None)
+    zip_code: Optional[str] = element(tag="ZipCode", default=None)
+    city: Optional[str] = element(tag="City", default=None)
+    state: Optional[str] = element(tag="State", default=None)
+    country: Optional[Country] = element(tag="Country", default=None)
     type: Optional[str] = attr(default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class Contact(BaseXmlModel):
@@ -63,7 +63,7 @@ class Contact(BaseXmlModel):
         "WebAddress",
         "Other",
     ] = attr()
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class PersonName(BaseXmlModel):

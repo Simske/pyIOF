@@ -30,9 +30,9 @@ ResultStatus = Literal[
 
 
 class OverallResult(BaseXmlModel):
-    time: Optional[float] = element(tag="Time")
-    time_behind: Optional[float] = element(tag="TimeBehind")
-    position: Optional[int] = element(tag="Position")
+    time: Optional[float] = element(tag="Time", default=None)
+    time_behind: Optional[float] = element(tag="TimeBehind", default=None)
+    position: Optional[int] = element(tag="Position", default=None)
     status: ResultStatus = element(tag="Status")
     scores: List[Score] = element(tag="Score", default_factory=list)
 
@@ -92,25 +92,25 @@ class TeamPosition(BaseXmlModel):
 class TeamMemberRaceResults(BaseXmlModel):
     """Result information for a person in a race."""
 
-    leg: Optional[int] = element(tag="Leg")
-    leg_order: Optional[int] = element(tag="LegOrder")
-    bib_number: Optional[str] = element(tag="BibNumber")
-    start_time: Optional[datetime.datetime] = element(tag="StartTime")
-    finish_time: Optional[datetime.datetime] = element(tag="FinishTime")
-    time: Optional[float] = element(tag="Time")
+    leg: Optional[int] = element(tag="Leg", default=None)
+    leg_order: Optional[int] = element(tag="LegOrder", default=None)
+    bib_number: Optional[str] = element(tag="BibNumber", default=None)
+    start_time: Optional[datetime.datetime] = element(tag="StartTime", default=None)
+    finish_time: Optional[datetime.datetime] = element(tag="FinishTime", default=None)
+    time: Optional[float] = element(tag="Time", default=None)
     time_behind: List[TeamTimeBehind] = element(tag="TimeBehind")
-    position: Optional[TeamPosition] = element(tag="Position")
+    position: Optional[TeamPosition] = element(tag="Position", default=None)
     status: ResultStatus = element(tag="Status")
     scores: List[Score] = element(tag="Score", default_factory=list)
-    overall_result: Optional[OverallResult] = element(tag="OverallResult")
-    course: Optional[SimpleCourse] = element(tag="Course")
+    overall_result: Optional[OverallResult] = element(tag="OverallResult", default=None)
+    course: Optional[SimpleCourse] = element(tag="Course", default=None)
     split_time: List[SplitTime] = element(tag="SplitTime", default_factory=list)
     control_answers: List[ControlAnswer] = element(tag="ControlAnswer", default_factory=list)
-    route: Optional[Route] = element(tag="Route")
+    route: Optional[Route] = element(tag="Route", default=None)
     control_card: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
     service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
-    race_number: Optional[int] = attr(name="raceNumber")
+    race_number: Optional[int] = attr(name="raceNumber", default=None)
 
 
 class TeamMemberResult(BaseXmlModel):
@@ -118,11 +118,11 @@ class TeamMemberResult(BaseXmlModel):
     finish time, and split times.
     """
 
-    entry_id: Optional[Id] = element(tag="EntryId")
+    entry_id: Optional[Id] = element(tag="EntryId", default=None)
     person: Person = element(tag="Person")
     organisation: Optional[Organisation] = element(tag="Organisation")
     results: List[TeamMemberRaceResults] = element(tag="Result", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class TeamResult(BaseXmlModel):
@@ -130,10 +130,10 @@ class TeamResult(BaseXmlModel):
     individual times for the team members.
     """
 
-    entry_id: Optional[Id] = element(tag="EntryId")
+    entry_id: Optional[Id] = element(tag="EntryId", default=None)
     name: str = element(tag="Name")
     organisations: List[Organisation] = element(tag="Organisation", default_factory=list)
-    bib_number: Optional[str] = element(tag="BibNumber")
+    bib_number: Optional[str] = element(tag="BibNumber", default=None)
     team_member_results: List[TeamMemberResult] = element(
         tag="TeamMemberResult", default_factory=list
     )

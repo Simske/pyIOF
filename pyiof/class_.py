@@ -71,7 +71,7 @@ class RaceClass(BaseXmlModel):
     punching_system: List[str] = element(tag="PunchingSystem", default_factory=list)
     team_fee: List[Fee] = element(tag="TeamFee", default_factory=list)
     fee: List[Fee] = element(tag="Fee", default_factory=list)
-    first_start: Optional[datetime.datetime] = element(tag="FirstStart")
+    first_start: Optional[datetime.datetime] = element(tag="FirstStart", default=None)
     status: Optional[
         Literal[
             "StartTimesNotAllocated",
@@ -81,12 +81,12 @@ class RaceClass(BaseXmlModel):
             "Invalidated",
             "InvalidatedNoFee",
         ]
-    ] = element(tag="Status")
+    ] = element(tag="Status", default=None)
     course: List[SimpleCourse] = element(tag="Course", default_factory=list)
     online_controls: List[Control] = element(tag="OnlineControl", default_factory=list)
-    race_number: Optional[int] = attr(name="raceNumber")
-    max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    race_number: Optional[int] = attr(name="raceNumber", default=None)
+    max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors", default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 """Defines the kind of information to include in the result list, and how
@@ -128,9 +128,9 @@ class ClassType(BaseXmlModel):
         modifytime (datetime, optional)
     """
 
-    id: Optional[Id] = element(tag="Id")
+    id: Optional[Id] = element(tag="Id", default=None)
     name: str = element(tag="Name")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 EventForm = Literal["Individual", "Team", "Relay"]

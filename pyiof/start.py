@@ -39,11 +39,11 @@ class PersonStart(BaseXmlModel):
 class TeamMemberRaceStart(BaseXmlModel):
     """Start information for a team member in a race."""
 
-    leg: Optional[int] = element(tag="Leg")
-    leg_order: Optional[int] = element(tag="LegOrder")
-    bib_number: Optional[str] = element(tag="BibNumber")
-    start_time: Optional[datetime.datetime] = element(tag="StartTime")
-    course: Optional[SimpleCourse] = element(tag="Course")
+    leg: Optional[int] = element(tag="Leg", default=None)
+    leg_order: Optional[int] = element(tag="LegOrder", default=None)
+    bib_number: Optional[str] = element(tag="BibNumber", default=None)
+    start_time: Optional[datetime.datetime] = element(tag="StartTime", default=None)
+    course: Optional[SimpleCourse] = element(tag="Course", default=None)
     control_card: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
     service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
@@ -55,9 +55,9 @@ class TeamMemberStart(BaseXmlModel):
     and bib number.
     """
 
-    entry_id: Optional[Id] = element(tag="EntryId")
-    person: Optional[Person] = element(tag="Person")
-    organisation: Optional[Organisation] = element(tag="Organisation")
+    entry_id: Optional[Id] = element(tag="EntryId", default=None)
+    person: Optional[Person] = element(tag="Person", default=None)
+    organisation: Optional[Organisation] = element(tag="Organisation", default=None)
     starts: conlist(item_type=TeamMemberRaceStart, min_length=1) = element(tag="Start")  # type: ignore
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
@@ -67,10 +67,10 @@ class TeamStart(BaseXmlModel):
     and bib numbers.
     """
 
-    entry_id: Optional[Id] = element(tag="EntryId")
-    name: Optional[str] = element(tag="Name")
+    entry_id: Optional[Id] = element(tag="EntryId", default=None)
+    name: Optional[str] = element(tag="Name", default=None)
     organisations: List[Organisation] = element(tag="Organisation", default_factory=list)
-    bib_number: Optional[str] = element(tag="BibNumber")
+    bib_number: Optional[str] = element(tag="BibNumber", default=None)
     team_member_starts: List[TeamMemberStart] = element(tag="TeamMemberStart", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
     service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)

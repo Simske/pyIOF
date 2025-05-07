@@ -31,7 +31,7 @@ class Service(BaseXmlModel):
     description: List[LanguageString] = element(tag="Description", default_factory=list)
     max_number: Optional[float] = element(tag="MaxNumber", default=None)
     requested_number: Optional[float] = element(tag="RequestedNumber", default=None)
-    type: Optional[str] = attr(None)
+    type: Optional[str] = attr(default=None)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
@@ -51,12 +51,12 @@ class Schedule(BaseXmlModel):
     """
 
     start_time: datetime.datetime = element(tag="StartTime")
-    end_time: Optional[datetime.datetime] = element(tag="EndTime")
+    end_time: Optional[datetime.datetime] = element(tag="EndTime", default=None)
     name: str = element(tag="Name")
-    venue: Optional[str] = element(tag="Venue")
-    position: Optional[GeoPosition] = element(tag="Position")
-    details: Optional[str] = element(tag="Details")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    venue: Optional[str] = element(tag="Venue", default=None)
+    position: Optional[GeoPosition] = element(tag="Position", default=None)
+    details: Optional[str] = element(tag="Details", default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class PersonServiceRequest(BaseXmlModel):

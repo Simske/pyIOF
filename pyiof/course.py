@@ -18,9 +18,9 @@ class Leg(BaseXmlModel):
             in case of a parallel leg.
     """
 
-    name: Optional[str] = element(tag="Name")
-    min_number_of_competitors: Optional[int] = attr(name="minNumberOfCompetitors")
-    max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors")
+    name: Optional[str] = element(tag="Name", default=None)
+    min_number_of_competitors: Optional[int] = attr(name="minNumberOfCompetitors", default=None)
+    max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors", default=None)
 
 
 class SimpleCourse(BaseXmlModel):
@@ -79,13 +79,13 @@ class Control(BaseXmlModel):
         modifytime (datetime.datetime, optional)
     """
 
-    id: Id = element(tag="Id")
+    id: List[Id] = element(tag="Id", default_factory=list)
     punching_unit_id: List[Id] = element(tag="PunchingUnitId", default_factory=list)
     name: List[LanguageString] = element(tag="Name", default_factory=list)
-    position: Optional[GeoPosition] = element(tag="Position")
-    map_position: Optional[MapPosition] = element(tag="MapPosition")
+    position: Optional[GeoPosition] = element(tag="Position", default=None)
+    map_position: Optional[MapPosition] = element(tag="MapPosition", default=None)
     type: ControlType = attr(default="control")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class SimpleRaceCourse(SimpleCourse):
@@ -122,7 +122,7 @@ class ControlAnswer(BaseXmlModel):
 
     answer: str = element(tag="Answer")
     correct_answer: str = element(tag="CorrectAnswer", default="")
-    time: Optional[float] = element(tag="Time")
+    time: Optional[float] = element(tag="Time", default=None)
 
 
 class CourseControl(BaseXmlModel):
@@ -149,7 +149,7 @@ class CourseControl(BaseXmlModel):
             "MandatoryCrossingPoint",
             "MandatoryOutOfBoundsAreaPassage",
         ]
-    ] = attr(name="specialInstruction", default="None")
+    ] = attr(name="specialInstruction", default=None)
     taped_route_length: Optional[float] = attr(name="tapedRouteLength", default=None)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
@@ -182,8 +182,8 @@ class Course(BaseXmlModel):
 class Map(BaseXmlModel):
     """Map information, used in course setting software with regard to the "real" map."""
 
-    id: Optional[Id] = element(tag="Id")
-    image: Optional[Image] = element(tag="Image")
+    id: Optional[Id] = element(tag="Id", default=None)
+    image: Optional[Image] = element(tag="Image", default=None)
     scale: float = element(tag="Scale")
     map_position_top_left: MapPosition = element(tag="MapPositionTopLeft")
     map_position_bottom_right: MapPosition = element(tag="MapPositionBottomRight")

@@ -95,5 +95,5 @@ class ServiceRequestList(BaseMessageElement):
 class ControlCardList(BaseMessageElement):
     """Defines control card ownership, e.g. for rental control card handling purposes."""
 
-    owner: Optional[str] = element(tag="Owner")
+    owner: Optional[str] = element(tag="Owner", default=None)
     control_cards: List[ControlCard] = element(tag="ControlCard", default_factory=list)

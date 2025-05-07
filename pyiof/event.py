@@ -24,17 +24,17 @@ class Race(BaseXmlModel):
 
     race_number: int = element(tag="RaceNumber")
     name: str = element(tag="Name")
-    start_time: Optional[DateAndOptionalTime] = element(tag="StartTime")
-    end_time: Optional[DateAndOptionalTime] = element(tag="EndTime")
-    status: Optional[EventStatus] = element(tag="Status")
-    classification: Optional[EventClassification] = element(tag="Classification")
-    position: Optional[GeoPosition] = element(tag="Position")
+    start_time: Optional[DateAndOptionalTime] = element(tag="StartTime", default=None)
+    end_time: Optional[DateAndOptionalTime] = element(tag="EndTime", default=None)
+    status: Optional[EventStatus] = element(tag="Status", default=None)
+    classification: Optional[EventClassification] = element(tag="Classification", default=None)
+    position: Optional[GeoPosition] = element(tag="Position", default=None)
     discipline: List[RaceDiscipline] = element(tag="Discipline", default_factory=list)
     organisers: List[Organisation] = element(tag="Organiser", default_factory=list)
     officials: List[Role] = element(tag="Official", default_factory=list)
     services: List[Service] = element(tag="Service", default_factory=list)
     url: List[EventURL] = element(tag="URL", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
 class Event(BaseXmlModel):

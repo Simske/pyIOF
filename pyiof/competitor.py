@@ -56,8 +56,8 @@ class StartTimeAllocationRequest(BaseXmlModel):
     organizers whether they will support such requests.
     """
 
-    organisation: Optional[Organisation] = element(tag="Organisation")
-    person: Optional[Person] = element(tag="Person")
+    organisation: Optional[Organisation] = element(tag="Organisation", default=None)
+    person: Optional[Person] = element(tag="Person", default=None)
     type: Optional[Literal["Normal", "EarlyStart", "LateStart", "SeparatedFrom", "GroupedWith"]] = (
         attr(default="Normal")
     )
@@ -87,10 +87,10 @@ class PersonEntry(BaseXmlModel):
 class TeamEntryPerson(BaseXmlModel):
     """Defines a person that is part of a team entry."""
 
-    person: Optional[Person] = element(tag="Person")
+    person: Optional[Person] = element(tag="Person", default=None)
     organisation: Optional[Organisation] = element(tag="Organisation")
-    leg: Optional[int] = element(tag="Leg")
-    leg_order: Optional[int] = element(tag="LegOrder")
+    leg: Optional[int] = element(tag="Leg", default=None)
+    leg_order: Optional[int] = element(tag="LegOrder", default=None)
     control_card: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     score: List[Score] = element(tag="Score", default_factory=list)
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
@@ -99,7 +99,7 @@ class TeamEntryPerson(BaseXmlModel):
 class TeamEntry(BaseXmlModel):
     """Defines an event entry for a team."""
 
-    id: Optional[Id] = element(tag="Id")
+    id: Optional[Id] = element(tag="Id", default=None)
     name: str = element(tag="Name")
     organisations: List[Organisation] = element(tag="Organisation", default_factory=list)
     team_entry_persons: List[TeamEntryPerson] = element(tag="TeamEntryPerson", default_factory=list)
@@ -108,8 +108,8 @@ class TeamEntry(BaseXmlModel):
     assigned_fees: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
     service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
     start_time_allocation_request: Optional[StartTimeAllocationRequest] = element(
-        tag="StartTimeAllocationRequest"
+        tag="StartTimeAllocationRequest", default=None
     )
-    contact_information: Optional[str] = element(tag="ContactInformation")
-    entry_time: Optional[datetime.datetime] = element(tag="EntryTime")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime")
+    contact_information: Optional[str] = element(tag="ContactInformation", default=None)
+    entry_time: Optional[datetime.datetime] = element(tag="EntryTime", default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
