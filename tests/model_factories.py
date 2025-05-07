@@ -1,14 +1,13 @@
 from typing import Generic, TypeVar
 
 from polyfactory import Ignore
+from polyfactory.factories.base import T
 from polyfactory.factories.pydantic_factory import ModelFactory
 
 import pyiof
 
-T = TypeVar("T")
 
-
-class CustomModelFactory(Generic[T], ModelFactory[T]):
+class CustomModelFactory(ModelFactory[T]):  # type: ignore
     __is_base_factory__ = True
 
     __randomize_collection_length__ = True
