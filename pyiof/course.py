@@ -79,7 +79,7 @@ class Control(BaseXmlModel):
         modifytime (datetime.datetime, optional)
     """
 
-    id: List[Id] = element(tag="Id", default_factory=list)
+    id: Optional[Id] = element(tag="Id", default=None)
     punching_unit_id: List[Id] = element(tag="PunchingUnitId", default_factory=list)
     name: List[LanguageString] = element(tag="Name", default_factory=list)
     position: Optional[GeoPosition] = element(tag="Position", default=None)
