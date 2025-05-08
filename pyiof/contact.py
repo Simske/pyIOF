@@ -17,7 +17,7 @@ class Country(BaseXmlModel):
               ISO 3166-1 alpha-3 codes.
     """
 
-    name: str
+    name: str = ""
     code: str = attr()
 
 
