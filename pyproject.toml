@@ -1,6 +1,6 @@
 [project]
 name = "pyiof"
-version = "0.1.0"
+version = "0.2.0"
 description = "Python package for reading / writing IOF datastandard 3.0"
 authors = [{name = "Simske", email = "mail@simske.com"}]
 readme = "README.md"
