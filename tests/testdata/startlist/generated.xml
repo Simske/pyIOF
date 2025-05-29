@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<StartList xmlns="http://www.orienteering.org/datastandard/3.0" xsi:schemaLocation="http://www.orienteering.org/datastandard/3.0 schema.xsd" iofVersion="3.0" createTime="1976-10-01T01:51:38.41" creator="string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Event modifyTime="1978-10-06T02:36:22.62">
+    <Id>string</Id>
+    <Name>string</Name>
+    <StartTime>
+      <Date>1981-04-23</Date>
+      <Time>16:38:15.79</Time>
+    </StartTime>
+    <EndTime>
+      <Date>1986-07-21</Date>
+      <Time>17:21:01.94</Time>
+    </EndTime>
+    <Status>Rescheduled</Status>
+    <Classification>National</Classification>
+    <Form>Team</Form>
+    <Form>Relay</Form>
+    <Form>Individual</Form>
+    <Organiser>
+      <Id>string</Id>
+      <Name>string</Name>
+      <MediaName>string</MediaName>
+      <ParentOrganisationId>3553</ParentOrganisationId>
+      <Country code="string">string</Country>
+      <Address />
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="EmailAddress">string</Contact>
+      <Contact type="EmailAddress">string</Contact>
+      <Position lng="-29281599999999.8" lat="40090000000000.2" />
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    </Organiser>
+    <Organiser>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ParentOrganisationId>1236</ParentOrganisationId>
+      <Address />
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="Other">string</Contact>
+      <Position lng="-2398799999999.77" lat="-40585999999999.8" />
+      <Account>string</Account>
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+    </Organiser>
+    <Organiser>
+      <Id>string</Id>
+      <Name>string</Name>
+      <ParentOrganisationId>-2146</ParentOrganisationId>
+      <Country code="string">string</Country>
+      <Contact type="MobilePhoneNumber">string</Contact>
+      <Contact type="PhoneNumber">string</Contact>
+      <Contact type="WebAddress">string</Contact>
+      <Contact type="PhoneNumber">string</Contact>
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    </Organiser>
+    <Organiser>
+      <Name>string</Name>
+      <Address />
+      <Address />
+      <Address />
+      <Address />
+      <Position lng="-26541799999999.8" lat="-28370199999999.8" />
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Extensions />
+    </Organiser>
+    <Organiser>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ParentOrganisationId>101</ParentOrganisationId>
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="PhoneNumber">string</Contact>
+      <Contact type="MobilePhoneNumber">string</Contact>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+    </Organiser>
+    <Official type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Official>
+    <Official type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Official>
+    <Official type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Official>
+    <Class>
+      <Id>string</Id>
+      <Name>string</Name>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <Leg />
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <TooManyEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooManyEntriesSubstituteClass>
+    </Class>
+    <Class>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <Leg />
+      <Leg />
+      <Leg />
+      <Leg />
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Status>Divided</Status>
+      <RaceClass />
+      <RaceClass />
+      <TooFewEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooFewEntriesSubstituteClass>
+      <Extensions />
+    </Class>
+    <Class>
+      <Id>string</Id>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>Divided</Status>
+      <RaceClass />
+      <RaceClass />
+      <TooFewEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooFewEntriesSubstituteClass>
+      <TooManyEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooManyEntriesSubstituteClass>
+      <Extensions />
+    </Class>
+    <Class>
+      <Name>string</Name>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>Divided</Status>
+      <RaceClass />
+      <RaceClass />
+      <RaceClass />
+      <TooFewEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooFewEntriesSubstituteClass>
+    </Class>
+    <Class>
+      <Id>string</Id>
+      <Name>string</Name>
+      <Leg />
+      <Leg />
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>InvalidatedNoFee</Status>
+      <RaceClass />
+      <RaceClass />
+      <RaceClass />
+      <TooManyEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooManyEntriesSubstituteClass>
+      <Extensions />
+    </Class>
+    <Race>
+      <RaceNumber>-3131</RaceNumber>
+      <Name>string</Name>
+      <StartTime>
+        <Date>1991-05-17</Date>
+      </StartTime>
+      <Discipline>Middle</Discipline>
+      <Organiser>
+        <Name>string</Name>
+      </Organiser>
+      <Organiser>
+        <Name>string</Name>
+      </Organiser>
+      <Official type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Official>
+      <Service>
+        <Name>string</Name>
+      </Service>
+      <Service>
+        <Name>string</Name>
+      </Service>
+      <Service>
+        <Name>string</Name>
+      </Service>
+      <Service>
+        <Name>string</Name>
+      </Service>
+    </Race>
+    <Race>
+      <RaceNumber>-2231</RaceNumber>
+      <Name>string</Name>
+      <StartTime>
+        <Date>1978-05-05</Date>
+      </StartTime>
+      <Status>Canceled</Status>
+      <Discipline>Other</Discipline>
+      <Discipline>Sprint</Discipline>
+      <Organiser>
+        <Name>string</Name>
+      </Organiser>
+      <Organiser>
+        <Name>string</Name>
+      </Organiser>
+      <Official type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Official>
+      <Service>
+        <Name>string</Name>
+      </Service>
+      <URL type="ResultList">string</URL>
+      <URL type="Other">string</URL>
+    </Race>
+    <Race>
+      <RaceNumber>-3265</RaceNumber>
+      <Name>string</Name>
+      <EndTime>
+        <Date>2014-03-16</Date>
+      </EndTime>
+      <Position lng="45242500000000.2" lat="-12148499999999.8" />
+      <Discipline>Long</Discipline>
+      <Organiser>
+        <Name>string</Name>
+      </Organiser>
+      <Organiser>
+        <Name>string</Name>
+      </Organiser>
+      <Organiser>
+        <Name>string</Name>
+      </Organiser>
+      <Official type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Official>
+      <Official type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Official>
+      <Service>
+        <Name>string</Name>
+      </Service>
+      <URL type="Other">string</URL>
+      <Extensions />
+    </Race>
+    <EntryReceiver>
+      <Address />
+      <Contact type="EmailAddress">string</Contact>
+      <Contact type="EmailAddress">string</Contact>
+      <Contact type="EmailAddress">string</Contact>
+    </EntryReceiver>
+    <Service>
+      <Id>string</Id>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Description>string</Description>
+      <Description>string</Description>
+      <MaxNumber>-38456599999999.8</MaxNumber>
+      <RequestedNumber>44894400000000.2</RequestedNumber>
+      <Extensions />
+    </Service>
+    <Account>string</Account>
+    <Account>string</Account>
+    <URL type="Other">string</URL>
+    <URL type="StartList">string</URL>
+    <URL type="Other">string</URL>
+    <URL type="Website">string</URL>
+    <Information>
+      <Title>string</Title>
+      <Content>string</Content>
+    </Information>
+    <Information>
+      <Title>string</Title>
+      <Content>string</Content>
+    </Information>
+    <Information>
+      <Title>string</Title>
+      <Content>string</Content>
+    </Information>
+    <Information>
+      <Title>string</Title>
+      <Content>string</Content>
+    </Information>
+    <Schedule>
+      <StartTime>2013-03-11T19:15:06.42</StartTime>
+      <EndTime>1982-04-19T08:01:28.30</EndTime>
+      <Name>string</Name>
+      <Venue>string</Venue>
+      <Position lng="-49483999999999.8" lat="6360300000000.24" />
+    </Schedule>
+    <News>
+      <Title>string</Title>
+      <Content>string</Content>
+    </News>
+    <News>
+      <Title>string</Title>
+      <Content>string</Content>
+    </News>
+    <News>
+      <Title>string</Title>
+      <Content>string</Content>
+    </News>
+    <News>
+      <Title>string</Title>
+      <Content>string</Content>
+    </News>
+    <News>
+      <Title>string</Title>
+      <Content>string</Content>
+    </News>
+    <Extensions />
+  </Event>
+  <ClassStart modifyTime="2010-12-08T01:15:48.08">
+    <Class>
+      <Id>string</Id>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <Leg />
+      <Leg />
+      <Leg />
+      <Leg />
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <RaceClass />
+      <RaceClass />
+      <RaceClass />
+      <RaceClass />
+      <TooFewEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooFewEntriesSubstituteClass>
+    </Class>
+    <Course />
+    <Course />
+    <Course />
+    <Course />
+    <StartName>string</StartName>
+    <StartName>string</StartName>
+    <StartName>string</StartName>
+    <PersonStart>
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <Start />
+      <Start />
+      <Start />
+      <Start />
+      <Extensions />
+    </PersonStart>
+    <PersonStart>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <Start />
+    </PersonStart>
+    <TeamStart>
+      <EntryId>string</EntryId>
+      <Name>string</Name>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <TeamMemberStart>
+        <Start />
+      </TeamMemberStart>
+      <TeamMemberStart>
+        <Start />
+      </TeamMemberStart>
+      <TeamMemberStart>
+        <Start />
+      </TeamMemberStart>
+      <TeamMemberStart>
+        <Start />
+      </TeamMemberStart>
+      <AssignedFee>
+        <Fee>
+          <Name>string</Name>
+        </Fee>
+      </AssignedFee>
+      <ServiceRequest>
+        <Service>
+          <Name>string</Name>
+        </Service>
+        <RequestedQuantity>30747100000000.2</RequestedQuantity>
+      </ServiceRequest>
+      <Extensions />
+    </TeamStart>
+    <TeamStart>
+      <EntryId>string</EntryId>
+      <Name>string</Name>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <BibNumber>string</BibNumber>
+      <Extensions />
+    </TeamStart>
+    <TeamStart>
+      <Name>string</Name>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <BibNumber>string</BibNumber>
+      <TeamMemberStart>
+        <Start />
+      </TeamMemberStart>
+      <TeamMemberStart>
+        <Start />
+      </TeamMemberStart>
+      <TeamMemberStart>
+        <Start />
+      </TeamMemberStart>
+      <AssignedFee>
+        <Fee>
+          <Name>string</Name>
+        </Fee>
+      </AssignedFee>
+      <AssignedFee>
+        <Fee>
+          <Name>string</Name>
+        </Fee>
+      </AssignedFee>
+      <ServiceRequest>
+        <Service>
+          <Name>string</Name>
+        </Service>
+        <RequestedQuantity>-2661799999999.77</RequestedQuantity>
+      </ServiceRequest>
+      <ServiceRequest>
+        <Service>
+          <Name>string</Name>
+        </Service>
+        <RequestedQuantity>-5472299999999.76</RequestedQuantity>
+      </ServiceRequest>
+    </TeamStart>
+    <TeamStart>
+      <Name>string</Name>
+      <Organisation>
+        <Name>string</Name>
+      </Organisation>
+      <BibNumber>string</BibNumber>
+      <TeamMemberStart>
+        <Start />
+      </TeamMemberStart>
+      <ServiceRequest>
+        <Service>
+          <Name>string</Name>
+        </Service>
+        <RequestedQuantity>15641400000000.2</RequestedQuantity>
+      </ServiceRequest>
+      <ServiceRequest>
+        <Service>
+          <Name>string</Name>
+        </Service>
+        <RequestedQuantity>-27013799999999.8</RequestedQuantity>
+      </ServiceRequest>
+      <ServiceRequest>
+        <Service>
+          <Name>string</Name>
+        </Service>
+        <RequestedQuantity>31890500000000.2</RequestedQuantity>
+      </ServiceRequest>
+      <ServiceRequest>
+        <Service>
+          <Name>string</Name>
+        </Service>
+        <RequestedQuantity>6193000000000.24</RequestedQuantity>
+      </ServiceRequest>
+    </TeamStart>
+    <Extensions />
+  </ClassStart>
+  <Extensions />
+</StartList>

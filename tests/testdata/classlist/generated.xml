@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<ClassList xmlns="http://www.orienteering.org/datastandard/3.0" xsi:schemaLocation="http://www.orienteering.org/datastandard/3.0 schema.xsd" iofVersion="3.0" createTime="1976-10-01T01:51:38.41" creator="string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Class minAge="-3389" maxAge="-3093" minNumberOfTeamMembers="1" maxNumberOfTeamMembers="1" maxNumberOfCompetitors="-3795" modifyTime="2009-12-20T15:15:47.44">
+    <Id>string</Id>
+    <Name>string</Name>
+    <ShortName>string</ShortName>
+    <ClassType>
+      <Id>string</Id>
+      <Name>string</Name>
+    </ClassType>
+    <ClassType>
+      <Id>string</Id>
+      <Name>string</Name>
+    </ClassType>
+    <ClassType>
+      <Id>string</Id>
+      <Name>string</Name>
+    </ClassType>
+    <ClassType>
+      <Id>string</Id>
+      <Name>string</Name>
+    </ClassType>
+    <Leg>
+      <Extensions />
+    </Leg>
+    <TeamFee>
+      <Id>string</Id>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Amount>-480369.765094196</Amount>
+      <Percentage>16729900000000.2</Percentage>
+      <ValidFromTime>2002-08-22T00:37:52.59</ValidFromTime>
+      <FromDateOfBirth>1977-02-04</FromDateOfBirth>
+      <ToDateOfBirth>2017-03-10</ToDateOfBirth>
+      <Extensions />
+    </TeamFee>
+    <TeamFee>
+      <Id>string</Id>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Amount>1146730.2349058</Amount>
+      <TaxableAmount>3852770.2349058</TaxableAmount>
+      <TaxablePercentage>41365700000000.2</TaxablePercentage>
+      <ValidFromTime>1982-03-22T23:42:55.87</ValidFromTime>
+      <ValidToTime>1990-12-23T14:12:53.56</ValidToTime>
+      <FromDateOfBirth>1987-08-18</FromDateOfBirth>
+    </TeamFee>
+    <TeamFee>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <TaxableAmount>-4003839.7650942</TaxableAmount>
+      <ValidFromTime>2003-09-07T03:54:55.34</ValidFromTime>
+      <ValidToTime>1982-04-13T23:11:25.59</ValidToTime>
+      <ToDateOfBirth>2001-01-25</ToDateOfBirth>
+      <Extensions />
+    </TeamFee>
+    <TeamFee>
+      <Name>string</Name>
+      <Amount>4739350.2349058</Amount>
+      <TaxableAmount>-4690329.7650942</TaxableAmount>
+      <Percentage>23133600000000.2</Percentage>
+      <ValidFromTime>1985-02-11T01:59:37.44</ValidFromTime>
+      <ValidToTime>1986-04-20T10:54:49.21</ValidToTime>
+      <FromDateOfBirth>2015-06-03</FromDateOfBirth>
+      <ToDateOfBirth>1980-01-12</ToDateOfBirth>
+    </TeamFee>
+    <Fee>
+      <Id>string</Id>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Amount>-2771479.7650942</Amount>
+      <Percentage>2196200000000.23</Percentage>
+      <TaxablePercentage>-37258899999999.8</TaxablePercentage>
+      <ValidToTime>2004-08-12T10:42:17.99</ValidToTime>
+      <ToDateOfBirth>1981-02-22</ToDateOfBirth>
+    </Fee>
+    <Fee>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Amount>-410729.765094196</Amount>
+      <Percentage>41033900000000.2</Percentage>
+      <ValidToTime>1973-04-04T19:58:55.38</ValidToTime>
+      <FromDateOfBirth>2006-02-06</FromDateOfBirth>
+      <ToDateOfBirth>2003-02-14</ToDateOfBirth>
+      <Extensions />
+    </Fee>
+    <Fee>
+      <Id>string</Id>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Amount>-425409.765094196</Amount>
+      <ValidFromTime>1973-11-22T20:23:23.75</ValidFromTime>
+    </Fee>
+    <Fee>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Percentage>42166900000000.2</Percentage>
+      <TaxablePercentage>46479900000000.2</TaxablePercentage>
+      <ValidFromTime>2018-06-09T13:26:42.84</ValidFromTime>
+      <FromDateOfBirth>1970-09-26</FromDateOfBirth>
+    </Fee>
+    <Status>Normal</Status>
+    <RaceClass>
+      <PunchingSystem>string</PunchingSystem>
+      <PunchingSystem>string</PunchingSystem>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>NotUsed</Status>
+      <Course />
+      <Course />
+      <Course />
+      <Course />
+      <OnlineControl />
+      <Extensions />
+    </RaceClass>
+    <RaceClass>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <FirstStart>1996-11-21T23:18:14.57</FirstStart>
+      <Course />
+      <Course />
+      <Course />
+      <OnlineControl />
+      <Extensions />
+    </RaceClass>
+    <TooFewEntriesSubstituteClass>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <Leg />
+      <Leg />
+      <Leg />
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>Normal</Status>
+      <Extensions />
+    </TooFewEntriesSubstituteClass>
+    <TooManyEntriesSubstituteClass>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <Leg />
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>Joined</Status>
+      <TooFewEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooFewEntriesSubstituteClass>
+    </TooManyEntriesSubstituteClass>
+    <Extensions />
+  </Class>
+  <Class minAge="4871" maxNumberOfTeamMembers="1" modifyTime="1974-12-04T07:30:09.70">
+    <Id>string</Id>
+    <Name>string</Name>
+    <ShortName>string</ShortName>
+    <ClassType>
+      <Id>string</Id>
+      <Name>string</Name>
+    </ClassType>
+    <Leg>
+      <Name>string</Name>
+      <Extensions />
+    </Leg>
+    <Leg>
+      <Name>string</Name>
+      <Extensions />
+    </Leg>
+    <Leg>
+      <Name>string</Name>
+      <Extensions />
+    </Leg>
+    <Leg>
+      <Extensions />
+    </Leg>
+    <TeamFee>
+      <Id>string</Id>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Percentage>-43022299999999.8</Percentage>
+      <ValidFromTime>1979-06-10T15:17:51.04</ValidFromTime>
+      <ValidToTime>2005-10-28T09:29:39.87</ValidToTime>
+    </TeamFee>
+    <TeamFee>
+      <Id>string</Id>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Amount>3006130.2349058</Amount>
+      <TaxableAmount>-388339.765094196</TaxableAmount>
+      <Percentage>-34956799999999.8</Percentage>
+      <TaxablePercentage>15873800000000.2</TaxablePercentage>
+      <ValidToTime>2013-07-24T15:50:12.08</ValidToTime>
+      <FromDateOfBirth>1979-02-12</FromDateOfBirth>
+      <ToDateOfBirth>1985-01-25</ToDateOfBirth>
+    </TeamFee>
+    <Fee>
+      <Name>string</Name>
+      <Name>string</Name>
+      <Amount>-3048379.7650942</Amount>
+      <TaxablePercentage>13780500000000.2</TaxablePercentage>
+      <FromDateOfBirth>2005-03-04</FromDateOfBirth>
+    </Fee>
+    <Status>Normal</Status>
+    <RaceClass>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Status>InvalidatedNoFee</Status>
+      <Course />
+      <Course />
+      <Course />
+      <Course />
+      <OnlineControl />
+      <OnlineControl />
+      <OnlineControl />
+    </RaceClass>
+    <RaceClass>
+      <PunchingSystem>string</PunchingSystem>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <FirstStart>2012-08-22T23:45:12.93</FirstStart>
+      <Status>Invalidated</Status>
+      <Course />
+      <OnlineControl />
+      <OnlineControl />
+      <Extensions />
+    </RaceClass>
+    <RaceClass>
+      <PunchingSystem>string</PunchingSystem>
+      <PunchingSystem>string</PunchingSystem>
+      <PunchingSystem>string</PunchingSystem>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>StartTimesNotAllocated</Status>
+      <Course />
+      <Course />
+      <Course />
+      <OnlineControl />
+    </RaceClass>
+    <RaceClass>
+      <PunchingSystem>string</PunchingSystem>
+      <PunchingSystem>string</PunchingSystem>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <OnlineControl />
+    </RaceClass>
+    <TooFewEntriesSubstituteClass>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>Joined</Status>
+      <RaceClass />
+      <TooManyEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooManyEntriesSubstituteClass>
+    </TooFewEntriesSubstituteClass>
+    <TooManyEntriesSubstituteClass>
+      <Name>string</Name>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <RaceClass />
+      <TooFewEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooFewEntriesSubstituteClass>
+    </TooManyEntriesSubstituteClass>
+    <Extensions />
+  </Class>
+  <Extensions />
+</ClassList>

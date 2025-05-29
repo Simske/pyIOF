@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<OrganisationList xmlns="http://www.orienteering.org/datastandard/3.0" xsi:schemaLocation="http://www.orienteering.org/datastandard/3.0 schema.xsd" iofVersion="3.0" createTime="1976-10-01T01:51:38.41" creator="string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Organisation type="IOFRegion" modifyTime="1979-02-18T08:37:20.51">
+    <Id>string</Id>
+    <Name>string</Name>
+    <ShortName>string</ShortName>
+    <MediaName>string</MediaName>
+    <ParentOrganisationId>2939</ParentOrganisationId>
+    <Country code="string">string</Country>
+    <Address>
+      <Street>string</Street>
+      <State>string</State>
+    </Address>
+    <Address>
+      <CareOf>string</CareOf>
+      <Street>string</Street>
+      <ZipCode>string</ZipCode>
+      <Country code="string">string</Country>
+    </Address>
+    <Address>
+      <CareOf>string</CareOf>
+      <Street>string</Street>
+      <City>string</City>
+      <State>string</State>
+      <Country code="string">string</Country>
+    </Address>
+    <Address>
+      <CareOf>string</CareOf>
+      <ZipCode>string</ZipCode>
+      <Country code="string">string</Country>
+    </Address>
+    <Contact type="Other">string</Contact>
+    <Contact type="EmailAddress">string</Contact>
+    <Contact type="Other">string</Contact>
+    <Contact type="FaxNumber">string</Contact>
+    <Contact type="MobilePhoneNumber">string</Contact>
+    <Position lng="16729900000000.2" lat="-28939199999999.8" />
+    <Account>string</Account>
+    <Account>string</Account>
+    <Account>string</Account>
+    <Account>string</Account>
+    <Role type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Role>
+    <Role type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Role>
+    <Role type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Role>
+    <Role type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Role>
+    <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    <Extensions />
+  </Organisation>
+  <Organisation>
+    <Id>string</Id>
+    <Name>string</Name>
+    <ShortName>string</ShortName>
+    <MediaName>string</MediaName>
+    <ParentOrganisationId>-1567</ParentOrganisationId>
+    <Country code="string">string</Country>
+    <Address>
+      <Street>string</Street>
+      <State>string</State>
+    </Address>
+    <Address>
+      <CareOf>string</CareOf>
+      <ZipCode>string</ZipCode>
+      <City>string</City>
+      <State>string</State>
+    </Address>
+    <Contact type="FaxNumber">string</Contact>
+    <Contact type="PhoneNumber">string</Contact>
+    <Contact type="Other">string</Contact>
+    <Contact type="Other">string</Contact>
+    <Position lng="-46903299999999.8" lat="33150600000000.2" />
+    <Account>string</Account>
+    <Account>string</Account>
+    <Account>string</Account>
+    <Account>string</Account>
+    <Role type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Role>
+    <Role type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Role>
+    <Role type="string">
+      <Person>
+        <Name>
+          <Family>string</Family>
+          <Given>string</Given>
+        </Name>
+      </Person>
+    </Role>
+    <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    <Extensions />
+  </Organisation>
+  <Extensions />
+</OrganisationList>

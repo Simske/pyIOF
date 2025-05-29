@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<ResultList xmlns="http://www.orienteering.org/datastandard/3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" iofVersion="3.0"
+    createTime="2025-05-25T20:48:31" creator="MeOS 4.1.1663" status="Complete">
+    <Event>
+        <Id></Id>
+        <Name>Example-Event</Name>
+        <StartTime>
+            <Date>2025-05-25</Date>
+            <Time>08:00:00+02:00</Time>
+        </StartTime>
+    </Event>
+    <ClassResult>
+        <Class>
+            <Id>280007</Id>
+            <Name>D/H10 begleitet</Name>
+        </Class>
+        <TeamResult>
+            <EntryId type="MeOS">100</EntryId>
+            <Name>Beispiel-Team</Name>
+            <Organisation>
+                <Id>143443</Id>
+                <Name>OLV Musterverein</Name>
+                <Country code="GER">Germany</Country>
+            </Organisation>
+            <TeamMemberResult>
+                <Person>
+                    <Id type="national">DE99999</Id>
+                    <Name>
+                        <Family>Mustermann</Family>
+                        <Given>Max</Given>
+                    </Name>
+                    <BirthDate>2018-01-01</BirthDate>
+                </Person>
+                <Organisation>
+                    <Id>143443</Id>
+                    <Name>OLV Musterverein</Name>
+                    <Country code="GER">Germany</Country>
+                </Organisation>
+                <Result raceNumber="1">
+                    <Leg>1</Leg>
+                    <StartTime>2025-05-25T11:01:07+02:00</StartTime>
+                    <FinishTime>2025-05-25T11:17:08+02:00</FinishTime>
+                    <Time>961</Time>
+                    <TimeBehind type="Leg">135</TimeBehind>
+                    <TimeBehind type="Course">135</TimeBehind>
+                    <Position type="Leg">2</Position>
+                    <Position type="Course">2</Position>
+                    <Status>OK</Status>
+                    <OverallResult>
+                        <Time>961</Time>
+                        <TimeBehind>135</TimeBehind>
+                        <Position>2</Position>
+                        <Status>OK</Status>
+                    </OverallResult>
+                    <Course>
+                        <Id>12</Id>
+                        <Name>Bahn 6.1</Name>
+                        <Length>1800</Length>
+                        <Climb>5</Climb>
+                    </Course>
+                    <SplitTime>
+                        <ControlCode>101</ControlCode>
+                        <Time>79</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>102</ControlCode>
+                        <Time>173</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>103</ControlCode>
+                        <Time>245</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>104</ControlCode>
+                        <Time>332</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>105</ControlCode>
+                        <Time>399</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>106</ControlCode>
+                        <Time>465</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>107</ControlCode>
+                        <Time>505</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>108</ControlCode>
+                        <Time>594</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>109</ControlCode>
+                        <Time>639</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>110</ControlCode>
+                        <Time>688</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>111</ControlCode>
+                        <Time>814</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>112</ControlCode>
+                        <Time>835</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>113</ControlCode>
+                        <Time>888</Time>
+                    </SplitTime>
+                    <SplitTime>
+                        <ControlCode>100</ControlCode>
+                        <Time>948</Time>
+                    </SplitTime>
+                    <SplitTime status="Additional">
+                        <ControlCode>112</ControlCode>
+                        <Time>773</Time>
+                    </SplitTime>
+                    <ControlCard>8999999</ControlCard>
+                    <AssignedFee>
+                        <Fee type="Normal">
+                            <Name>Entry fee</Name>
+                            <Amount>9.00</Amount>
+                            <TaxableAmount>9.00</TaxableAmount>
+                        </Fee>
+                    </AssignedFee>
+                </Result>
+            </TeamMemberResult>
+        </TeamResult>
+    </ClassResult>
+</ResultList>

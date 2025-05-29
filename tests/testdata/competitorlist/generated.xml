@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<CompetitorList xmlns="http://www.orienteering.org/datastandard/3.0" xsi:schemaLocation="http://www.orienteering.org/datastandard/3.0 schema.xsd" iofVersion="3.0" createTime="1976-10-01T01:51:38.41" creator="string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Competitor modifyTime="1978-10-06T02:36:22.62">
+    <Person>
+      <Name>
+        <Family>string</Family>
+        <Given>string</Given>
+      </Name>
+      <BirthDate>2018-09-19</BirthDate>
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="PhoneNumber">string</Contact>
+      <Contact type="PhoneNumber">string</Contact>
+      <Contact type="WebAddress">string</Contact>
+      <Extensions />
+    </Person>
+    <Organisation>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ParentOrganisationId>1548</ParentOrganisationId>
+      <Country code="string">string</Country>
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="Other">string</Contact>
+      <Contact type="MobilePhoneNumber">string</Contact>
+      <Contact type="Other">string</Contact>
+      <Position lng="28489200000000.2" lat="-25712399999999.8" />
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+    </Organisation>
+    <Organisation>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ParentOrganisationId>416</ParentOrganisationId>
+      <Country code="string">string</Country>
+      <Address />
+      <Contact type="WebAddress">string</Contact>
+      <Contact type="FaxNumber">string</Contact>
+      <Contact type="EmailAddress">string</Contact>
+      <Contact type="MobilePhoneNumber">string</Contact>
+      <Account>string</Account>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Extensions />
+    </Organisation>
+    <Organisation>
+      <Name>string</Name>
+      <MediaName>string</MediaName>
+      <ParentOrganisationId>-2892</ParentOrganisationId>
+      <Country code="string">string</Country>
+      <Address />
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="MobilePhoneNumber">string</Contact>
+      <Contact type="PhoneNumber">string</Contact>
+      <Contact type="WebAddress">string</Contact>
+      <Contact type="PhoneNumber">string</Contact>
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+    </Organisation>
+    <Organisation>
+      <Name>string</Name>
+      <Address />
+      <Address />
+      <Address />
+      <Address />
+      <Position lng="-26541799999999.8" lat="-28370199999999.8" />
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Extensions />
+    </Organisation>
+    <Organisation>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ParentOrganisationId>101</ParentOrganisationId>
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="PhoneNumber">string</Contact>
+      <Contact type="MobilePhoneNumber">string</Contact>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+    </Organisation>
+    <ControlCard>string</ControlCard>
+    <ControlCard>string</ControlCard>
+    <ControlCard>string</ControlCard>
+    <Class>
+      <Id>string</Id>
+      <Name>string</Name>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <Leg />
+      <Leg />
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>InvalidatedNoFee</Status>
+      <RaceClass />
+      <RaceClass />
+      <RaceClass />
+      <TooManyEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooManyEntriesSubstituteClass>
+      <Extensions />
+    </Class>
+    <Score>47838900000000.2</Score>
+    <Score>12967500000000.2</Score>
+    <Extensions />
+  </Competitor>
+  <Competitor modifyTime="2014-12-21T15:37:13.87">
+    <Person>
+      <Id>string</Id>
+      <Id>string</Id>
+      <Name>
+        <Family>string</Family>
+        <Given>string</Given>
+      </Name>
+      <BirthDate>1972-03-04</BirthDate>
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="MobilePhoneNumber">string</Contact>
+    </Person>
+    <Organisation>
+      <Id>string</Id>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ParentOrganisationId>-2381</ParentOrganisationId>
+      <Country code="string">string</Country>
+      <Contact type="MobilePhoneNumber">string</Contact>
+      <Contact type="PhoneNumber">string</Contact>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Extensions />
+    </Organisation>
+    <Organisation>
+      <Id>string</Id>
+      <Name>string</Name>
+      <ParentOrganisationId>3590</ParentOrganisationId>
+      <Country code="string">string</Country>
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="Other">string</Contact>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Extensions />
+    </Organisation>
+    <Organisation>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ParentOrganisationId>-4644</ParentOrganisationId>
+      <Address />
+      <Address />
+      <Address />
+      <Address />
+      <Contact type="WebAddress">string</Contact>
+      <Contact type="MobilePhoneNumber">string</Contact>
+      <Contact type="FaxNumber">string</Contact>
+      <Contact type="EmailAddress">string</Contact>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+    </Organisation>
+    <Organisation>
+      <Id>string</Id>
+      <Name>string</Name>
+      <ParentOrganisationId>2094</ParentOrganisationId>
+      <Contact type="PhoneNumber">string</Contact>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Account>string</Account>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Role type="string">
+        <Person>
+          <Name>
+            <Family>string</Family>
+            <Given>string</Given>
+          </Name>
+        </Person>
+      </Role>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Logotype mediaType="string">YTM0NZomIzI2OTsmIzM0NTueYQ==</Logotype>
+      <Extensions />
+    </Organisation>
+    <ControlCard>string</ControlCard>
+    <Class>
+      <Name>string</Name>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <Leg />
+      <Leg />
+      <Leg />
+      <Leg />
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <RaceClass />
+      <RaceClass />
+      <TooManyEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooManyEntriesSubstituteClass>
+    </Class>
+    <Class>
+      <Name>string</Name>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <Leg />
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <RaceClass />
+    </Class>
+    <Class>
+      <Id>string</Id>
+      <Name>string</Name>
+      <ShortName>string</ShortName>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <ClassType>
+        <Name>string</Name>
+      </ClassType>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <TeamFee>
+        <Name>string</Name>
+      </TeamFee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Fee>
+        <Name>string</Name>
+      </Fee>
+      <Status>Invalidated</Status>
+      <RaceClass />
+      <RaceClass />
+      <TooFewEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooFewEntriesSubstituteClass>
+      <TooManyEntriesSubstituteClass>
+        <Name>string</Name>
+      </TooManyEntriesSubstituteClass>
+    </Class>
+    <Score>-43838799999999.8</Score>
+    <Score>-24473999999999.8</Score>
+    <Extensions />
+  </Competitor>
+  <Extensions />
+</CompetitorList>

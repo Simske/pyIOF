@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<ControlCardList xmlns="http://www.orienteering.org/datastandard/3.0" xsi:schemaLocation="http://www.orienteering.org/datastandard/3.0 schema.xsd" iofVersion="3.0" createTime="1971-08-04T06:25:50.35" creator="string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Owner>string</Owner>
+  <ControlCard punchingSystem="string" modifyTime="2008-05-04T22:10:46.79">string</ControlCard>
+  <ControlCard punchingSystem="string">string</ControlCard>
+  <ControlCard>string</ControlCard>
+  <ControlCard punchingSystem="string" modifyTime="2004-09-08T11:19:17.83">string</ControlCard>
+  <Extensions />
+</ControlCardList>
