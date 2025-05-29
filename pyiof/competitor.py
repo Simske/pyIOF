@@ -88,7 +88,7 @@ class TeamEntryPerson(BaseXmlModel):
     """Defines a person that is part of a team entry."""
 
     person: Optional[Person] = element(tag="Person", default=None)
-    organisation: Optional[Organisation] = element(tag="Organisation")
+    organisation: Optional[Organisation] = element(tag="Organisation", default=None)
     leg: Optional[int] = element(tag="Leg", default=None)
     leg_order: Optional[int] = element(tag="LegOrder", default=None)
     control_card: List[ControlCard] = element(tag="ControlCard", default_factory=list)

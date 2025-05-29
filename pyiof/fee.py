@@ -71,8 +71,8 @@ class Fee(BaseXmlModel):
     name: conlist(item_type=LanguageString, min_length=1) = element(tag="Name")  # type: ignore
     amount: Optional[Amount] = element(tag="Amount", default=None)
     taxable_amount: Optional[Amount] = element(tag="TaxableAmount", default=None)
-    percentage: Optional[confloat(ge=0, le=100)] = element(tag="Percentage", default=None)  # type: ignore
-    taxable_percentage: Optional[confloat(ge=0, le=100)] = element(  # type: ignore
+    percentage: Optional[float] = element(tag="Percentage", default=None)  # type: ignore
+    taxable_percentage: Optional[float] = element(  # type: ignore
         tag="TaxablePercentage", default=None
     )
     valid_from_time: Optional[datetime.datetime] = element(tag="ValidFromTime", default=None)

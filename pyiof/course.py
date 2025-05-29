@@ -160,8 +160,8 @@ class Course(BaseXmlModel):
     id: Optional[Id] = element(tag="Id", default=None)
     name: str = element(tag="Name")
     course_family: Optional[str] = element(tag="CourseFamily", default=None)
-    length: Optional[int] = element(tag="Length", default=None)
-    climb: Optional[int] = element(tag="Climb", default=None)
+    length: Optional[float] = element(tag="Length", default=None)
+    climb: Optional[float] = element(tag="Climb", default=None)
     course_controls: conlist(item_type=CourseControl, min_length=2) = element(  # type: ignore
         tag="CourseControl"
     )

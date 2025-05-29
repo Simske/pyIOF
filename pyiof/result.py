@@ -99,7 +99,7 @@ class TeamMemberRaceResults(BaseXmlModel):
     finish_time: Optional[datetime.datetime] = element(tag="FinishTime", default=None)
     time: Optional[float] = element(tag="Time", default=None)
     time_behind: List[TeamTimeBehind] = element(tag="TimeBehind")
-    position: Optional[TeamPosition] = element(tag="Position", default=None)
+    position: List[TeamPosition] = element(tag="Position", default_factory=list)
     status: ResultStatus = element(tag="Status")
     scores: List[Score] = element(tag="Score", default_factory=list)
     overall_result: Optional[OverallResult] = element(tag="OverallResult", default=None)
@@ -119,8 +119,8 @@ class TeamMemberResult(BaseXmlModel):
     """
 
     entry_id: Optional[Id] = element(tag="EntryId", default=None)
-    person: Person = element(tag="Person")
-    organisation: Optional[Organisation] = element(tag="Organisation")
+    person: Optional[Person] = element(tag="Person", default=None)
+    organisation: Optional[Organisation] = element(tag="Organisation", default=None)
     results: List[TeamMemberRaceResults] = element(tag="Result", default_factory=list)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
