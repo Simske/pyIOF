@@ -9,7 +9,24 @@ from .fee import AssignedFee
 from .misc import ServiceRequest
 from .xml_base import BaseXmlModel, attr, element
 
-"""The result status of the person or team at the time of the result generation."""
+"""The result status of the person or team at the time of the result generation.
+OK: Finished and validated.
+Finished: Finished but not yet validated.
+MissingPunch: Missing at least one punch.
+Disqualified: Disqualified (for some other reason than a missing punch).
+DidNotFinish: Did not finish (i.e. conciously cancelling the race after having started,
+    in contrast to MissingPunch).
+Active: Currently on course.
+Inactive: Has not yet started.
+OverTime: Overtime, i.e. did not finish within the maximum time set by the organiser.
+SportingWithdrawal: Sporting withdrawal (e.g. helping an injured competitor).
+NotCompeting: Not competing (i.e. running outside the competition).
+Moved: Moved to another class.
+MovedUp: Moved to a "better" class, in case of entry restrictions.
+DidNotStart: Did not start (in this race).
+DidNotEnter: Did not enter (in this race).
+Cancelled: The competitor has cancelled his/hers entry.
+"""
 ResultStatus = Literal[
     "OK",
     "Finished",
@@ -89,7 +106,7 @@ class TeamPosition(BaseXmlModel):
     type: Literal["Leg", "Course"] = attr(name="type")
 
 
-class TeamMemberRaceResults(BaseXmlModel):
+class TeamMemberRaceResult(BaseXmlModel):
     """Result information for a person in a race."""
 
     leg: Optional[int] = element(tag="Leg", default=None)
@@ -98,7 +115,7 @@ class TeamMemberRaceResults(BaseXmlModel):
     start_time: Optional[datetime.datetime] = element(tag="StartTime", default=None)
     finish_time: Optional[datetime.datetime] = element(tag="FinishTime", default=None)
     time: Optional[float] = element(tag="Time", default=None)
-    time_behind: List[TeamTimeBehind] = element(tag="TimeBehind")
+    time_behind: List[TeamTimeBehind] = element(tag="TimeBehind", default_factory=list)
     position: List[TeamPosition] = element(tag="Position", default_factory=list)
     status: ResultStatus = element(tag="Status")
     scores: List[Score] = element(tag="Score", default_factory=list)
@@ -121,7 +138,7 @@ class TeamMemberResult(BaseXmlModel):
     entry_id: Optional[Id] = element(tag="EntryId", default=None)
     person: Optional[Person] = element(tag="Person", default=None)
     organisation: Optional[Organisation] = element(tag="Organisation", default=None)
-    results: List[TeamMemberRaceResults] = element(tag="Result", default_factory=list)
+    results: List[TeamMemberRaceResult] = element(tag="Result", default_factory=list)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
