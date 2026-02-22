@@ -149,5 +149,5 @@ class Organisation(BaseXmlModel):
 
 
 class EntryReceiver(BaseXmlModel):
-    addresses: List[Address] = element(tag="Address")
-    contacts: List[Contact] = element(tag="Contact")
+    addresses: List[Address] = element(tag="Address", default_factory=list)
+    contacts: List[Contact] = element(tag="Contact", default_factory=list)

@@ -50,11 +50,11 @@ class SimpleCourse(BaseXmlModel):
     crossing point or end of marked route.
 
 Valid values:
-    control
-    start
-    finish
-    crossing_point
-    end_of_marked_route
+    Control
+    Start
+    Finish
+    CrossingPoint
+    EndOfMarkedRoute
 """
 ControlType = Literal["Control", "Start", "Finish", "CrossingPoint", "EndOfMarkedRoute"]
 
@@ -84,7 +84,7 @@ class Control(BaseXmlModel):
     name: List[LanguageString] = element(tag="Name", default_factory=list)
     position: Optional[GeoPosition] = element(tag="Position", default=None)
     map_position: Optional[MapPosition] = element(tag="MapPosition", default=None)
-    type: ControlType = attr(default="control")
+    type: ControlType = attr(default="Control")
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
@@ -173,8 +173,16 @@ class Course(BaseXmlModel):
         return Course(
             # id = Id(id=self.id.id + other.id.id),
             name=self.name + other.name,
-            length=self.length + other.length,
-            climb=self.climb + other.climb,
+            length=(
+                (self.length or 0) + (other.length or 0)
+                if (self.length is not None or other.length is not None)
+                else None
+            ),
+            climb=(
+                (self.climb or 0) + (other.climb or 0)
+                if (self.climb is not None or other.climb is not None)
+                else None
+            ),
             course_controls=self.course_controls + other.course_controls,
         )
 
@@ -231,7 +239,7 @@ class TeamMemberCourseAssignment(BaseXmlModel):
     bib_number: Optional[str] = element(tag="BibNumber", default=None)
     leg: Optional[int] = element(tag="Leg", default=None)
     leg_order: Optional[int] = element(tag="LegOrder", default=None)
-    team_member_name: Optional[int] = element(tag="TeamMemberName", default=None)
+    team_member_name: Optional[str] = element(tag="TeamMemberName", default=None)
     course_name: Optional[str] = element(tag="CourseName", default=None)
     course_family: Optional[str] = element(tag="CourseFamily", default=None)
 

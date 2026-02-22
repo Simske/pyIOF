@@ -1,12 +1,10 @@
 import datetime
 from typing import Literal, Optional
 
-from pydantic import condecimal, confloat, conlist
+from pydantic import condecimal, confloat, conlist, model_validator
 
 from .base import Id, LanguageString
 from .xml_base import BaseXmlModel, attr, element
-
-# from pydantic import validator
 
 
 class Account(BaseXmlModel):
@@ -82,31 +80,15 @@ class Fee(BaseXmlModel):
     type: Optional[FeeType] = attr(default=None)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
-    # TODO: not compatible with tests
-    # @validator("percentage")
-    # def validate_exclusive_amount_percentage(cls, percentage, values):
-    #     """Validate that only one of amount or percentage is present.
-    #     Might validator only applied to percentage, as amount is set first.
-    #     """
-    #     if percentage is not None and values["amount"] is not None:
-    #         raise ValueError("Fee: only one of amount or percentage can be defined")
-    #     return percentage
-
-    # @validator("taxable_amount")
-    # def validate_taxable_amount(cls, taxable_amount, values):
-    #     if taxable_amount is not None and values["amount"] is None:
-    #         raise ValueError(
-    #             "Fee: taxable_amount only applicable if amount is defined"
-    #         )
-    #     return taxable_amount
-
-    # @validator("taxable_percentage")
-    # def validate_taxable_percentage(cls, taxable_percentage, values):
-    #     if taxable_percentage is not None and values["amount"] is None:
-    #         raise ValueError(
-    #             "Fee: taxable_percentage only applicable if percentage is defined"
-    #         )
-    #     return taxable_percentage
+    @model_validator(mode="after")
+    def validate_amount_percentage_exclusion(self) -> "Fee":
+        if self.percentage is not None and self.amount is not None:
+            raise ValueError("Fee: only one of amount or percentage can be defined")
+        if self.taxable_amount is not None and self.amount is None:
+            raise ValueError("Fee: taxable_amount only applicable when amount is defined")
+        if self.taxable_percentage is not None and self.percentage is None:
+            raise ValueError("Fee: taxable_percentage only applicable when percentage is defined")
+        return self
 
 
 class AssignedFee(BaseXmlModel):
@@ -121,4 +103,4 @@ class AssignedFee(BaseXmlModel):
 
     fee: Fee = element(tag="Fee")
     paid_amount: Optional[Amount] = element(tag="PaidAmount", default=None)
-    modifyTime: Optional[datetime.datetime] = attr(default=None)
+    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)

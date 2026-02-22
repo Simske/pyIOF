@@ -27,7 +27,7 @@ class BaseXmlModel(  # type: ignore
         )
 
     @classmethod
-    def read_xml(cls, path: str, encoding: str = "utf-8") -> Self:
+    def read_xml(cls, path: str) -> Self:
         with open(path, "rb") as f:
             return cls.from_xml(f.read())
 

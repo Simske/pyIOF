@@ -39,7 +39,7 @@ class ServiceRequest(BaseXmlModel):
     id: Optional[Id] = element(tag="Id", default=None)
     service: Service = element(tag="Service")
     requested_quantity: float = element(tag="RequestedQuantity")
-    deliverd_quantity: Optional[float] = element(tag="DeliveredQuantity", default=None)
+    delivered_quantity: Optional[float] = element(tag="DeliveredQuantity", default=None)
     comment: Optional[str] = element(tag="Comment", default=None)
     assigned_fee: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
@@ -63,7 +63,7 @@ class PersonServiceRequest(BaseXmlModel):
     """Service requests made by a person."""
 
     person: Person = element(tag="Person")
-    service_requests: List[ServiceRequest] = element(tag="ServiceRequest")
+    service_requests: List[ServiceRequest] = element(tag="ServiceRequest", default_factory=list)
 
 
 class OrganisationServiceRequest(BaseXmlModel):

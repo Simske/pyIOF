@@ -133,9 +133,6 @@ class ClassType(BaseXmlModel):
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
-EventForm = Literal["Individual", "Team", "Relay"]
-
-
 class Class_(BaseXmlModel):
     """Defines a class in an event
 
@@ -210,7 +207,7 @@ class Class_(BaseXmlModel):
     )
     min_age: Optional[int] = attr(name="minAge", default=None)
     max_age: Optional[int] = attr(name="maxAge", default=None)
-    sex: Optional[Sex] = attr(default=None)
+    sex: Optional[Sex] = attr(default="B")
     min_number_of_team_members: Optional[int] = attr(name="minNumberOfTeamMembers", default=None)
     max_number_of_team_members: Optional[int] = attr(name="maxNumberOfTeamMembers", default=None)
     min_team_age: Optional[int] = attr(name="minTeamAge", default=None)

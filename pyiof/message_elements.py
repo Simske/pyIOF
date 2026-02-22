@@ -88,7 +88,7 @@ class ServiceRequestList(BaseMessageElement):
         tag="OrganisationServiceRequest", default_factory=list
     )
     person_service_requests: List[PersonServiceRequest] = element(
-        tag="PersonServiceRequest", dafault_factory=list
+        tag="PersonServiceRequest", default_factory=list
     )
 
 
