@@ -1,6 +1,7 @@
 import datetime
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
+from annotated_types import Len
 from pydantic import conlist
 
 from .base import Id
@@ -58,7 +59,7 @@ class TeamMemberStart(BaseXmlModel):
     entry_id: Optional[Id] = element(tag="EntryId", default=None)
     person: Optional[Person] = element(tag="Person", default=None)
     organisation: Optional[Organisation] = element(tag="Organisation", default=None)
-    starts: conlist(item_type=TeamMemberRaceStart, min_length=1) = element(tag="Start")  # type: ignore
+    starts: Annotated[list[TeamMemberRaceStart], Len(min_length=1)] = element(tag="Start")
     modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
 
 
