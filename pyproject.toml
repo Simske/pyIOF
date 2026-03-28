@@ -30,6 +30,9 @@ ruff = "^0.15.2"
 pyright = "^1.1.408"
 lxml-stubs = "^0.5.1"
 
+[project.scripts]
+meos-split = "pyiof.scripts.meos_multi_result_split:cli"
+
 [build-system]
 requires = ["poetry-core>=2.0"]
 build-backend = "poetry.core.masonry.api"
