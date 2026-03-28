@@ -4,7 +4,7 @@ from typing import List, Literal, Optional
 from pydantic import conlist
 
 from .base import GeoPosition, Id, Image, LanguageString, MapPosition
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexDatetime, attr, element
 
 
 class Leg(BaseXmlModel):
@@ -85,7 +85,7 @@ class Control(BaseXmlModel):
     position: Optional[GeoPosition] = element(tag="Position", default=None)
     map_position: Optional[MapPosition] = element(tag="MapPosition", default=None)
     type: ControlType = attr(default="Control")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class SimpleRaceCourse(SimpleCourse):
@@ -151,7 +151,7 @@ class CourseControl(BaseXmlModel):
         ]
     ] = attr(name="specialInstruction", default=None)
     taped_route_length: Optional[float] = attr(name="tapedRouteLength", default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class Course(BaseXmlModel):
@@ -167,7 +167,7 @@ class Course(BaseXmlModel):
     )
     map_id: Optional[int] = element(tag="MapId", default=None)
     number_of_competitors: Optional[int] = attr(name="numberOfCompetitors", default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
     def __add__(self, other):
         return Course(

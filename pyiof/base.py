@@ -1,7 +1,7 @@
 import datetime
 from typing import Literal, Optional
 
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexTime, attr, element
 
 
 class Id(BaseXmlModel):
@@ -51,7 +51,7 @@ class DateAndOptionalTime(BaseXmlModel):
     """
 
     date: datetime.date = element(tag="Date")
-    time: Optional[datetime.time] = element(tag="Time", default=None)
+    time: Optional[FlexTime] = element(tag="Time", default=None)
 
 
 class LanguageString(BaseXmlModel):

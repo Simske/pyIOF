@@ -7,7 +7,7 @@ from .base import Id
 from .contact import Sex
 from .course import Control, Leg, SimpleCourse
 from .fee import Fee
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexDatetime, attr, element
 
 """
 The status of a certain race in the class.
@@ -71,7 +71,7 @@ class RaceClass(BaseXmlModel):
     punching_system: List[str] = element(tag="PunchingSystem", default_factory=list)
     team_fee: List[Fee] = element(tag="TeamFee", default_factory=list)
     fee: List[Fee] = element(tag="Fee", default_factory=list)
-    first_start: Optional[datetime.datetime] = element(tag="FirstStart", default=None)
+    first_start: Optional[FlexDatetime] = element(tag="FirstStart", default=None)
     status: Optional[
         Literal[
             "StartTimesNotAllocated",
@@ -86,7 +86,7 @@ class RaceClass(BaseXmlModel):
     online_controls: List[Control] = element(tag="OnlineControl", default_factory=list)
     race_number: Optional[int] = attr(name="raceNumber", default=None)
     max_number_of_competitors: Optional[int] = attr(name="maxNumberOfCompetitors", default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 """Defines the kind of information to include in the result list, and how
@@ -130,7 +130,7 @@ class ClassType(BaseXmlModel):
 
     id: Optional[Id] = element(tag="Id", default=None)
     name: str = element(tag="Name")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class Class_(BaseXmlModel):

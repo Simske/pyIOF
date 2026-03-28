@@ -6,7 +6,7 @@ from .class_ import Class_
 from .contact import Organisation, Person
 from .fee import AssignedFee
 from .misc import ServiceRequest
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexDatetime, attr, element
 
 
 class ControlCard(BaseXmlModel):
@@ -21,7 +21,7 @@ class ControlCard(BaseXmlModel):
 
     id: str
     punching_system: Optional[str] = attr(name="punchingSystem", default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class Competitor(BaseXmlModel):
@@ -43,7 +43,7 @@ class Competitor(BaseXmlModel):
     controlcards: List[ControlCard] = element(tag="ControlCard", default_factory=list)
     class_: List[Class_] = element(tag="Class", default_factory=list)
     score: List[Score] = element(tag="Score", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class StartTimeAllocationRequest(BaseXmlModel):
@@ -80,8 +80,8 @@ class PersonEntry(BaseXmlModel):
     starttime_allocation_request: Optional[StartTimeAllocationRequest] = element(
         tag="StartTimeAllocationRequest", default=None
     )
-    entry_time: Optional[datetime.datetime] = element(tag="EntryTime", default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    entry_time: Optional[FlexDatetime] = element(tag="EntryTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class TeamEntryPerson(BaseXmlModel):
@@ -111,5 +111,5 @@ class TeamEntry(BaseXmlModel):
         tag="StartTimeAllocationRequest", default=None
     )
     contact_information: Optional[str] = element(tag="ContactInformation", default=None)
-    entry_time: Optional[datetime.datetime] = element(tag="EntryTime", default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    entry_time: Optional[FlexDatetime] = element(tag="EntryTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)

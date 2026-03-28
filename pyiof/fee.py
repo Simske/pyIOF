@@ -4,7 +4,7 @@ from typing import Literal, Optional
 from pydantic import condecimal, confloat, conlist, model_validator
 
 from .base import Id, LanguageString
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexDatetime, attr, element
 
 
 class Account(BaseXmlModel):
@@ -73,12 +73,12 @@ class Fee(BaseXmlModel):
     taxable_percentage: Optional[float] = element(  # type: ignore
         tag="TaxablePercentage", default=None
     )
-    valid_from_time: Optional[datetime.datetime] = element(tag="ValidFromTime", default=None)
-    valid_to_time: Optional[datetime.datetime] = element(tag="ValidToTime", default=None)
+    valid_from_time: Optional[FlexDatetime] = element(tag="ValidFromTime", default=None)
+    valid_to_time: Optional[FlexDatetime] = element(tag="ValidToTime", default=None)
     from_date_of_birth: Optional[datetime.date] = element(tag="FromDateOfBirth", default=None)
     to_date_of_birth: Optional[datetime.date] = element(tag="ToDateOfBirth", default=None)
     type: Optional[FeeType] = attr(default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
     @model_validator(mode="after")
     def validate_amount_percentage_exclusion(self) -> "Fee":
@@ -103,4 +103,4 @@ class AssignedFee(BaseXmlModel):
 
     fee: Fee = element(tag="Fee")
     paid_amount: Optional[Amount] = element(tag="PaidAmount", default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)

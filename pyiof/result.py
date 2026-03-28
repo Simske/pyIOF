@@ -7,7 +7,7 @@ from .competitor import ControlCard, Organisation, Person
 from .course import ControlAnswer, Route, SimpleCourse, SimpleRaceCourse
 from .fee import AssignedFee
 from .misc import ServiceRequest
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexDatetime, attr, element
 
 """The result status of the person or team at the time of the result generation.
 OK: Finished and validated.
@@ -66,8 +66,8 @@ class PersonRaceResult(BaseXmlModel):
     """Result information for a person in a race."""
 
     bib_number: Optional[str] = element(tag="BibNumber", default=None)
-    start_time: Optional[datetime.datetime] = element(tag="StartTime", default=None)
-    finish_time: Optional[datetime.datetime] = element(tag="FinishTime", default=None)
+    start_time: Optional[FlexDatetime] = element(tag="StartTime", default=None)
+    finish_time: Optional[FlexDatetime] = element(tag="FinishTime", default=None)
     time: Optional[float] = element(tag="Time", default=None)
     time_behind: Optional[float] = element(tag="TimeBehind", default=None)
     position: Optional[int] = element(tag="Position", default=None)
@@ -93,7 +93,7 @@ class PersonResult(BaseXmlModel):
     person: Person = element(tag="Person")
     organisation: Optional[Organisation] = element(tag="Organisation", default=None)
     results: List[PersonRaceResult] = element(tag="Result", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class TeamTimeBehind(BaseXmlModel):
@@ -112,8 +112,8 @@ class TeamMemberRaceResult(BaseXmlModel):
     leg: Optional[int] = element(tag="Leg", default=None)
     leg_order: Optional[int] = element(tag="LegOrder", default=None)
     bib_number: Optional[str] = element(tag="BibNumber", default=None)
-    start_time: Optional[datetime.datetime] = element(tag="StartTime", default=None)
-    finish_time: Optional[datetime.datetime] = element(tag="FinishTime", default=None)
+    start_time: Optional[FlexDatetime] = element(tag="StartTime", default=None)
+    finish_time: Optional[FlexDatetime] = element(tag="FinishTime", default=None)
     time: Optional[float] = element(tag="Time", default=None)
     time_behind: List[TeamTimeBehind] = element(tag="TimeBehind", default_factory=list)
     position: List[TeamPosition] = element(tag="Position", default_factory=list)
@@ -139,7 +139,7 @@ class TeamMemberResult(BaseXmlModel):
     person: Optional[Person] = element(tag="Person", default=None)
     organisation: Optional[Organisation] = element(tag="Organisation", default=None)
     results: List[TeamMemberRaceResult] = element(tag="Result", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class TeamResult(BaseXmlModel):
@@ -168,4 +168,4 @@ class ClassResult(BaseXmlModel):
     person_results: List[PersonResult] = element(tag="PersonResult", default_factory=list)
     team_results: List[TeamResult] = element(tag="TeamResult", default_factory=list)
     time_resolution: float = attr(name="timeResolution", default=1)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)

@@ -1,7 +1,28 @@
-from typing import Self, cast
+import datetime
+import re
+from typing import Annotated, Self, cast
 
 import pydantic_xml
+from pydantic import BeforeValidator
 from pydantic_xml import attr, element  # noqa: F401
+
+
+def _normalize_datetime_str(v: object) -> object:
+    if isinstance(v, str) and "T" in v:
+        date_part, time_part = v.split("T", 1)
+        time_part = re.sub(r"^(\d{2})\.(\d{2})\.(\d{2})", r"\1:\2:\3", time_part)
+        return f"{date_part}T{time_part}"
+    return v
+
+
+def _normalize_time_str(v: object) -> object:
+    if isinstance(v, str):
+        return re.sub(r"^(\d{2})\.(\d{2})\.(\d{2})", r"\1:\2:\3", v)
+    return v
+
+
+FlexDatetime = Annotated[datetime.datetime, BeforeValidator(_normalize_datetime_str)]
+FlexTime = Annotated[datetime.time, BeforeValidator(_normalize_time_str)]
 
 
 class BaseXmlModel(  # type: ignore

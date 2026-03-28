@@ -6,7 +6,7 @@ from .class_ import Class_
 from .contact import EntryReceiver, Organisation, Role
 from .fee import Account
 from .misc import EventURL, InformationItem, Schedule, Service
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexDatetime, attr, element
 
 EventStatus = Literal["Planned", "Applied", "Proposed", "Sanctioned", "Canceled", "Rescheduled"]
 
@@ -34,7 +34,7 @@ class Race(BaseXmlModel):
     officials: List[Role] = element(tag="Official", default_factory=list)
     services: List[Service] = element(tag="Service", default_factory=list)
     url: List[EventURL] = element(tag="URL", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class Event(BaseXmlModel):
@@ -56,4 +56,4 @@ class Event(BaseXmlModel):
     information: List[InformationItem] = element(tag="Information", default_factory=list)
     schedules: List[Schedule] = element(tag="Schedule", default_factory=list)
     news: List[InformationItem] = element(tag="News", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)

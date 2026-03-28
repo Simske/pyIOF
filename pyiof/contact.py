@@ -3,7 +3,7 @@ from typing import List, Literal, Optional
 
 from .base import GeoPosition, Id, Image
 from .fee import Account
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexDatetime, attr, element
 
 
 class Country(BaseXmlModel):
@@ -41,7 +41,7 @@ class Address(BaseXmlModel):
     state: Optional[str] = element(tag="State", default=None)
     country: Optional[Country] = element(tag="Country", default=None)
     type: Optional[str] = attr(default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class Contact(BaseXmlModel):
@@ -63,7 +63,7 @@ class Contact(BaseXmlModel):
         "WebAddress",
         "Other",
     ] = attr()
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class PersonName(BaseXmlModel):
@@ -90,7 +90,7 @@ class Person(BaseXmlModel):
     address: List[Address] = element(tag="Address", default_factory=list)
     contact: List[Contact] = element(tag="Contact", default_factory=list)
     sex: Optional[Literal["M", "F"]] = attr(default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class Role(BaseXmlModel):
@@ -145,7 +145,7 @@ class Organisation(BaseXmlModel):
             "Other",
         ]
     ] = attr(default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class EntryReceiver(BaseXmlModel):

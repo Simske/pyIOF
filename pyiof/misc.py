@@ -6,7 +6,7 @@ from pydantic import conlist
 from .base import GeoPosition, Id, LanguageString
 from .contact import Organisation, Person
 from .fee import AssignedFee, Fee
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexDatetime, attr, element
 
 
 class EventURL(BaseXmlModel):
@@ -19,7 +19,7 @@ class InformationItem(BaseXmlModel):
 
     title: str = element(tag="Title")
     content: str = element(tag="Content")
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class Service(BaseXmlModel):
@@ -32,7 +32,7 @@ class Service(BaseXmlModel):
     max_number: Optional[float] = element(tag="MaxNumber", default=None)
     requested_number: Optional[float] = element(tag="RequestedNumber", default=None)
     type: Optional[str] = attr(default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class ServiceRequest(BaseXmlModel):
@@ -42,7 +42,7 @@ class ServiceRequest(BaseXmlModel):
     delivered_quantity: Optional[float] = element(tag="DeliveredQuantity", default=None)
     comment: Optional[str] = element(tag="Comment", default=None)
     assigned_fee: List[AssignedFee] = element(tag="AssignedFee", default_factory=list)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class Schedule(BaseXmlModel):
@@ -50,13 +50,13 @@ class Schedule(BaseXmlModel):
     e.g. banquets, social events and awards ceremonies.
     """
 
-    start_time: datetime.datetime = element(tag="StartTime")
-    end_time: Optional[datetime.datetime] = element(tag="EndTime", default=None)
+    start_time: FlexDatetime = element(tag="StartTime")
+    end_time: Optional[FlexDatetime] = element(tag="EndTime", default=None)
     name: str = element(tag="Name")
     venue: Optional[str] = element(tag="Venue", default=None)
     position: Optional[GeoPosition] = element(tag="Position", default=None)
     details: Optional[str] = element(tag="Details", default=None)
-    modify_time: Optional[datetime.datetime] = attr(name="modifyTime", default=None)
+    modify_time: Optional[FlexDatetime] = attr(name="modifyTime", default=None)
 
 
 class PersonServiceRequest(BaseXmlModel):

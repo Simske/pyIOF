@@ -10,12 +10,12 @@ from .event import Event
 from .misc import OrganisationServiceRequest, PersonServiceRequest
 from .result import ClassResult
 from .start import ClassStart
-from .xml_base import BaseXmlModel, attr, element
+from .xml_base import BaseXmlModel, FlexDatetime, attr, element
 
 
 class BaseMessageElement(BaseXmlModel):
     iof_version: Literal["3.0"] = attr(name="iofVersion", default="3.0")
-    create_time: Optional[datetime.datetime] = attr(name="createTime", default=None)
+    create_time: Optional[FlexDatetime] = attr(name="createTime", default=None)
     creator: Optional[str] = attr(default=None)
 
 
